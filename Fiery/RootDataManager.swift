@@ -9,7 +9,13 @@
 import UIKit
 import Firebase
 
-class RootDataManager: NSObject {
+class RootDataManager {
+    
+    static let sharedInstance = RootDataManager()
+    
+    init() {
+        
+    }
 
     func userLoggedIn(response: (userRegistered: Bool) -> Void) {
         
