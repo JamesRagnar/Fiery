@@ -9,7 +9,16 @@
 import UIKit
 
 class RootViewController: UIViewController {
-
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        checkUserStatus()
+    }
+    
+    private func checkUserStatus() {
+        
+        
+    }
 }
 
