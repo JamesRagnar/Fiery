@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>306905621920-90eb96ock8g48cd93qkt25nadql9o9nu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.306905621920-90eb96ock8g48cd93qkt25nadql9o9nu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZIdUIxjVB1-045HzErl6a8ov_bAtd_nc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>306905621920</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.ragnar.Fiery</string>
+	<key>PROJECT_ID</key>
+	<string>fiery-405fb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fiery-405fb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:306905621920:ios:6157a9ff2a3bcc74</string>
+	<key>DATABASE_URL</key>
+	<string>https://fiery-405fb.firebaseio.com</string>
+</dict>
+</plist>
