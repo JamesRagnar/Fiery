@@ -10,13 +10,14 @@
 		2651BB1A5835C6E210DC2891 /* Pods_FieryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */; };
 		676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
-		ADFF570A1CEFBD9A00DE6B7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* ViewController.swift */; };
+		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
 		ADFF570F1CEFBD9A00DE6B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */; };
 		ADFF57121CEFBD9A00DE6B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */; };
 		ADFF571D1CEFBD9A00DE6B7E /* FieryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */; };
 		ADFF57281CEFBD9A00DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */; };
 		ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */; };
+		ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */; };
 		D40A11A836AADEBE49FA411F /* Pods_FieryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +48,7 @@
 		A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADFF57091CEFBD9A00DE6B7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		ADFF570C1CEFBD9A00DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADFF57111CEFBD9A00DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryUITests.swift; sourceTree = "<group>"; };
 		ADFF57291CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,7 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
-				ADFF57091CEFBD9A00DE6B7E /* ViewController.swift */,
+				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
+				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
 				ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */,
 				ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */,
@@ -431,8 +434,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF570A1CEFBD9A00DE6B7E /* ViewController.swift in Sources */,
+				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
+				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
