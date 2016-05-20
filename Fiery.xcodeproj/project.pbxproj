@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ADFF56CE1CEFAEB500DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */; };
+		ADFF56D01CEFAEB500DE6B7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */; };
+		ADFF56D31CEFAEB500DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */; };
+		ADFF56D51CEFAEB500DE6B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */; };
+		ADFF56D81CEFAEB500DE6B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */; };
+		ADFF56E31CEFAEB500DE6B7E /* FieryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */; };
+		ADFF56EE1CEFAEB500DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADFF56DF1CEFAEB500DE6B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADFF56C91CEFAEB500DE6B7E;
+			remoteInfo = Fiery;
+		};
+		ADFF56EA1CEFAEB500DE6B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADFF56C91CEFAEB500DE6B7E;
+			remoteInfo = Fiery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ADFF56D21CEFAEB500DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADFF56D71CEFAEB500DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ADFF56D91CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryTests.swift; sourceTree = "<group>"; };
+		ADFF56E41CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryUITests.swift; sourceTree = "<group>"; };
+		ADFF56EF1CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ADFF56C71CEFAEB500DE6B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56DB1CEFAEB500DE6B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56E61CEFAEB500DE6B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ADFF56C11CEFAEB500DE6B7E = {
+			isa = PBXGroup;
+			children = (
+				ADFF56CC1CEFAEB500DE6B7E /* Fiery */,
+				ADFF56E11CEFAEB500DE6B7E /* FieryTests */,
+				ADFF56EC1CEFAEB500DE6B7E /* FieryUITests */,
+				ADFF56CB1CEFAEB500DE6B7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ADFF56CB1CEFAEB500DE6B7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */,
+				ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */,
+				ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ADFF56CC1CEFAEB500DE6B7E /* Fiery */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */,
+				ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */,
+				ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */,
+				ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */,
+				ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */,
+				ADFF56D91CEFAEB500DE6B7E /* Info.plist */,
+			);
+			path = Fiery;
+			sourceTree = "<group>";
+		};
+		ADFF56E11CEFAEB500DE6B7E /* FieryTests */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */,
+				ADFF56E41CEFAEB500DE6B7E /* Info.plist */,
+			);
+			path = FieryTests;
+			sourceTree = "<group>";
+		};
+		ADFF56EC1CEFAEB500DE6B7E /* FieryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */,
+				ADFF56EF1CEFAEB500DE6B7E /* Info.plist */,
+			);
+			path = FieryUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ADFF56C91CEFAEB500DE6B7E /* Fiery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADFF56F21CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */;
+			buildPhases = (
+				ADFF56C61CEFAEB500DE6B7E /* Sources */,
+				ADFF56C71CEFAEB500DE6B7E /* Frameworks */,
+				ADFF56C81CEFAEB500DE6B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fiery;
+			productName = Fiery;
+			productReference = ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ADFF56DD1CEFAEB500DE6B7E /* FieryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADFF56F51CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */;
+			buildPhases = (
+				ADFF56DA1CEFAEB500DE6B7E /* Sources */,
+				ADFF56DB1CEFAEB500DE6B7E /* Frameworks */,
+				ADFF56DC1CEFAEB500DE6B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADFF56E01CEFAEB500DE6B7E /* PBXTargetDependency */,
+			);
+			name = FieryTests;
+			productName = FieryTests;
+			productReference = ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ADFF56E81CEFAEB500DE6B7E /* FieryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADFF56F81CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */;
+			buildPhases = (
+				ADFF56E51CEFAEB500DE6B7E /* Sources */,
+				ADFF56E61CEFAEB500DE6B7E /* Frameworks */,
+				ADFF56E71CEFAEB500DE6B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADFF56EB1CEFAEB500DE6B7E /* PBXTargetDependency */,
+			);
+			name = FieryUITests;
+			productName = FieryUITests;
+			productReference = ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ADFF56C21CEFAEB500DE6B7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Ragnar Development";
+				TargetAttributes = {
+					ADFF56C91CEFAEB500DE6B7E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					ADFF56DD1CEFAEB500DE6B7E = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = ADFF56C91CEFAEB500DE6B7E;
+					};
+					ADFF56E81CEFAEB500DE6B7E = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = ADFF56C91CEFAEB500DE6B7E;
+					};
+				};
+			};
+			buildConfigurationList = ADFF56C51CEFAEB500DE6B7E /* Build configuration list for PBXProject "Fiery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ADFF56C11CEFAEB500DE6B7E;
+			productRefGroup = ADFF56CB1CEFAEB500DE6B7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADFF56C91CEFAEB500DE6B7E /* Fiery */,
+				ADFF56DD1CEFAEB500DE6B7E /* FieryTests */,
+				ADFF56E81CEFAEB500DE6B7E /* FieryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ADFF56C81CEFAEB500DE6B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFF56D81CEFAEB500DE6B7E /* LaunchScreen.storyboard in Resources */,
+				ADFF56D51CEFAEB500DE6B7E /* Assets.xcassets in Resources */,
+				ADFF56D31CEFAEB500DE6B7E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56DC1CEFAEB500DE6B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56E71CEFAEB500DE6B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADFF56C61CEFAEB500DE6B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFF56D01CEFAEB500DE6B7E /* ViewController.swift in Sources */,
+				ADFF56CE1CEFAEB500DE6B7E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56DA1CEFAEB500DE6B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFF56E31CEFAEB500DE6B7E /* FieryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADFF56E51CEFAEB500DE6B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADFF56EE1CEFAEB500DE6B7E /* FieryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADFF56E01CEFAEB500DE6B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADFF56C91CEFAEB500DE6B7E /* Fiery */;
+			targetProxy = ADFF56DF1CEFAEB500DE6B7E /* PBXContainerItemProxy */;
+		};
+		ADFF56EB1CEFAEB500DE6B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADFF56C91CEFAEB500DE6B7E /* Fiery */;
+			targetProxy = ADFF56EA1CEFAEB500DE6B7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADFF56D21CEFAEB500DE6B7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADFF56D71CEFAEB500DE6B7E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ADFF56F01CEFAEB500DE6B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ADFF56F11CEFAEB500DE6B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ADFF56F31CEFAEB500DE6B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fiery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ADFF56F41CEFAEB500DE6B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Fiery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		ADFF56F61CEFAEB500DE6B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FieryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiery.app/Fiery";
+			};
+			name = Debug;
+		};
+		ADFF56F71CEFAEB500DE6B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FieryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiery.app/Fiery";
+			};
+			name = Release;
+		};
+		ADFF56F91CEFAEB500DE6B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FieryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Fiery;
+			};
+			name = Debug;
+		};
+		ADFF56FA1CEFAEB500DE6B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FieryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Fiery;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ADFF56C51CEFAEB500DE6B7E /* Build configuration list for PBXProject "Fiery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFF56F01CEFAEB500DE6B7E /* Debug */,
+				ADFF56F11CEFAEB500DE6B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADFF56F21CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFF56F31CEFAEB500DE6B7E /* Debug */,
+				ADFF56F41CEFAEB500DE6B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ADFF56F51CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFF56F61CEFAEB500DE6B7E /* Debug */,
+				ADFF56F71CEFAEB500DE6B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ADFF56F81CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADFF56F91CEFAEB500DE6B7E /* Debug */,
+				ADFF56FA1CEFAEB500DE6B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+}
