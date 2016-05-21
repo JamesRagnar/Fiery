@@ -25,4 +25,14 @@ class User: FSOSnapshot {
             self.dataSnapshot = snapshot
         }
     }
+    
+//    MARK: Field Getters
+    
+    func name() -> String? {
+        return firebaseStringForKey(User.kName)
+    }
+    
+    func email() -> String? {
+        return firebaseStringForKey(User.kEmail)
+    }
 }

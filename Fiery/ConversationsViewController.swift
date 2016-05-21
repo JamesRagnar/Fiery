@@ -15,8 +15,15 @@ class ConversationsViewController: UIViewController {
         
         view.backgroundColor = UIColor.whiteColor()
         
+        if let userName = RootDataManager.sharedInstance.currentUser()?.name() {
+            title = userName
+        }
+        
         let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConversationsViewController.logoutButtonTapped))
         navigationItem.setLeftBarButtonItem(logoutButton, animated: false)
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ConversationsViewController.openUserSearchView))
+        navigationItem.setRightBarButtonItem(addButton, animated: false)
     }
     
 //    MARK: Action Responders
@@ -38,6 +45,11 @@ class ConversationsViewController: UIViewController {
         presentViewController(logoutActionSheet, animated: true, completion: nil)
     }
     
+    func addConversationTapped() {
+        
+        openUserSearchView()
+    }
+    
 //    MARK: Logout
     
     func logout() {
@@ -45,5 +57,11 @@ class ConversationsViewController: UIViewController {
         RootDataManager.sharedInstance.logout()
         
         dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+//    MARK: Conversations
+    
+    func openUserSearchView() {
+        
     }
 }

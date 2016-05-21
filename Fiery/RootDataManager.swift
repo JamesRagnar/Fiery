@@ -18,6 +18,13 @@ class RootDataManager {
     
 //    MARK: Managers
     
+    func currentUser() -> User? {
+        if _currentUser == nil {
+            print("Current user is nil, this is a bad thing")
+        }
+        return _currentUser
+    }
+    
     func usersManager() -> UsersManager {
         if _usersManager == nil {
             _usersManager = UsersManager()
