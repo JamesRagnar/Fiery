@@ -44,6 +44,6 @@ class ConversationsViewController: UIViewController {
         
         FirebaseDataManager.logout()
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(false, completion: nil)
     }
 }

@@ -57,6 +57,18 @@ class FirebaseDataManager {
         }
     }
     
+//    MARK: User
+    
+    static func fetchUserData(response: (user: User?) -> Void) {
+        
+        if let myRef = myUserRef() {
+            
+            
+        }
+        
+        response(user: nil)
+    }
+    
 //    MARK: Registration
     
     static func loginWithCredentials(email: String, password: String, response: (success: Bool) -> Void) {

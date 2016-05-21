@@ -8,9 +8,17 @@
 
 import UIKit
 
-class User: NSObject {
+class User: FSOReferenceObserver {
 
+//    MARK: Field Keys
+    
     static let kName = "name"
     static let kEmail = "email"
     
+//    MARK: Data Observers
+    
+    func startObservingUserData() {
+        
+        
+    }
 }
