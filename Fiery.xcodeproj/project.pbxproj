@@ -12,6 +12,8 @@
 		AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */; };
 		AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */; };
 		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
+		AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */; };
+		AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 		AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserver.swift; sourceTree = "<group>"; };
+		AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshot.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,70 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AD247B351CF0C7E500CFAA16 /* Firebase Swift Observer */ = {
+			isa = PBXGroup;
+			children = (
+				AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */,
+				AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */,
+			);
+			name = "Firebase Swift Observer";
+			sourceTree = "<group>";
+		};
+		AD247B361CF0C7F100CFAA16 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		AD247B371CF0C80800CFAA16 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		AD247B381CF0C81100CFAA16 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
+				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		AD247B391CF0C81700CFAA16 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
+				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		AD247B3A1CF0C81D00CFAA16 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
+			);
+			name = Conversations;
+			sourceTree = "<group>";
+		};
+		AD247B3B1CF0C83E00CFAA16 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
+				ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */,
+				ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */,
+				ADFF57131CEFBD9A00DE6B7E /* Info.plist */,
+				ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
 		ADFF56FB1CEFBD9A00DE6B7E = {
 			isa = PBXGroup;
 			children = (
@@ -151,19 +219,13 @@
 		ADFF57061CEFBD9A00DE6B7E /* Fiery */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
-				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
-				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
-				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
-				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
-				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
-				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
-				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
-				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
-				ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */,
-				ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */,
-				ADFF57131CEFBD9A00DE6B7E /* Info.plist */,
-				ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */,
+				AD247B381CF0C81100CFAA16 /* Core */,
+				AD247B391CF0C81700CFAA16 /* Auth */,
+				AD247B3A1CF0C81D00CFAA16 /* Conversations */,
+				AD247B371CF0C80800CFAA16 /* Managers */,
+				AD247B361CF0C7F100CFAA16 /* Objects */,
+				AD247B351CF0C7E500CFAA16 /* Firebase Swift Observer */,
+				AD247B3B1CF0C83E00CFAA16 /* Support */,
 			);
 			path = Fiery;
 			sourceTree = "<group>";
@@ -453,9 +515,11 @@
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
+				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
+				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -68,20 +68,20 @@ class RegistrationViewController: UIViewController {
     
     func confirmButtonTapped() {
         
-        if let email = _emailField.text, let password = _passwordField.text {
+        if let name = _nameField.text, let email = _emailField.text, let password = _passwordField.text {
             
-            if email.characters.count > 0 && password.characters.count > 0 {
+            if name.characters.count > 0 && email.characters.count > 0 && password.characters.count > 0 {
                 
-                login(email, password: password)
+                login(name, email: email, password: password)
             }
         }
     }
     
     //    MARK: Login
     
-    func login(email: String, password: String) {
+    func login(name: String, email: String, password: String) {
         
-        FirebaseDataManager.registerWithCredentials(email, password: password) { (success) in
+        FirebaseDataManager.registerWithCredentials(name, email:email, password: password) { (success) in
             
             if success {
                 
