@@ -18,7 +18,8 @@
 		ADFF57281CEFBD9A00DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */; };
 		ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */; };
 		ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */; };
-		ADFF573A1CEFCA2600DE6B7E /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57391CEFCA2600DE6B7E /* RootDataManager.swift */; };
+		ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */; };
+		ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */; };
 		D40A11A836AADEBE49FA411F /* Pods_FieryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +63,8 @@
 		ADFF57291CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
-		ADFF57391CEFCA2600DE6B7E /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
+		ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +147,8 @@
 			children = (
 				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
 				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
-				ADFF57391CEFCA2600DE6B7E /* RootDataManager.swift */,
+				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
 				ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */,
@@ -438,9 +441,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
-				ADFF573A1CEFCA2600DE6B7E /* RootDataManager.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
+				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
+				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
