@@ -8,9 +8,31 @@
 
 import UIKit
 
-class User: NSObject {
+class User: FSOSnapshot {
 
-    private static let kName = "name"
-    private static let kEmail = "email"
+//    MARK: Field Keys
     
+    static let kName = "name"
+    static let kEmail = "email"
+    
+//    MARK: Data Observers
+    
+    func startObservingUserData() {
+        
+        startObserveringEvent(.Value) { (snapshot) in
+            
+            print("User Data Updated")
+            self.dataSnapshot = snapshot
+        }
+    }
+    
+//    MARK: Field Getters
+    
+    func name() -> String? {
+        return firebaseStringForKey(User.kName)
+    }
+    
+    func email() -> String? {
+        return firebaseStringForKey(User.kEmail)
+    }
 }

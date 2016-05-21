@@ -85,7 +85,7 @@ class RegistrationViewController: UIViewController {
             
             if success {
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(false, completion: nil)
             }
         }
     }
