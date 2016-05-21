@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2651BB1A5835C6E210DC2891 /* Pods_FieryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */; };
 		676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */; };
+		AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */; };
+		AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */; };
+		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		863F155C48B99961C822C380 /* Pods-FieryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
 				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
 				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
+				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
+				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
 				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
@@ -440,9 +449,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
+				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
+				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 			);

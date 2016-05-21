@@ -16,7 +16,7 @@ class RootViewController: UIViewController {
         checkUserStatus()
     }
     
-    private func checkUserStatus() {
+    func checkUserStatus() {
         
         if FirebaseDataManager.userAuthorized() {
             openConversationView()
@@ -25,23 +25,24 @@ class RootViewController: UIViewController {
         }
     }
     
-    private func openRegistrationView() {
+    func openRegistrationView() {
         
         let regVC = AuthenticationViewController()
         openNavigationController(regVC)
     }
     
-    private func openConversationView() {
+    func openConversationView() {
         
         let conVC = ConversationsViewController()
         openNavigationController(conVC)
     }
     
-    private func openNavigationController(rootVC: UIViewController) {
+    func openNavigationController(rootVC: UIViewController) {
         
         dispatch_async(dispatch_get_main_queue()) {
             
             let navVC = UINavigationController(rootViewController: rootVC)
+//            navVC.setNavigationBarHidden(true, animated: false)
             self.presentViewController(navVC, animated: false, completion: nil)
         }
     }
