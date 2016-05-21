@@ -16,6 +16,8 @@
 		AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */; };
 		AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */; };
 		AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */; };
+		AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */; };
+		AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshot.swift; sourceTree = "<group>"; };
 		AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
+		AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */,
 				676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +119,7 @@
 		0F5F8BB9E3BA347262A629D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */,
 				9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */,
 				CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */,
 				A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */,
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
+				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
 				AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */,
 			);
 			name = Managers;
@@ -522,6 +529,7 @@
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
 				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,
+				AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */,
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */,

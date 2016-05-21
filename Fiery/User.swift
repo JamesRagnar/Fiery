@@ -14,6 +14,7 @@ class User: FSOSnapshot {
     
     static let kName = "name"
     static let kEmail = "email"
+    static let kImageUrl = "imageUrl"
     
 //    MARK: Data Observers
     
