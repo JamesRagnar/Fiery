@@ -32,15 +32,20 @@ class FirebaseDataManager {
         })
     }
     
-    static func registerWithCredentials(email: String, password: String, response: (success: Bool) -> Void) {
+    static func registerWithCredentials(name: String, email: String, password: String, response: (success: Bool) -> Void) {
 
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             if error != nil {
                 print(error)
                 response(success: false)
             } else {
-                response(success: true)
+                setNewUserData(name, response: response)
             }
         })
+    }
+    
+    private static func setNewUserData(name: String, response: (success: Bool) -> Void) {
+        
+        
     }
 }
