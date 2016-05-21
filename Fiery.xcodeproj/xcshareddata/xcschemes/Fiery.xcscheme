@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADFF56C91CEFAEB500DE6B7E"
+               BlueprintIdentifier = "ADFF57031CEFBD9A00DE6B7E"
                BuildableName = "Fiery.app"
                BlueprintName = "Fiery"
                ReferencedContainer = "container:Fiery.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADFF56DD1CEFAEB500DE6B7E"
+               BlueprintIdentifier = "ADFF57171CEFBD9A00DE6B7E"
                BuildableName = "FieryTests.xctest"
                BlueprintName = "FieryTests"
                ReferencedContainer = "container:Fiery.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ADFF56E81CEFAEB500DE6B7E"
+               BlueprintIdentifier = "ADFF57221CEFBD9A00DE6B7E"
                BuildableName = "FieryUITests.xctest"
                BlueprintName = "FieryUITests"
                ReferencedContainer = "container:Fiery.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF56C91CEFAEB500DE6B7E"
+            BlueprintIdentifier = "ADFF57031CEFBD9A00DE6B7E"
             BuildableName = "Fiery.app"
             BlueprintName = "Fiery"
             ReferencedContainer = "container:Fiery.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF56C91CEFAEB500DE6B7E"
+            BlueprintIdentifier = "ADFF57031CEFBD9A00DE6B7E"
             BuildableName = "Fiery.app"
             BlueprintName = "Fiery"
             ReferencedContainer = "container:Fiery.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ADFF56C91CEFAEB500DE6B7E"
+            BlueprintIdentifier = "ADFF57031CEFBD9A00DE6B7E"
             BuildableName = "Fiery.app"
             BlueprintName = "Fiery"
             ReferencedContainer = "container:Fiery.xcodeproj">

@@ -7,120 +7,256 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ADFF56CE1CEFAEB500DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */; };
-		ADFF56D01CEFAEB500DE6B7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */; };
-		ADFF56D31CEFAEB500DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */; };
-		ADFF56D51CEFAEB500DE6B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */; };
-		ADFF56D81CEFAEB500DE6B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */; };
-		ADFF56E31CEFAEB500DE6B7E /* FieryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */; };
-		ADFF56EE1CEFAEB500DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */; };
+		2651BB1A5835C6E210DC2891 /* Pods_FieryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */; };
+		676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */; };
+		AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */; };
+		AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */; };
+		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
+		AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */; };
+		AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */; };
+		AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */; };
+		AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */; };
+		AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */; };
+		AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */; };
+		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
+		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
+		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
+		ADFF570F1CEFBD9A00DE6B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */; };
+		ADFF57121CEFBD9A00DE6B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */; };
+		ADFF571D1CEFBD9A00DE6B7E /* FieryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */; };
+		ADFF57281CEFBD9A00DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */; };
+		ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */; };
+		ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */; };
+		ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */; };
+		ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */; };
+		D40A11A836AADEBE49FA411F /* Pods_FieryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		ADFF56DF1CEFAEB500DE6B7E /* PBXContainerItemProxy */ = {
+		ADFF57191CEFBD9A00DE6B7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+			containerPortal = ADFF56FC1CEFBD9A00DE6B7E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ADFF56C91CEFAEB500DE6B7E;
+			remoteGlobalIDString = ADFF57031CEFBD9A00DE6B7E;
 			remoteInfo = Fiery;
 		};
-		ADFF56EA1CEFAEB500DE6B7E /* PBXContainerItemProxy */ = {
+		ADFF57241CEFBD9A00DE6B7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+			containerPortal = ADFF56FC1CEFBD9A00DE6B7E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = ADFF56C91CEFAEB500DE6B7E;
+			remoteGlobalIDString = ADFF57031CEFBD9A00DE6B7E;
 			remoteInfo = Fiery;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ADFF56D21CEFAEB500DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ADFF56D71CEFAEB500DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		ADFF56D91CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryTests.swift; sourceTree = "<group>"; };
-		ADFF56E41CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryUITests.swift; sourceTree = "<group>"; };
-		ADFF56EF1CEFAEB500DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E1B6D54EC8CB5AA9283AF16 /* Pods-FieryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FieryTests/Pods-FieryTests.release.xcconfig"; sourceTree = "<group>"; };
+		64E4237791408F948BC611FB /* Pods-Fiery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiery.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fiery/Pods-Fiery.debug.xcconfig"; sourceTree = "<group>"; };
+		66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fiery.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fiery/Pods-Fiery.release.xcconfig"; sourceTree = "<group>"; };
+		70E75B42F9E36FB500C20AA6 /* Pods-FieryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FieryTests/Pods-FieryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		863F155C48B99961C822C380 /* Pods-FieryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserver.swift; sourceTree = "<group>"; };
+		AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshot.swift; sourceTree = "<group>"; };
+		AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
+		AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
+		AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		ADFF570C1CEFBD9A00DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADFF57111CEFBD9A00DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ADFF57131CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF57181CEFBD9A00DE6B7E /* FieryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryTests.swift; sourceTree = "<group>"; };
+		ADFF571E1CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF57231CEFBD9A00DE6B7E /* FieryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryUITests.swift; sourceTree = "<group>"; };
+		ADFF57291CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
+		ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		ADFF56C71CEFAEB500DE6B7E /* Frameworks */ = {
+		ADFF57011CEFBD9A00DE6B7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */,
+				676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56DB1CEFAEB500DE6B7E /* Frameworks */ = {
+		ADFF57151CEFBD9A00DE6B7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40A11A836AADEBE49FA411F /* Pods_FieryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56E61CEFAEB500DE6B7E /* Frameworks */ = {
+		ADFF57201CEFBD9A00DE6B7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2651BB1A5835C6E210DC2891 /* Pods_FieryUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ADFF56C11CEFAEB500DE6B7E = {
+		0F5F8BB9E3BA347262A629D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF56CC1CEFAEB500DE6B7E /* Fiery */,
-				ADFF56E11CEFAEB500DE6B7E /* FieryTests */,
-				ADFF56EC1CEFAEB500DE6B7E /* FieryUITests */,
-				ADFF56CB1CEFAEB500DE6B7E /* Products */,
+				AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */,
+				9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */,
+				CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */,
+				A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95EB4A5895425F0078E1D5E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64E4237791408F948BC611FB /* Pods-Fiery.debug.xcconfig */,
+				66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */,
+				70E75B42F9E36FB500C20AA6 /* Pods-FieryTests.debug.xcconfig */,
+				5E1B6D54EC8CB5AA9283AF16 /* Pods-FieryTests.release.xcconfig */,
+				863F155C48B99961C822C380 /* Pods-FieryUITests.debug.xcconfig */,
+				DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD247B351CF0C7E500CFAA16 /* Firebase Swift Observer */ = {
+			isa = PBXGroup;
+			children = (
+				AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */,
+				AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */,
+			);
+			name = "Firebase Swift Observer";
+			sourceTree = "<group>";
+		};
+		AD247B361CF0C7F100CFAA16 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		AD247B371CF0C80800CFAA16 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
+				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
+				AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		AD247B381CF0C81100CFAA16 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */,
+				ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */,
+				AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		AD247B391CF0C81700CFAA16 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
+				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		AD247B3A1CF0C81D00CFAA16 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
+			);
+			name = Conversations;
+			sourceTree = "<group>";
+		};
+		AD247B3B1CF0C83E00CFAA16 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */,
+				ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */,
+				ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */,
+				ADFF57131CEFBD9A00DE6B7E /* Info.plist */,
+				ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		ADFF56FB1CEFBD9A00DE6B7E = {
+			isa = PBXGroup;
+			children = (
+				ADFF57061CEFBD9A00DE6B7E /* Fiery */,
+				ADFF571B1CEFBD9A00DE6B7E /* FieryTests */,
+				ADFF57261CEFBD9A00DE6B7E /* FieryUITests */,
+				ADFF57051CEFBD9A00DE6B7E /* Products */,
+				95EB4A5895425F0078E1D5E8 /* Pods */,
+				0F5F8BB9E3BA347262A629D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		ADFF56CB1CEFAEB500DE6B7E /* Products */ = {
+		ADFF57051CEFBD9A00DE6B7E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */,
-				ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */,
-				ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */,
+				ADFF57041CEFBD9A00DE6B7E /* Fiery.app */,
+				ADFF57181CEFBD9A00DE6B7E /* FieryTests.xctest */,
+				ADFF57231CEFBD9A00DE6B7E /* FieryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ADFF56CC1CEFAEB500DE6B7E /* Fiery */ = {
+		ADFF57061CEFBD9A00DE6B7E /* Fiery */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF56CD1CEFAEB500DE6B7E /* AppDelegate.swift */,
-				ADFF56CF1CEFAEB500DE6B7E /* ViewController.swift */,
-				ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */,
-				ADFF56D41CEFAEB500DE6B7E /* Assets.xcassets */,
-				ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */,
-				ADFF56D91CEFAEB500DE6B7E /* Info.plist */,
+				AD247B381CF0C81100CFAA16 /* Core */,
+				AD247B391CF0C81700CFAA16 /* Auth */,
+				AD247B3A1CF0C81D00CFAA16 /* Conversations */,
+				AD247B371CF0C80800CFAA16 /* Managers */,
+				AD247B361CF0C7F100CFAA16 /* Objects */,
+				AD247B351CF0C7E500CFAA16 /* Firebase Swift Observer */,
+				AD247B3B1CF0C83E00CFAA16 /* Support */,
 			);
 			path = Fiery;
 			sourceTree = "<group>";
 		};
-		ADFF56E11CEFAEB500DE6B7E /* FieryTests */ = {
+		ADFF571B1CEFBD9A00DE6B7E /* FieryTests */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF56E21CEFAEB500DE6B7E /* FieryTests.swift */,
-				ADFF56E41CEFAEB500DE6B7E /* Info.plist */,
+				ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */,
+				ADFF571E1CEFBD9A00DE6B7E /* Info.plist */,
 			);
 			path = FieryTests;
 			sourceTree = "<group>";
 		};
-		ADFF56EC1CEFAEB500DE6B7E /* FieryUITests */ = {
+		ADFF57261CEFBD9A00DE6B7E /* FieryUITests */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF56ED1CEFAEB500DE6B7E /* FieryUITests.swift */,
-				ADFF56EF1CEFAEB500DE6B7E /* Info.plist */,
+				ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */,
+				ADFF57291CEFBD9A00DE6B7E /* Info.plist */,
 			);
 			path = FieryUITests;
 			sourceTree = "<group>";
@@ -128,13 +264,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADFF56C91CEFAEB500DE6B7E /* Fiery */ = {
+		ADFF57031CEFBD9A00DE6B7E /* Fiery */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFF56F21CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */;
+			buildConfigurationList = ADFF572C1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */;
 			buildPhases = (
-				ADFF56C61CEFAEB500DE6B7E /* Sources */,
-				ADFF56C71CEFAEB500DE6B7E /* Frameworks */,
-				ADFF56C81CEFAEB500DE6B7E /* Resources */,
+				4E56E0F9DC7D411D0025BD2F /* Check Pods Manifest.lock */,
+				ADFF57001CEFBD9A00DE6B7E /* Sources */,
+				ADFF57011CEFBD9A00DE6B7E /* Frameworks */,
+				ADFF57021CEFBD9A00DE6B7E /* Resources */,
+				3F49D596E41DF120CF3AF88B /* Embed Pods Frameworks */,
+				E4F02223EE2FF30BE5B608ED /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,70 +281,74 @@
 			);
 			name = Fiery;
 			productName = Fiery;
-			productReference = ADFF56CA1CEFAEB500DE6B7E /* Fiery.app */;
+			productReference = ADFF57041CEFBD9A00DE6B7E /* Fiery.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ADFF56DD1CEFAEB500DE6B7E /* FieryTests */ = {
+		ADFF57171CEFBD9A00DE6B7E /* FieryTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFF56F51CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */;
+			buildConfigurationList = ADFF572F1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */;
 			buildPhases = (
-				ADFF56DA1CEFAEB500DE6B7E /* Sources */,
-				ADFF56DB1CEFAEB500DE6B7E /* Frameworks */,
-				ADFF56DC1CEFAEB500DE6B7E /* Resources */,
+				0869B046689CD9ABC2581CA6 /* Check Pods Manifest.lock */,
+				ADFF57141CEFBD9A00DE6B7E /* Sources */,
+				ADFF57151CEFBD9A00DE6B7E /* Frameworks */,
+				ADFF57161CEFBD9A00DE6B7E /* Resources */,
+				7FBC95027FEBB145C26C41C6 /* Embed Pods Frameworks */,
+				7DD928BB3D9920C5A2004195 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ADFF56E01CEFAEB500DE6B7E /* PBXTargetDependency */,
+				ADFF571A1CEFBD9A00DE6B7E /* PBXTargetDependency */,
 			);
 			name = FieryTests;
 			productName = FieryTests;
-			productReference = ADFF56DE1CEFAEB500DE6B7E /* FieryTests.xctest */;
+			productReference = ADFF57181CEFBD9A00DE6B7E /* FieryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		ADFF56E81CEFAEB500DE6B7E /* FieryUITests */ = {
+		ADFF57221CEFBD9A00DE6B7E /* FieryUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFF56F81CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */;
+			buildConfigurationList = ADFF57321CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */;
 			buildPhases = (
-				ADFF56E51CEFAEB500DE6B7E /* Sources */,
-				ADFF56E61CEFAEB500DE6B7E /* Frameworks */,
-				ADFF56E71CEFAEB500DE6B7E /* Resources */,
+				6B94B2BAF6BE41B63198EE1F /* Check Pods Manifest.lock */,
+				ADFF571F1CEFBD9A00DE6B7E /* Sources */,
+				ADFF57201CEFBD9A00DE6B7E /* Frameworks */,
+				ADFF57211CEFBD9A00DE6B7E /* Resources */,
+				AD674FD107E116EDD90F393C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ADFF56EB1CEFAEB500DE6B7E /* PBXTargetDependency */,
+				ADFF57251CEFBD9A00DE6B7E /* PBXTargetDependency */,
 			);
 			name = FieryUITests;
 			productName = FieryUITests;
-			productReference = ADFF56E91CEFAEB500DE6B7E /* FieryUITests.xctest */;
+			productReference = ADFF57231CEFBD9A00DE6B7E /* FieryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		ADFF56C21CEFAEB500DE6B7E /* Project object */ = {
+		ADFF56FC1CEFBD9A00DE6B7E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Ragnar Development";
 				TargetAttributes = {
-					ADFF56C91CEFAEB500DE6B7E = {
+					ADFF57031CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = W375UQHBF4;
 					};
-					ADFF56DD1CEFAEB500DE6B7E = {
+					ADFF57171CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
-						TestTargetID = ADFF56C91CEFAEB500DE6B7E;
+						TestTargetID = ADFF57031CEFBD9A00DE6B7E;
 					};
-					ADFF56E81CEFAEB500DE6B7E = {
+					ADFF57221CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
-						TestTargetID = ADFF56C91CEFAEB500DE6B7E;
+						TestTargetID = ADFF57031CEFBD9A00DE6B7E;
 					};
 				};
 			};
-			buildConfigurationList = ADFF56C51CEFAEB500DE6B7E /* Build configuration list for PBXProject "Fiery" */;
+			buildConfigurationList = ADFF56FF1CEFBD9A00DE6B7E /* Build configuration list for PBXProject "Fiery" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -213,37 +356,38 @@
 				en,
 				Base,
 			);
-			mainGroup = ADFF56C11CEFAEB500DE6B7E;
-			productRefGroup = ADFF56CB1CEFAEB500DE6B7E /* Products */;
+			mainGroup = ADFF56FB1CEFBD9A00DE6B7E;
+			productRefGroup = ADFF57051CEFBD9A00DE6B7E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADFF56C91CEFAEB500DE6B7E /* Fiery */,
-				ADFF56DD1CEFAEB500DE6B7E /* FieryTests */,
-				ADFF56E81CEFAEB500DE6B7E /* FieryUITests */,
+				ADFF57031CEFBD9A00DE6B7E /* Fiery */,
+				ADFF57171CEFBD9A00DE6B7E /* FieryTests */,
+				ADFF57221CEFBD9A00DE6B7E /* FieryUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		ADFF56C81CEFAEB500DE6B7E /* Resources */ = {
+		ADFF57021CEFBD9A00DE6B7E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF56D81CEFAEB500DE6B7E /* LaunchScreen.storyboard in Resources */,
-				ADFF56D51CEFAEB500DE6B7E /* Assets.xcassets in Resources */,
-				ADFF56D31CEFAEB500DE6B7E /* Main.storyboard in Resources */,
+				ADFF57121CEFBD9A00DE6B7E /* LaunchScreen.storyboard in Resources */,
+				ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */,
+				ADFF570F1CEFBD9A00DE6B7E /* Assets.xcassets in Resources */,
+				ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56DC1CEFAEB500DE6B7E /* Resources */ = {
+		ADFF57161CEFBD9A00DE6B7E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56E71CEFAEB500DE6B7E /* Resources */ = {
+		ADFF57211CEFBD9A00DE6B7E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,60 +396,194 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0869B046689CD9ABC2581CA6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3F49D596E41DF120CF3AF88B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fiery/Pods-Fiery-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E56E0F9DC7D411D0025BD2F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6B94B2BAF6BE41B63198EE1F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7DD928BB3D9920C5A2004195 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FieryTests/Pods-FieryTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FBC95027FEBB145C26C41C6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FieryTests/Pods-FieryTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD674FD107E116EDD90F393C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F02223EE2FF30BE5B608ED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Fiery/Pods-Fiery-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		ADFF56C61CEFAEB500DE6B7E /* Sources */ = {
+		ADFF57001CEFBD9A00DE6B7E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF56D01CEFAEB500DE6B7E /* ViewController.swift in Sources */,
-				ADFF56CE1CEFAEB500DE6B7E /* AppDelegate.swift in Sources */,
+				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
+				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
+				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
+				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
+				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,
+				AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */,
+				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
+				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
+				AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */,
+				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
+				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
+				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
+				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56DA1CEFAEB500DE6B7E /* Sources */ = {
+		ADFF57141CEFBD9A00DE6B7E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF56E31CEFAEB500DE6B7E /* FieryTests.swift in Sources */,
+				ADFF571D1CEFBD9A00DE6B7E /* FieryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADFF56E51CEFAEB500DE6B7E /* Sources */ = {
+		ADFF571F1CEFBD9A00DE6B7E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF56EE1CEFAEB500DE6B7E /* FieryUITests.swift in Sources */,
+				ADFF57281CEFBD9A00DE6B7E /* FieryUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		ADFF56E01CEFAEB500DE6B7E /* PBXTargetDependency */ = {
+		ADFF571A1CEFBD9A00DE6B7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ADFF56C91CEFAEB500DE6B7E /* Fiery */;
-			targetProxy = ADFF56DF1CEFAEB500DE6B7E /* PBXContainerItemProxy */;
+			target = ADFF57031CEFBD9A00DE6B7E /* Fiery */;
+			targetProxy = ADFF57191CEFBD9A00DE6B7E /* PBXContainerItemProxy */;
 		};
-		ADFF56EB1CEFAEB500DE6B7E /* PBXTargetDependency */ = {
+		ADFF57251CEFBD9A00DE6B7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ADFF56C91CEFAEB500DE6B7E /* Fiery */;
-			targetProxy = ADFF56EA1CEFAEB500DE6B7E /* PBXContainerItemProxy */;
+			target = ADFF57031CEFBD9A00DE6B7E /* Fiery */;
+			targetProxy = ADFF57241CEFBD9A00DE6B7E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		ADFF56D11CEFAEB500DE6B7E /* Main.storyboard */ = {
+		ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ADFF56D21CEFAEB500DE6B7E /* Base */,
+				ADFF570C1CEFBD9A00DE6B7E /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		ADFF56D61CEFAEB500DE6B7E /* LaunchScreen.storyboard */ = {
+		ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				ADFF56D71CEFAEB500DE6B7E /* Base */,
+				ADFF57111CEFBD9A00DE6B7E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -313,7 +591,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		ADFF56F01CEFAEB500DE6B7E /* Debug */ = {
+		ADFF572A1CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -359,7 +637,7 @@
 			};
 			name = Debug;
 		};
-		ADFF56F11CEFAEB500DE6B7E /* Release */ = {
+		ADFF572B1CEFBD9A00DE6B7E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -398,32 +676,35 @@
 			};
 			name = Release;
 		};
-		ADFF56F31CEFAEB500DE6B7E /* Debug */ = {
+		ADFF572D1CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64E4237791408F948BC611FB /* Pods-Fiery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		ADFF56F41CEFAEB500DE6B7E /* Release */ = {
+		ADFF572E1CEFBD9A00DE6B7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
-		ADFF56F61CEFAEB500DE6B7E /* Debug */ = {
+		ADFF57301CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70E75B42F9E36FB500C20AA6 /* Pods-FieryTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FieryTests/Info.plist;
@@ -434,8 +715,9 @@
 			};
 			name = Debug;
 		};
-		ADFF56F71CEFAEB500DE6B7E /* Release */ = {
+		ADFF57311CEFBD9A00DE6B7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1B6D54EC8CB5AA9283AF16 /* Pods-FieryTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FieryTests/Info.plist;
@@ -446,8 +728,9 @@
 			};
 			name = Release;
 		};
-		ADFF56F91CEFAEB500DE6B7E /* Debug */ = {
+		ADFF57331CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863F155C48B99961C822C380 /* Pods-FieryUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FieryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -457,8 +740,9 @@
 			};
 			name = Debug;
 		};
-		ADFF56FA1CEFAEB500DE6B7E /* Release */ = {
+		ADFF57341CEFBD9A00DE6B7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FieryUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -471,43 +755,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADFF56C51CEFAEB500DE6B7E /* Build configuration list for PBXProject "Fiery" */ = {
+		ADFF56FF1CEFBD9A00DE6B7E /* Build configuration list for PBXProject "Fiery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADFF56F01CEFAEB500DE6B7E /* Debug */,
-				ADFF56F11CEFAEB500DE6B7E /* Release */,
+				ADFF572A1CEFBD9A00DE6B7E /* Debug */,
+				ADFF572B1CEFBD9A00DE6B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFF56F21CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */ = {
+		ADFF572C1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADFF56F31CEFAEB500DE6B7E /* Debug */,
-				ADFF56F41CEFAEB500DE6B7E /* Release */,
+				ADFF572D1CEFBD9A00DE6B7E /* Debug */,
+				ADFF572E1CEFBD9A00DE6B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFF56F51CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */ = {
+		ADFF572F1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADFF56F61CEFAEB500DE6B7E /* Debug */,
-				ADFF56F71CEFAEB500DE6B7E /* Release */,
+				ADFF57301CEFBD9A00DE6B7E /* Debug */,
+				ADFF57311CEFBD9A00DE6B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFF56F81CEFAEB500DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */ = {
+		ADFF57321CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ADFF56F91CEFAEB500DE6B7E /* Debug */,
-				ADFF56FA1CEFAEB500DE6B7E /* Release */,
+				ADFF57331CEFBD9A00DE6B7E /* Debug */,
+				ADFF57341CEFBD9A00DE6B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = ADFF56C21CEFAEB500DE6B7E /* Project object */;
+	rootObject = ADFF56FC1CEFBD9A00DE6B7E /* Project object */;
 }
