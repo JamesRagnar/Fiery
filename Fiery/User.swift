@@ -10,7 +10,7 @@ import UIKit
 
 class User: NSObject {
 
-    private static let kName = "name"
-    private static let kEmail = "email"
+    static let kName = "name"
+    static let kEmail = "email"
     
 }
