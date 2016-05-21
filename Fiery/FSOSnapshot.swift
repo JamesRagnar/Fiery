@@ -11,18 +11,18 @@ import Firebase
 
 class FSOSnapshot: FSOReferenceObserver {
     
-    private var _snapshot: FIRDataSnapshot?
+    var dataSnapshot: FIRDataSnapshot?
     
     func snapshot() -> FIRDataSnapshot? {
-        if ( _snapshot == nil ) {
+        if ( dataSnapshot == nil ) {
             print("FSOSnapshot - Firebase Reference is nil")
         }
-        return _snapshot
+        return dataSnapshot
     }
     
     override init(snapshot: FIRDataSnapshot) {
         super.init(snapshot: snapshot)
-        _snapshot = snapshot
+        dataSnapshot = snapshot
     }
 
     //    MARK: Snapshot Operations

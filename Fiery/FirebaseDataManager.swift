@@ -10,11 +10,11 @@ import Firebase
 
 class FirebaseDataManager {
     
-//    MARK: Firebase Nodes
+    //    MARK: Firebase Nodes
     
     private static let kUsersNode = "users"
     
-//    MARK: Firebase Node References
+    //    MARK: Firebase Node References
     
     static func rootRef() -> FIRDatabaseReference {
         return FIRDatabase.database().reference()
@@ -26,24 +26,18 @@ class FirebaseDataManager {
     
     static func myUserRef() -> FIRDatabaseReference? {
         
-        if userAuthorized() {
-            if let userId = currentUser()?.uid {
-                return usersNode().child(userId)
-            }
+        if let userId = currentUser()?.uid {
+            return usersNode().child(userId)
         }
+        
         return nil
     }
     
-//    MARK: Auth
+    //    MARK: Auth
     
     static func currentUser() -> FIRUser? {
         
         return FIRAuth.auth()?.currentUser
-    }
-
-    static func userAuthorized() -> Bool {
-        
-        return currentUser() != nil
     }
     
     static func logout() {
@@ -57,22 +51,25 @@ class FirebaseDataManager {
         }
     }
     
-//    MARK: User
+    //    MARK: User
     
-    static func fetchUserData(response: (user: User?) -> Void) {
+    static func fetchMyUserData(response: (userData: FIRDataSnapshot?) -> Void) {
         
         if let myRef = myUserRef() {
             
-            
+            myRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                response(userData: snapshot)
+                return
+            })
+        } else {
+            response(userData: nil)
         }
-        
-        response(user: nil)
     }
     
-//    MARK: Registration
+    //    MARK: Registration
     
     static func loginWithCredentials(email: String, password: String, response: (success: Bool) -> Void) {
-
+        
         FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
             if error != nil {
                 print(error)
@@ -84,7 +81,7 @@ class FirebaseDataManager {
     }
     
     static func registerWithCredentials(name: String, email: String, password: String, response: (success: Bool) -> Void) {
-
+        
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             if error != nil {
                 print(error)

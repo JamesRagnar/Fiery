@@ -18,10 +18,12 @@ class RootViewController: UIViewController {
     
     func checkUserStatus() {
         
-        if FirebaseDataManager.userAuthorized() {
-            openConversationView()
-        } else {
-            openRegistrationView()
+        RootDataManager.sharedInstance.attemptUserLogin { (success) in
+            if success {
+                self.openConversationView()
+            } else {
+                self.openRegistrationView()
+            }
         }
     }
     

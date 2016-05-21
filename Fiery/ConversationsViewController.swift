@@ -42,7 +42,7 @@ class ConversationsViewController: UIViewController {
     
     func logout() {
         
-        FirebaseDataManager.logout()
+        RootDataManager.sharedInstance.logout()
         
         dismissViewControllerAnimated(false, completion: nil)
     }

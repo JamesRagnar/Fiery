@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User: FSOReferenceObserver {
+class User: FSOSnapshot {
 
 //    MARK: Field Keys
     
@@ -19,6 +19,10 @@ class User: FSOReferenceObserver {
     
     func startObservingUserData() {
         
-        
+        startObserveringEvent(.Value) { (snapshot) in
+            
+            print("User Data Updated")
+            self.dataSnapshot = snapshot
+        }
     }
 }
