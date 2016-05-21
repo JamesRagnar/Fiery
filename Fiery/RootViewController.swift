@@ -44,7 +44,6 @@ class RootViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue()) {
             
             let navVC = UINavigationController(rootViewController: rootVC)
-//            navVC.setNavigationBarHidden(true, animated: false)
             self.presentViewController(navVC, animated: false, completion: nil)
         }
     }
