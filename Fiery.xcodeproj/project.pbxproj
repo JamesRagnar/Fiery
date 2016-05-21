@@ -17,7 +17,6 @@
 		AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */; };
 		AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */; };
 		AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */; };
-		AD247B431CF0EE6E00CFAA16 /* ImagePickerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B421CF0EE6E00CFAA16 /* ImagePickerFactory.swift */; };
 		AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
@@ -66,7 +65,6 @@
 		AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
 		AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
-		AD247B421CF0EE6E00CFAA16 /* ImagePickerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerFactory.swift; sourceTree = "<group>"; };
 		AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */,
 				ADFF57131CEFBD9A00DE6B7E /* Info.plist */,
 				ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */,
-				AD247B421CF0EE6E00CFAA16 /* ImagePickerFactory.swift */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -529,7 +526,6 @@
 			files = (
 				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
-				AD247B431CF0EE6E00CFAA16 /* ImagePickerFactory.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
 				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,

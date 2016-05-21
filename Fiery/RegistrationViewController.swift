@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private let _addPhotoButton = UIButton()
 
     private let _nameField = UITextField()
     private let _emailField = UITextField()
     private let _passwordField = UITextField()
     
     private let _confirmButton = UIButton()
+    
+    private var _selectedImage: UIImage?
 
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = UIColor.whiteColor()
+        
+        _addPhotoButton.backgroundColor = UIColor.grayColor()
+        _addPhotoButton.setTitle("Add Photo", forState: .Normal)
+        _addPhotoButton.addTarget(self, action: #selector(RegistrationViewController.addPhotoButtonTapped), forControlEvents: .TouchUpInside)
+        view.addSubview(_addPhotoButton)
         
         _nameField.backgroundColor = UIColor.grayColor()
         _nameField.autocorrectionType = .No
@@ -47,8 +57,12 @@ class RegistrationViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
+        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
         let textFieldframe = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 60, 40)
         let viewCenter = view.center
+        
+        _addPhotoButton.frame = buttonFrame
+        _addPhotoButton.center = CGPointMake(viewCenter.x, viewCenter.y - 100)
         
         _nameField.frame = textFieldframe
         _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
@@ -59,12 +73,16 @@ class RegistrationViewController: UIViewController {
         _passwordField.frame = textFieldframe
         _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
         
-        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
         _confirmButton.frame = buttonFrame
         _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 100)
     }
     
     //    MARK: Action Responders
+    
+    func addPhotoButtonTapped() {
+        
+        showImagePicker()
+    }
     
     func confirmButtonTapped() {
         
@@ -81,11 +99,69 @@ class RegistrationViewController: UIViewController {
     
     func login(name: String, email: String, password: String) {
         
-        FirebaseDataManager.registerWithCredentials(name, email:email, password: password) { (success) in
+        FirebaseDataManager.registerWithCredentials(name, image: _selectedImage, email:email, password: password) { (success) in
             
             if success {
                 
                 self.dismissViewControllerAnimated(false, completion: nil)
+            }
+        }
+    }
+    
+//    MARK: ImagePicker
+    
+    func showImagePicker() {
+        
+        let actionSheet = UIAlertController(title: nil, message: "Change your profile image", preferredStyle: .ActionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Take a Photo", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .Camera
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.cameraCaptureMode = .Photo
+                mediaUI.cameraDevice = .Front
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Select from Library", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .PhotoLibrary
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.mediaTypes = [kUTTypeImage as String]
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (alertAction) -> Void in
+            
+        }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let mediaType = info[UIImagePickerControllerMediaType] as? String {
+            
+            if mediaType == kUTTypeImage as String {
+                
+                if let croppedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+                    
+                    _selectedImage = croppedImage
+                }
+                
+                _addPhotoButton.setImage(_selectedImage, forState: .Normal)
             }
         }
     }

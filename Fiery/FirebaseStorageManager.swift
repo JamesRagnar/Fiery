@@ -27,7 +27,7 @@ class FirebaseStorageManager {
     
     //    MARK: Upload
     
-    static func updateUserProfileImage(image: UIImage, reponse: (imageUrl: String) -> Void) {
+    static func updateUserProfileImage(image: UIImage, response: (imageUrl: String) -> Void) {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.5) {
             
@@ -47,6 +47,7 @@ class FirebaseStorageManager {
                     
                     if let downloadUrl = storageMetaData?.downloadURL() {
                         print(downloadUrl)
+                        response(imageUrl: downloadUrl.description)
                     }
                 }
             })

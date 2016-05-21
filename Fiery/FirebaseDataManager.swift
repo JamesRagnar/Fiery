@@ -58,6 +58,13 @@ class FirebaseDataManager {
         if let myRef = myUserRef() {
             
             myRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                
+                // Check if the snapshot has no data
+                if snapshot.value is NSNull {
+                    response(userData: nil)
+                    return
+                }
+                
                 response(userData: snapshot)
                 return
             })
@@ -80,24 +87,25 @@ class FirebaseDataManager {
         })
     }
     
-    static func registerWithCredentials(name: String, email: String, password: String, response: (success: Bool) -> Void) {
+    static func registerWithCredentials(name: String, image: UIImage?, email: String, password: String, response: (success: Bool) -> Void) {
         
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             if error != nil {
                 print(error)
                 response(success: false)
             } else {
-                setNewUserData(name, email: email, response: response)
+                setNewUserData(name, image: image, email: email, response: response)
             }
         })
     }
     
-    private static func setNewUserData(name: String, email: String, response: (success: Bool) -> Void) {
+    private static func setNewUserData(name: String, image: UIImage?, email: String, response: (success: Bool) -> Void) {
         
         if let myRef = myUserRef() {
             
             var updateData = [String: AnyObject]()
             updateData[User.kName] = name
+            updateData[User.kEmail] = email
             
             myRef.updateChildValues(updateData, withCompletionBlock: { (error, database) in
                 
@@ -108,6 +116,17 @@ class FirebaseDataManager {
                     response(success: true)
                 }
             })
+            
+            if image != nil {
+                
+                FirebaseStorageManager.updateUserProfileImage(image!, response: { (imageUrl) in
+                    
+                    // Update my user object with image ref
+                    let imageRef = myRef.child(User.kImageUrl)
+                    imageRef.setValue(imageUrl)
+                })
+            }
+            
         } else {
             print("Registration | Could not get myUserRef")
             response(success: false)
