@@ -14,6 +14,7 @@ class FirebaseDataManager {
     
     private static let _kUsersRef = "users"
     private static let _kConnectionsRef = "connections"
+    private static let _kMessagesRef = "messages"
     
     //    MARK: Firebase Node References
     
@@ -27,6 +28,10 @@ class FirebaseDataManager {
     
     static func connectionsRef() -> FIRDatabaseReference {
         return rootRef().child(_kConnectionsRef)
+    }
+    
+    static func messagesRef() -> FIRDatabaseReference {
+        return rootRef().child(_kMessagesRef)
     }
     
     static func myUserRef() -> FIRDatabaseReference? {

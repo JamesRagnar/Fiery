@@ -35,7 +35,7 @@ class RootViewController: UIViewController {
     
     func openConversationView() {
         
-        let conVC = ConversationsViewController()
+        let conVC = ConnectionsViewController()
         openNavigationController(conVC)
     }
     
