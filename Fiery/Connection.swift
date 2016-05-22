@@ -33,14 +33,14 @@ class Connection: FSOSnapshot {
         }
     }
     
-    func fetchUserWithId(response: (user: User?) -> Void) {
+    func fetchUserWithId(complete: () -> Void) {
         
         if let userId = peerId() {
             
             let userRef = FirebaseDataManager.usersRef().child(userId)
             
             user = User(nodeRef: userRef)
-            user?.startObservingUserData()
+            user?.startObservingUserData(complete)
         }
     }
     

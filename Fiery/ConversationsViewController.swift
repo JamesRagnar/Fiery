@@ -63,7 +63,7 @@ class ConversationsViewController: UIViewController, UITableViewDataSource, UITa
 //    MARK: ConnectionManagerDelegate
     
     func newConnectionAdded(connection: Connection) {
-        
+        print("Conversations | New Connection Added")
         dispatch_async(dispatch_get_main_queue()) {
             if !self._connections.contains(connection) {
                 self._connections.append(connection)

@@ -40,8 +40,8 @@ class ConnectionsManager: FSOReferenceObserver {
             
             _connections[connectionId] = newConnection
             
-            newConnection.fetchUserWithId({ (user) in
-                
+            newConnection.fetchUserWithId({ () in
+                self.delegate?.newConnectionAdded(newConnection)
             })
         }
     }
