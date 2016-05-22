@@ -6,6 +6,7 @@ target 'Fiery' do
 	pod 'Firebase/Auth', '~> 3.2'
 	pod 'Firebase/Storage', '~> 3.2'
 	pod 'JSQMessagesViewController', '~> 7.2'
+	pod 'HanekeSwift', '~> 0.10'
 end
 
 target 'FieryTests' do
@@ -13,6 +14,7 @@ target 'FieryTests' do
 	pod 'Firebase/Auth', '~> 3.2'
 	pod 'Firebase/Storage', '~> 3.2'
 	pod 'JSQMessagesViewController', '~> 7.2'
+	pod 'HanekeSwift', '~> 0.10'
 end
 
 target 'FieryUITests' do
@@ -20,5 +22,6 @@ target 'FieryUITests' do
 	pod 'Firebase/Auth', '~> 3.2'
 	pod 'Firebase/Storage', '~> 3.2'
 	pod 'JSQMessagesViewController', '~> 7.2'
+	pod 'HanekeSwift', '~> 0.10'
 end
 

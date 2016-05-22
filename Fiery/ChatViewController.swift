@@ -9,9 +9,10 @@
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
+import Haneke
 
 class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     var connection: Connection!
     
     private var _currentUser: User!
@@ -26,7 +27,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         _currentUser = RootDataManager.sharedInstance.currentUser()
         assert(_currentUser.snapshotKey() != nil)
         senderId = _currentUser.snapshotKey()
-
+        
         assert(connection != nil)
         
         _conversationManager = connection.conversationManager
@@ -41,7 +42,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         }
     }
     
-//    MARK: Action Responders
+    //    MARK: Action Responders
     
     override func didPressAccessoryButton(sender: UIButton!) {
         showImagePicker()
@@ -51,7 +52,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         sendTextMessage(text)
     }
     
-//    MARK: Conversation Manager
+    //    MARK: Conversation Manager
     
     func sendTextMessage(text: String) {
         _conversationManager.sendTextMessage(text)
@@ -63,7 +64,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         finishSendingMessageAnimated(true)
     }
     
-//    MARK: ConversationManagerDelegate
+    //    MARK: ConversationManagerDelegate
     
     func newMessageAdded(message: Message) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -71,7 +72,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         }
     }
     
-//    MARK: JSQMessagesViewController
+    //    MARK: JSQMessagesViewController
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         
@@ -90,6 +91,26 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
                     mediaData.appliesMediaViewMaskAsOutgoing = true
                 } else {
                     mediaData.appliesMediaViewMaskAsOutgoing = false
+                }
+                
+                if let image = message.image {
+                    mediaData.image = image
+                } else {
+                    if let imageUrl = message.body() {
+                        
+                        if let url = NSURL(string: imageUrl) {
+                            
+                            let imageCache = Shared.imageCache
+                            imageCache.fetch(URL: url).onSuccess({ (image) in
+                                
+                                message.image = image
+                                
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.collectionView.reloadItemsAtIndexPaths([indexPath])
+                                })
+                            })
+                        }
+                    }
                 }
                 
                 return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), media: mediaData)
@@ -131,7 +152,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         return _conversationManager.messagesByDate().count
     }
     
-//    MARK: Image Picker
+    //    MARK: Image Picker
     
     func showImagePicker() {
         

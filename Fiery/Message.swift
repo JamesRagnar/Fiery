@@ -21,6 +21,8 @@ class Message: FSOSnapshot {
     static let kTextType = "text"
     static let kImageType = "image"
     
+    var image: UIImage?
+    
     //    MARK: Field Accessors
     
     func senderId() -> String? {
