@@ -27,7 +27,18 @@ class User: FSOSnapshot {
         }
     }
     
-//    MARK: Field Getters
+    func startObservingUserData(firstLoadCallback: () -> Void) {
+        
+        startObserveringEvent(.Value) { (snapshot) in
+            
+            print("User Data Updated")
+            self.dataSnapshot = snapshot
+            
+            firstLoadCallback()
+        }
+    }
+    
+//    MARK: Field Accessors
     
     func name() -> String? {
         return firebaseStringForKey(User.kName)

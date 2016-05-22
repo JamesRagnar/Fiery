@@ -14,10 +14,12 @@
 		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
 		AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */; };
 		AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */; };
-		AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */; };
 		AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */; };
 		AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */; };
 		AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */; };
+		AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */; };
+		AD247B491CF1103800CFAA16 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B481CF1103800CFAA16 /* Connection.swift */; };
+		AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -62,10 +64,12 @@
 		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserver.swift; sourceTree = "<group>"; };
 		AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshot.swift; sourceTree = "<group>"; };
-		AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
 		AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsManager.swift; sourceTree = "<group>"; };
+		AD247B481CF1103800CFAA16 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
+				AD247B481CF1103800CFAA16 /* Connection.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -162,7 +167,7 @@
 			children = (
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
-				AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */,
+				AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
+				AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */,
 			);
 			name = Conversations;
 			sourceTree = "<group>";
@@ -531,12 +537,14 @@
 				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,
 				AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */,
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
+				AD247B491CF1103800CFAA16 /* Connection.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
-				AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
+				AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */,
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
+				AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,8 @@ class FirebaseDataManager {
     
     //    MARK: Firebase Nodes
     
-    private static let _kUsersNode = "users"
+    private static let _kUsersRef = "users"
+    private static let _kConnectionsRef = "connections"
     
     //    MARK: Firebase Node References
     
@@ -20,16 +21,27 @@ class FirebaseDataManager {
         return FIRDatabase.database().reference()
     }
     
-    static func usersNode() -> FIRDatabaseReference {
-        return rootRef().child(_kUsersNode)
+    static func usersRef() -> FIRDatabaseReference {
+        return rootRef().child(_kUsersRef)
+    }
+    
+    static func connectionsRef() -> FIRDatabaseReference {
+        return rootRef().child(_kConnectionsRef)
     }
     
     static func myUserRef() -> FIRDatabaseReference? {
         
         if let userId = currentUser()?.uid {
-            return usersNode().child(userId)
+            return usersRef().child(userId)
         }
+        return nil
+    }
+    
+    static func myConnectionsRef() -> FIRDatabaseReference? {
         
+        if let userId = currentUser()?.uid {
+            return connectionsRef().child(userId)
+        }
         return nil
     }
     
@@ -48,28 +60,6 @@ class FirebaseDataManager {
             }
         } catch _ {
             print("Error logging out")
-        }
-    }
-    
-    //    MARK: User
-    
-    static func fetchMyUserData(response: (userData: FIRDataSnapshot?) -> Void) {
-        
-        if let myRef = myUserRef() {
-            
-            myRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                
-                // Check if the snapshot has no data
-                if snapshot.value is NSNull {
-                    response(userData: nil)
-                    return
-                }
-                
-                response(userData: snapshot)
-                return
-            })
-        } else {
-            response(userData: nil)
         }
     }
     
@@ -131,5 +121,40 @@ class FirebaseDataManager {
             print("Registration | Could not get myUserRef")
             response(success: false)
         }
+    }
+    
+//    MARK: 
+    
+    static func queryUsersByEmailWithString(queryString: String, results: (users: [User]) -> Void) {
+        
+        let lowercaseString = queryString.lowercaseString
+        
+        print(lowercaseString)
+        
+        let usersRef = FirebaseDataManager.usersRef()
+        
+        let query: FIRDatabaseQuery = usersRef.queryOrderedByChild("email").queryEqualToValue(lowercaseString)
+        
+        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            print("Found Results \(snapshot.childrenCount)")
+            
+            var returnUsers = [User]()
+            
+            for child in snapshot.children {
+                
+                if let childSnapshot = child as? FIRDataSnapshot {
+                    
+                    let user = User(snapshot: childSnapshot)
+                    
+                    if let _ = user.name() {
+                        
+                        returnUsers.append(user)
+                    }
+                }
+            }
+            
+            results(users: returnUsers)
+        })
     }
 }
