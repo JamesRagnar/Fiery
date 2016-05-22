@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class ConnectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate {
     
@@ -30,7 +31,7 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConnectionsViewController.addUserTapped))
         navigationItem.setRightBarButtonItem(searchButton, animated: false)
         
-        _tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: _userConnectionCell)
+        _tableView.registerClass(ConnectionTableViewCell.self, forCellReuseIdentifier: _userConnectionCell)
         _tableView.dataSource = self
         _tableView.delegate = self
         view.addSubview(_tableView)
@@ -126,16 +127,22 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(_userConnectionCell)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(_userConnectionCell) as! ConnectionTableViewCell
         
         let connection = _connections[indexPath.row]
         
         if let user = connection.user {
             
             cell.textLabel?.text = user.name()
+            
+            cell.imageView?.image = user.image()
         }
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

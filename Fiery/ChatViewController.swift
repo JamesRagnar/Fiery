@@ -18,8 +18,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     private var _currentUser: User!
     private var _conversationManager: ConversationManager!
     
-    private var _myUserImage = UIImage()
-    private var _peerUserImage = UIImage()
+    private var _myUserImage: UIImage!
+    private var _peerUserImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         senderId = _currentUser.snapshotKey()
         
         assert(connection != nil)
+        assert(connection.user != nil)
         
         _conversationManager = connection.conversationManager
         assert(_conversationManager != nil)
@@ -40,6 +41,9 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
             print("Could not get my user name")
             self.senderDisplayName = ""
         }
+        
+        _myUserImage = _currentUser.image()
+        _peerUserImage = connection.user!.image()
     }
     
     //    MARK: Action Responders
@@ -114,6 +118,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
                 }
                 
                 return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), media: mediaData)
+                
             default:
                 break
             }
