@@ -27,7 +27,7 @@ class User: FSOSnapshot {
         }
     }
     
-//    MARK: Field Getters
+//    MARK: Field Accessors
     
     func name() -> String? {
         return firebaseStringForKey(User.kName)

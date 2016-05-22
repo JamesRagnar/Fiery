@@ -15,6 +15,7 @@ class RootDataManager {
     private var _currentUser: User?
     
     private var _usersManager: UsersManager?
+    private var _connectionsManager: ConnectionsManager?
     
 //    MARK: Managers
     
@@ -32,6 +33,15 @@ class RootDataManager {
         return _usersManager!
     }
     
+    func connectionsManager() -> ConnectionsManager {
+        if _connectionsManager == nil {
+            let myConnectionsRef = FirebaseDataManager.myConnectionsRef()
+            assert(myConnectionsRef != nil, "Connection ref accessed before user authenticated")
+            _connectionsManager = ConnectionsManager(nodeRef: myConnectionsRef!)
+        }
+        return _connectionsManager!
+    }
+    
 //    MARK: Auth
     
     func attemptUserLogin(response: (success: Bool) -> Void) {
@@ -43,6 +53,10 @@ class RootDataManager {
                 // I am logged in and have a reference to a database node
                 self._currentUser = User(snapshot: userSnapshot!)
                 self._currentUser?.startObservingUserData()
+                
+                // Start Monitoring connections
+                self.connectionsManager().monitorUserConnections()
+                
                 response(success: true)
                 
             } else {
@@ -56,6 +70,7 @@ class RootDataManager {
         _currentUser = nil
         
         _usersManager = nil
+        _connectionsManager = nil
         
         FirebaseDataManager.logout()
     }

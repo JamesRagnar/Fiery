@@ -22,8 +22,8 @@ class ConversationsViewController: UIViewController {
         let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConversationsViewController.logoutButtonTapped))
         navigationItem.setLeftBarButtonItem(logoutButton, animated: false)
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ConversationsViewController.openUserSearchView))
-        navigationItem.setRightBarButtonItem(addButton, animated: false)
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConversationsViewController.addUserTapped))
+        navigationItem.setRightBarButtonItem(searchButton, animated: false)
     }
     
 //    MARK: Action Responders
@@ -45,7 +45,7 @@ class ConversationsViewController: UIViewController {
         presentViewController(logoutActionSheet, animated: true, completion: nil)
     }
     
-    func addConversationTapped() {
+    func addUserTapped() {
         
         openUserSearchView()
     }
@@ -63,6 +63,6 @@ class ConversationsViewController: UIViewController {
     
     func openUserSearchView() {
         
-        
+        navigationController?.pushViewController(UserSearchViewController(), animated: true)
     }
 }
