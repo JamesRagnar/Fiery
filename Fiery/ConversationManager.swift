@@ -57,17 +57,37 @@ class ConversationManager: FSOReferenceObserver {
         })
     }
     
-    func sendMessage(body: String) {
+    func sendTextMessage(text: String) {
         
         if let myUserId = RootDataManager.sharedInstance.currentUser()?.snapshotKey() {
             
             var messageData = [String: AnyObject]()
             messageData[Message.kSenderId] = myUserId
             messageData[Message.kType] = Message.kTextType
-            messageData[Message.kBody] = body
+            messageData[Message.kBody] = text
             messageData[Message.kSendDate] = FIRServerValue.timestamp()
             
             addChildByAutoID(messageData)
+        }
+    }
+    
+    func sendImageMessage(image: UIImage) {
+        
+        if let myUserId = RootDataManager.sharedInstance.currentUser()?.snapshotKey() {
+            
+            FirebaseStorageManager.uploadChatImage(image) { (imageUrl) in
+                
+                if imageUrl != nil {
+                    
+                    var messageData = [String: AnyObject]()
+                    messageData[Message.kSenderId] = myUserId
+                    messageData[Message.kType] = Message.kImageType
+                    messageData[Message.kBody] = imageUrl
+                    messageData[Message.kSendDate] = FIRServerValue.timestamp()
+                    
+                    self.addChildByAutoID(messageData)
+                }
+            }
         }
     }
 }
