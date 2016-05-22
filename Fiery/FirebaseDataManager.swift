@@ -63,28 +63,6 @@ class FirebaseDataManager {
         }
     }
     
-    //    MARK: User
-    
-    static func fetchMyUserData(response: (userData: FIRDataSnapshot?) -> Void) {
-        
-        if let myRef = myUserRef() {
-            
-            myRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                
-                // Check if the snapshot has no data
-                if snapshot.value is NSNull {
-                    response(userData: nil)
-                    return
-                }
-                
-                response(userData: snapshot)
-                return
-            })
-        } else {
-            response(userData: nil)
-        }
-    }
-    
     //    MARK: Registration
     
     static func loginWithCredentials(email: String, password: String, response: (success: Bool) -> Void) {
@@ -143,5 +121,40 @@ class FirebaseDataManager {
             print("Registration | Could not get myUserRef")
             response(success: false)
         }
+    }
+    
+//    MARK: 
+    
+    static func queryUsersByEmailWithString(queryString: String, results: (users: [User]) -> Void) {
+        
+        let lowercaseString = queryString.lowercaseString
+        
+        print(lowercaseString)
+        
+        let usersRef = FirebaseDataManager.usersRef()
+        
+        let query: FIRDatabaseQuery = usersRef.queryOrderedByChild("email").queryEqualToValue(lowercaseString)
+        
+        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            print("Found Results \(snapshot.childrenCount)")
+            
+            var returnUsers = [User]()
+            
+            for child in snapshot.children {
+                
+                if let childSnapshot = child as? FIRDataSnapshot {
+                    
+                    let user = User(snapshot: childSnapshot)
+                    
+                    if let _ = user.name() {
+                        
+                        returnUsers.append(user)
+                    }
+                }
+            }
+            
+            results(users: returnUsers)
+        })
     }
 }

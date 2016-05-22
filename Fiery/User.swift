@@ -27,6 +27,17 @@ class User: FSOSnapshot {
         }
     }
     
+    func startObservingUserData(firstLoadCallback: () -> Void) {
+        
+        startObserveringEvent(.Value) { (snapshot) in
+            
+            print("User Data Updated")
+            self.dataSnapshot = snapshot
+            
+            firstLoadCallback()
+        }
+    }
+    
 //    MARK: Field Accessors
     
     func name() -> String? {

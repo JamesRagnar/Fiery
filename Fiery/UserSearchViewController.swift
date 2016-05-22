@@ -56,7 +56,7 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
     func queryUsersWithString(query: String) {
         
         _searchQuery = query
-        UsersManager.queryUsersByEmailWithString(query) { (users) in
+        FirebaseDataManager.queryUsersByEmailWithString(query) { (users) in
             
             dispatch_async(dispatch_get_main_queue(), { 
                 self._searchResults[query] = users

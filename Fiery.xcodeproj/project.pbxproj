@@ -14,7 +14,6 @@
 		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
 		AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */; };
 		AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */; };
-		AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */; };
 		AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */; };
 		AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */; };
 		AD247B451CF0EFA900CFAA16 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */; };
@@ -65,7 +64,6 @@
 		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AD247B311CF0C57A00CFAA16 /* FSOReferenceObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserver.swift; sourceTree = "<group>"; };
 		AD247B321CF0C57A00CFAA16 /* FSOSnapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshot.swift; sourceTree = "<group>"; };
-		AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersManager.swift; sourceTree = "<group>"; };
 		AD247B3E1CF0D68800CFAA16 /* RootDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDataManager.swift; sourceTree = "<group>"; };
 		AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		AD247B441CF0EFA900CFAA16 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -169,7 +167,6 @@
 			children = (
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
-				AD247B3C1CF0D63800CFAA16 /* UsersManager.swift */,
 				AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */,
 			);
 			name = Managers;
@@ -542,7 +539,6 @@
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
 				AD247B491CF1103800CFAA16 /* Connection.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
-				AD247B3D1CF0D63800CFAA16 /* UsersManager.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,

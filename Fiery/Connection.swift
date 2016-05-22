@@ -18,9 +18,13 @@ class Connection: FSOSnapshot {
     static let kIncomingState = "incoming"
     static let kAcceptedSated = "accepted"
     
+    //    MARK:
+    
+    var user: User?
+    
     //    MARK: Data Observers
     
-    func startObservingUserData() {
+    func startObservingConnectionData() {
         
         startObserveringEvent(.Value) { (snapshot) in
             
@@ -29,7 +33,22 @@ class Connection: FSOSnapshot {
         }
     }
     
+    func fetchUserWithId(response: (user: User?) -> Void) {
+        
+        if let userId = peerId() {
+            
+            let userRef = FirebaseDataManager.usersRef().child(userId)
+            
+            user = User(nodeRef: userRef)
+            user?.startObservingUserData()
+        }
+    }
+    
     //    MARK: Field Accessors
+    
+    func peerId() -> String? {
+        return snapshotKey()
+    }
     
     func state() -> String? {
         return firebaseStringForKey(Connection.kState)

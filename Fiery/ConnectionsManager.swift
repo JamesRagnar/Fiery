@@ -13,6 +13,8 @@ class ConnectionsManager: FSOReferenceObserver {
 
     private var _connections = [String: Connection]()
     
+    var delegate: ConnectionManagerDelegate?
+    
     func monitorUserConnections() {
         
         print("ConnectionsManager | Started Observeration")
@@ -37,7 +39,19 @@ class ConnectionsManager: FSOReferenceObserver {
             print("Connection | " + connectionId + " | " + connectionState)
             
             _connections[connectionId] = newConnection
+            
+            newConnection.fetchUserWithId({ (user) in
+                
+            })
         }
+    }
+    
+//    MARK:
+    
+    func allConnections() -> [Connection] {
+        
+        let connections = Array(_connections.values)
+        return connections
     }
     
 //    MARK: Connection Management
@@ -75,4 +89,8 @@ class ConnectionsManager: FSOReferenceObserver {
             peerConnectionsObserver.updateChildValues(peerUpdateData)
         }
     }
+}
+
+protocol ConnectionManagerDelegate {
+    func newConnectionAdded(connection: Connection)
 }

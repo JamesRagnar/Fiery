@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ConversationsViewController: UIViewController {
+class ConversationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate {
+    
+    private let _userConnectionCell = "UserConnectionCell"
+
+    private let _tableView = UITableView()
+    private var _connections = [Connection]()
 
     override func loadView() {
         super.loadView()
@@ -24,6 +29,50 @@ class ConversationsViewController: UIViewController {
         
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConversationsViewController.addUserTapped))
         navigationItem.setRightBarButtonItem(searchButton, animated: false)
+        
+        _tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: _userConnectionCell)
+        _tableView.dataSource = self
+        _tableView.delegate = self
+        view.addSubview(_tableView)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let connectionManager = RootDataManager.sharedInstance.connectionsManager()
+        
+        _connections = connectionManager.allConnections()
+        _tableView.reloadData()
+        
+        connectionManager.delegate = self
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let connectionManager = RootDataManager.sharedInstance.connectionsManager()
+        connectionManager.delegate = nil
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        _tableView.frame = view.frame
+    }
+    
+//    MARK: ConnectionManagerDelegate
+    
+    func newConnectionAdded(connection: Connection) {
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            if !self._connections.contains(connection) {
+                self._connections.append(connection)
+                if let row = self._connections.indexOf(connection) {
+                    let indexPath = NSIndexPath(forRow: row, inSection: 0)
+                    self._tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                }
+            }
+        }
     }
     
 //    MARK: Action Responders
@@ -64,5 +113,26 @@ class ConversationsViewController: UIViewController {
     func openUserSearchView() {
         
         navigationController?.pushViewController(UserSearchViewController(), animated: true)
+    }
+    
+//    MARK: UITableViewDataSource
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(_userConnectionCell)!
+        
+        let connection = _connections[indexPath.row]
+        
+        if let user = connection.user {
+            
+            cell.textLabel?.text = user.name()
+        }
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return _connections.count
     }
 }
