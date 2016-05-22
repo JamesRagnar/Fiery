@@ -20,7 +20,8 @@ class Message: FSOSnapshot {
     
     static let kTextType = "text"
     static let kImageType = "image"
-    static let kVideoType = "video"
+    
+    var image: UIImage?
     
     //    MARK: Field Accessors
     
@@ -38,7 +39,7 @@ class Message: FSOSnapshot {
     }
     
     func validMessageTypes() -> [String] {
-        return [Message.kTextType, Message.kImageType, Message.kVideoType]
+        return [Message.kTextType, Message.kImageType]
     }
     
     func body() -> String? {
@@ -47,9 +48,7 @@ class Message: FSOSnapshot {
             case Message.kTextType:
                 return firebaseStringForKey(Message.kBody)
             case Message.kImageType:
-                break
-            case Message.kVideoType:
-                break
+                return firebaseStringForKey(Message.kBody)
             default:
                 break
             }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class User: FSOSnapshot {
 
@@ -16,16 +17,9 @@ class User: FSOSnapshot {
     static let kEmail = "email"
     static let kImageUrl = "imageUrl"
     
-//    MARK: Data Observers
+    private var _image = UIImage() // find a filler user image
     
-    func startObservingUserData() {
-        
-        startObserveringEvent(.Value) { (snapshot) in
-            
-            print("User Data Updated")
-            self.dataSnapshot = snapshot
-        }
-    }
+//    MARK: Data Observers
     
     func startObservingUserData(firstLoadCallback: () -> Void) {
         
@@ -33,8 +27,19 @@ class User: FSOSnapshot {
             
             print("User Data Updated")
             self.dataSnapshot = snapshot
-            
+            self.fetchUserImage()
             firstLoadCallback()
+        }
+    }
+    
+    func fetchUserImage() {
+        if let imageUrl = imageUrl() {
+            let imageCache = Shared.imageCache
+            imageCache.fetch(URL: imageUrl).onSuccess({ (image) in
+                self._image = image
+            }).onFailure({ (error) in
+                print(error)
+            })
         }
     }
     
@@ -44,7 +49,22 @@ class User: FSOSnapshot {
         return firebaseStringForKey(User.kName)
     }
     
+    func image() -> UIImage {
+        return _image
+    }
+    
     func email() -> String? {
         return firebaseStringForKey(User.kEmail)
+    }
+    
+    func imageUrlString() -> String? {
+        return firebaseStringForKey(User.kImageUrl)
+    }
+    
+    func imageUrl() -> NSURL? {
+        if let urlString = imageUrlString() {
+            return NSURL(string: urlString)
+        }
+        return nil
     }
 }

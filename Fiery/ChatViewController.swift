@@ -9,30 +9,31 @@
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
+import Haneke
 
 class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    private let _currentUser = RootDataManager.sharedInstance.currentUser()!
     
     var connection: Connection!
     
-    private var _myUserImage = UIImage()
-    private var _peerUserImage = UIImage()
+    private var _currentUser: User!
+    private var _conversationManager: ConversationManager!
     
-    override func loadView() {
-        super.loadView()
-        
-        
-    }
+    private var _myUserImage: UIImage!
+    private var _peerUserImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _currentUser = RootDataManager.sharedInstance.currentUser()
         assert(_currentUser.snapshotKey() != nil)
+        senderId = _currentUser.snapshotKey()
         
         assert(connection != nil)
-        assert(connection?.user?.snapshotKey() != nil)
-        assert(connection?.conversationManager != nil)
+        assert(connection.user != nil)
+        
+        _conversationManager = connection.conversationManager
+        assert(_conversationManager != nil)
+        _conversationManager.delegate = self
         
         if let myName = _currentUser.name() {
             self.senderDisplayName = myName
@@ -41,25 +42,33 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
             self.senderDisplayName = ""
         }
         
-        if let myId = _currentUser.snapshotKey() {
-            self.senderId = myId
-        } else {
-            fatalError("Could not get my userId")
-        }
-        
-        connection?.conversationManager?.delegate = self
+        _myUserImage = _currentUser.image()
+        _peerUserImage = connection.user!.image()
     }
     
-//    MARK: Action Responders
+    //    MARK: Action Responders
     
-    override func didPressAccessoryButton(sender: UIButton!) {}
+    override func didPressAccessoryButton(sender: UIButton!) {
+        showImagePicker()
+    }
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        
-        connection.conversationManager?.sendMessage(text)
+        sendTextMessage(text)
     }
     
-//    MARK: ConversationManagerDelegate
+    //    MARK: Conversation Manager
+    
+    func sendTextMessage(text: String) {
+        _conversationManager.sendTextMessage(text)
+        finishSendingMessageAnimated(true)
+    }
+    
+    func sendImageMessage(image: UIImage) {
+        _conversationManager.sendImageMessage(image)
+        finishSendingMessageAnimated(true)
+    }
+    
+    //    MARK: ConversationManagerDelegate
     
     func newMessageAdded(message: Message) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -67,20 +76,60 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         }
     }
     
-//    MARK: JSQMessagesViewController
+    //    MARK: JSQMessagesViewController
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         
-        let messages = connection.conversationManager!.messagesByDate()
+        let messages = _conversationManager.messagesByDate()
         let message = messages[indexPath.row]
         
-        return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), text: message.body())
+        if let messageType = message.type() {
+            switch messageType {
+            case Message.kTextType:
+                return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), text: message.body())
+            case Message.kImageType:
+                
+                let mediaData = JSQPhotoMediaItem()
+                
+                if message.senderId() == _currentUser.snapshotKey() {
+                    mediaData.appliesMediaViewMaskAsOutgoing = true
+                } else {
+                    mediaData.appliesMediaViewMaskAsOutgoing = false
+                }
+                
+                if let image = message.image {
+                    mediaData.image = image
+                } else {
+                    if let imageUrl = message.body() {
+                        
+                        if let url = NSURL(string: imageUrl) {
+                            
+                            let imageCache = Shared.imageCache
+                            imageCache.fetch(URL: url).onSuccess({ (image) in
+                                
+                                message.image = image
+                                
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.collectionView.reloadItemsAtIndexPaths([indexPath])
+                                })
+                            })
+                        }
+                    }
+                }
+                
+                return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), media: mediaData)
+                
+            default:
+                break
+            }
+        }
+        fatalError("Unkown message content type")
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        let messages = connection.conversationManager!.messagesByDate()
+        let messages = _conversationManager.messagesByDate()
         let message = messages[indexPath.row]
         
         if message.senderId() == _currentUser.snapshotKey() {
@@ -92,7 +141,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        let message = connection.conversationManager!.messagesByDate()[indexPath.row]
+        let message = _conversationManager.messagesByDate()[indexPath.row]
         if message.senderId() == _currentUser.snapshotKey() {
             return JSQMessagesAvatarImageFactory.avatarImageWithImage(_myUserImage, diameter: 40)
         } else {
@@ -105,10 +154,10 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return connection.conversationManager!.messagesByDate().count
+        return _conversationManager.messagesByDate().count
     }
     
-//    MARK: Image Picker
+    //    MARK: Image Picker
     
     func showImagePicker() {
         
@@ -146,5 +195,20 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         }))
         
         self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let mediaType = info[UIImagePickerControllerMediaType] as? String {
+            
+            if mediaType == kUTTypeImage as String {
+                
+                if let croppedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+                    sendImageMessage(croppedImage)
+                }
+            }
+        }
     }
 }

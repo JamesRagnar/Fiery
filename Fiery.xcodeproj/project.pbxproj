@@ -23,6 +23,7 @@
 		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
+		ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
+				ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */,
 				AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */,
 			);
 			name = Connections;
@@ -550,6 +553,7 @@
 			files = (
 				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
+				ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConnectionsViewController.swift in Sources */,
 				AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */,
