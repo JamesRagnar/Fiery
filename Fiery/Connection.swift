@@ -13,6 +13,7 @@ class Connection: FSOSnapshot {
     //    MARK: Field Keys
     
     static let kState = "state"
+    static let kConversationId = "conversationId"
     
     static let kOutgoingState = "outgoing"
     static let kIncomingState = "incoming"
@@ -21,15 +22,14 @@ class Connection: FSOSnapshot {
     //    MARK:
     
     var user: User?
-    
+    var conversationManager: ConversationManager?
+
     //    MARK: Data Observers
     
-    func startObservingConnectionData() {
+    func startObservingConnectionData(complete: () -> Void) {
         
-        startObserveringEvent(.Value) { (snapshot) in
-            
-            print("Connection Data Updated")
-            self.dataSnapshot = snapshot
+        fetchUserWithId { 
+            self.setupConversationmanager(complete)
         }
     }
     
@@ -44,10 +44,25 @@ class Connection: FSOSnapshot {
         }
     }
     
+    func setupConversationmanager(complete: () -> Void) {
+        
+        if let roomId = conversationId() {
+            
+            let messagesRef = FirebaseDataManager.messagesRef().child(roomId)
+        
+            conversationManager = ConversationManager(nodeRef: messagesRef)
+            conversationManager?.fetchAndMonitorMessages(complete)
+        }
+    }
+    
     //    MARK: Field Accessors
     
     func peerId() -> String? {
         return snapshotKey()
+    }
+    
+    func conversationId() -> String? {
+        return firebaseStringForKey(Connection.kConversationId)
     }
     
     func state() -> String? {

@@ -20,6 +20,9 @@
 		AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */; };
 		AD247B491CF1103800CFAA16 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B481CF1103800CFAA16 /* Connection.swift */; };
 		AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */; };
+		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
+		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
+		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -30,7 +33,7 @@
 		ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */; };
 		ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */; };
 		ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */; };
-		ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */; };
+		ADFF573E1CEFD04600DE6B7E /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */; };
 		D40A11A836AADEBE49FA411F /* Pods_FieryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsManager.swift; sourceTree = "<group>"; };
 		AD247B481CF1103800CFAA16 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +92,7 @@
 		ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataManager.swift; sourceTree = "<group>"; };
 		ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
 		CBA4B70E4D3DF4C0E66756A1 /* Pods_FieryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +164,7 @@
 			children = (
 				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
 				AD247B481CF1103800CFAA16 /* Connection.swift */,
+				AD5E4FE31CF219A80084ADF0 /* Message.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -168,6 +175,7 @@
 				ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */,
 				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
 				AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */,
+				AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -192,13 +200,13 @@
 			name = Auth;
 			sourceTree = "<group>";
 		};
-		AD247B3A1CF0C81D00CFAA16 /* Conversations */ = {
+		AD247B3A1CF0C81D00CFAA16 /* Connections */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF573D1CEFD04600DE6B7E /* ConversationsViewController.swift */,
+				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
 				AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */,
 			);
-			name = Conversations;
+			name = Connections;
 			sourceTree = "<group>";
 		};
 		AD247B3B1CF0C83E00CFAA16 /* Support */ = {
@@ -211,6 +219,14 @@
 				ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */,
 			);
 			name = Support;
+			sourceTree = "<group>";
+		};
+		AD5E4FE91CF21DE90084ADF0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		ADFF56FB1CEFBD9A00DE6B7E = {
@@ -240,7 +256,8 @@
 			children = (
 				AD247B381CF0C81100CFAA16 /* Core */,
 				AD247B391CF0C81700CFAA16 /* Auth */,
-				AD247B3A1CF0C81D00CFAA16 /* Conversations */,
+				AD247B3A1CF0C81D00CFAA16 /* Connections */,
+				AD5E4FE91CF21DE90084ADF0 /* Chat */,
 				AD247B371CF0C80800CFAA16 /* Managers */,
 				AD247B361CF0C7F100CFAA16 /* Objects */,
 				AD247B351CF0C7E500CFAA16 /* Firebase Swift Observer */,
@@ -343,6 +360,7 @@
 				TargetAttributes = {
 					ADFF57031CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = W375UQHBF4;
 					};
 					ADFF57171CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
@@ -533,7 +551,8 @@
 				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
-				ADFF573E1CEFD04600DE6B7E /* ConversationsViewController.swift in Sources */,
+				ADFF573E1CEFD04600DE6B7E /* ConnectionsViewController.swift in Sources */,
+				AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */,
 				AD247B331CF0C57A00CFAA16 /* FSOReferenceObserver.swift in Sources */,
 				AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */,
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
@@ -541,8 +560,10 @@
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
+				AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
 				AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */,
+				AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */,
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 				AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */,
 			);
@@ -689,6 +710,7 @@
 			baseConfigurationReference = 64E4237791408F948BC611FB /* Pods-Fiery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
@@ -702,6 +724,7 @@
 			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;

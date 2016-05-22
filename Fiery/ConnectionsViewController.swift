@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConversationsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate {
+class ConnectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate {
     
     private let _userConnectionCell = "UserConnectionCell"
 
@@ -24,10 +24,10 @@ class ConversationsViewController: UIViewController, UITableViewDataSource, UITa
             title = userName
         }
         
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConversationsViewController.logoutButtonTapped))
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConnectionsViewController.logoutButtonTapped))
         navigationItem.setLeftBarButtonItem(logoutButton, animated: false)
         
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConversationsViewController.addUserTapped))
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConnectionsViewController.addUserTapped))
         navigationItem.setRightBarButtonItem(searchButton, animated: false)
         
         _tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: _userConnectionCell)
@@ -108,11 +108,18 @@ class ConversationsViewController: UIViewController, UITableViewDataSource, UITa
         dismissViewControllerAnimated(false, completion: nil)
     }
     
-//    MARK: Conversations
+//    MARK: Navigation
     
     func openUserSearchView() {
         
         navigationController?.pushViewController(UserSearchViewController(), animated: true)
+    }
+
+    func openChatWithConnection(connection: Connection) {
+        
+        let chatVC = ChatViewController()
+        chatVC.connection = connection
+        self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
 //    MARK: UITableViewDataSource
@@ -134,5 +141,11 @@ class ConversationsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return _connections.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let connection = _connections[indexPath.row]
+        openChatWithConnection(connection)
     }
 }
