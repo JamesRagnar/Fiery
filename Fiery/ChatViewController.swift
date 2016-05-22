@@ -8,8 +8,9 @@
 
 import UIKit
 import JSQMessagesViewController
+import MobileCoreServices
 
-class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate {
+class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     private let _currentUser = RootDataManager.sharedInstance.currentUser()!
     
@@ -105,5 +106,45 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return connection.conversationManager!.messagesByDate().count
+    }
+    
+//    MARK: Image Picker
+    
+    func showImagePicker() {
+        
+        let actionSheet = UIAlertController(title: nil, message: "Change your profile image", preferredStyle: .ActionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Take a Photo", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .Camera
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.cameraCaptureMode = .Photo
+                mediaUI.cameraDevice = .Front
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Select from Library", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .PhotoLibrary
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.mediaTypes = [kUTTypeImage as String]
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (alertAction) -> Void in
+            
+        }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
     }
 }

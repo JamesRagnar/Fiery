@@ -360,6 +360,7 @@
 				TargetAttributes = {
 					ADFF57031CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = W375UQHBF4;
 					};
 					ADFF57171CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
@@ -709,6 +710,7 @@
 			baseConfigurationReference = 64E4237791408F948BC611FB /* Pods-Fiery.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
@@ -722,6 +724,7 @@
 			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
