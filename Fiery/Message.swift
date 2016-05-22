@@ -45,7 +45,7 @@ class Message: FSOSnapshot {
         if let messageType = type() {
             switch messageType {
             case Message.kTextType:
-                break
+                return firebaseStringForKey(Message.kBody)
             case Message.kImageType:
                 break
             case Message.kVideoType:
@@ -55,5 +55,17 @@ class Message: FSOSnapshot {
             }
         }
         return nil
+    }
+    
+    func sendDate() -> NSDate? {
+        if let millisecondsSinceEpoch = sendDateMilliseconds() {
+            let secondsSinceEpoch = millisecondsSinceEpoch.doubleValue / 100
+            return NSDate(timeIntervalSince1970: secondsSinceEpoch)
+        }
+        return nil
+    }
+    
+    func sendDateMilliseconds() -> NSNumber? {
+        return firebaseNumberForKey(Message.kSendDate)
     }
 }

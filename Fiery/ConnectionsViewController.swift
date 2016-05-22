@@ -108,11 +108,18 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         dismissViewControllerAnimated(false, completion: nil)
     }
     
-//    MARK: Conversations
+//    MARK: Navigation
     
     func openUserSearchView() {
         
         navigationController?.pushViewController(UserSearchViewController(), animated: true)
+    }
+
+    func openChatWithConnection(connection: Connection) {
+        
+        let chatVC = ChatViewController()
+        chatVC.connection = connection
+        self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
 //    MARK: UITableViewDataSource
@@ -134,5 +141,11 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return _connections.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let connection = _connections[indexPath.row]
+        openChatWithConnection(connection)
     }
 }

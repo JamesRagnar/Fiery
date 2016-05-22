@@ -40,7 +40,7 @@ class ConnectionsManager: FSOReferenceObserver {
             
             _connections[connectionId] = newConnection
             
-            newConnection.fetchUserWithId({ () in
+            newConnection.startObservingConnectionData({ () in
                 self.delegate?.newConnectionAdded(newConnection)
             })
         }
@@ -67,9 +67,14 @@ class ConnectionsManager: FSOReferenceObserver {
                 return
             }
             
+            // Create a chat room
+            let messagesRef = FirebaseDataManager.messagesRef().childByAutoId()
+            let messagesRefId = messagesRef.key
+            
             // Add the connection to my list
             var myConnectionData = [String: AnyObject]()
             myConnectionData[Connection.kState] = Connection.kOutgoingState
+            myConnectionData[Connection.kConversationId] = messagesRefId
             
             var myUpdateData = [String: AnyObject]()
             myUpdateData[peerId] = myConnectionData
@@ -79,6 +84,7 @@ class ConnectionsManager: FSOReferenceObserver {
             // Add the invitation to the other user's list
             var peerConnectionData = [String: AnyObject]()
             peerConnectionData[Connection.kState] = Connection.kIncomingState
+            peerConnectionData[Connection.kConversationId] = messagesRefId
             
             let peerConnectionsRef = FirebaseDataManager.connectionsRef().child(peerId)
             let peerConnectionsObserver = FSOReferenceObserver(nodeRef: peerConnectionsRef)
