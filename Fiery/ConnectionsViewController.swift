@@ -134,7 +134,6 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         if let user = connection.user {
             
             cell.textLabel?.text = user.name()
-            
             cell.imageView?.image = user.image()
         }
         
