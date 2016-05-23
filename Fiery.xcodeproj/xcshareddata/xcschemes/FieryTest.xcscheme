@@ -20,6 +20,34 @@
                ReferencedContainer = "container:Fiery.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ADFF57171CEFBD9A00DE6B7E"
+               BuildableName = "FieryTests.xctest"
+               BlueprintName = "FieryTests"
+               ReferencedContainer = "container:Fiery.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ADFF57221CEFBD9A00DE6B7E"
+               BuildableName = "FieryUITests.xctest"
+               BlueprintName = "FieryUITests"
+               ReferencedContainer = "container:Fiery.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -29,6 +57,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ADFF57171CEFBD9A00DE6B7E"
+               BuildableName = "FieryTests.xctest"
+               BlueprintName = "FieryTests"
+               ReferencedContainer = "container:Fiery.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ADFF57221CEFBD9A00DE6B7E"
+               BuildableName = "FieryUITests.xctest"
+               BlueprintName = "FieryUITests"
+               ReferencedContainer = "container:Fiery.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

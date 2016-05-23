@@ -1,0 +1,7 @@
+# .slather.yml
+
+coverage_service: coveralls
+xcodeproj: Fiery.xcodeproj
+scheme: FieryTest
+ignore:
+  - Pods/*
