@@ -5,7 +5,8 @@ before_install:
   - gem install slather
 
 script: 
-  - xctool test -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+#  - xctool test -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - set -o pipefail && xcodebuild test -workspace Feiry.xcworkspace -scheme FieryTest -sdk iphonesimulator | xcpretty
 
 after_success: slather
 
