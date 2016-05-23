@@ -2,6 +2,8 @@
 
 coverage_service: coveralls
 xcodeproj: Fiery.xcodeproj
+workspace: Fiery.xcworkspace
 scheme: FieryTest
+
 ignore:
   - Pods/*
