@@ -56,9 +56,7 @@ class RootDataManager {
     func logout() {
         
         _currentUser = nil
-        
         _connectionsManager = nil
-        
         FirebaseDataManager.logout()
     }
 }
