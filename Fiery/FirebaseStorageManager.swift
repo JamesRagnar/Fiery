@@ -13,6 +13,7 @@ class FirebaseStorageManager {
     private static let _kStorageAddress = "gs://fiery-405fb.appspot.com"
     
     private static let _kUserImagesRef = "userImages"
+    private static let _kMessageImagesRef = "messageImages"
     
     //    MARK: Storage References
     
@@ -25,17 +26,29 @@ class FirebaseStorageManager {
         return rootStorageRef().child(_kUserImagesRef)
     }
     
+    static func messageImagesRef() -> FIRStorageReference {
+        return rootStorageRef().child(_kMessageImagesRef)
+    }
+    
     //    MARK: Upload
     
-    static func updateUserProfileImage(image: UIImage, response: (imageUrl: String) -> Void) {
+    static func updateUserProfileImage(image: UIImage, response: (imageUrl: String?) -> Void) {
+        
+        uploadImageToRef(image, ref: userImagesRef(), response: response)
+    }
+    
+    static func uploadChatImage(image: UIImage, response: (imageUrl: String?) -> Void) {
+        
+        uploadImageToRef(image, ref: messageImagesRef(), response: response)
+    }
+    
+    private static func uploadImageToRef(image: UIImage, ref: FIRStorageReference, response: (imageUrl: String?) -> Void) {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.5) {
             
-            let userImageRef = userImagesRef()
-            
             let randomFileName = NSUUID().UUIDString + ".jpg"
             
-            let fileRef = userImageRef.child(randomFileName)
+            let fileRef = ref.child(randomFileName)
             
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
@@ -43,11 +56,14 @@ class FirebaseStorageManager {
             let uploadTask = fileRef.putData(imageData, metadata: metadata, completion: { (storageMetaData, error) in
                 if error != nil {
                     print(error)
+                    response(imageUrl: nil)
                 } else {
                     
                     if let downloadUrl = storageMetaData?.downloadURL() {
                         print(downloadUrl)
                         response(imageUrl: downloadUrl.description)
+                    } else {
+                        response(imageUrl: nil)
                     }
                 }
             })
@@ -61,6 +77,7 @@ class FirebaseStorageManager {
             
         } else {
             print("Could not generate image data")
+            response(imageUrl: nil)
         }
     }
 }

@@ -1,9 +1,17 @@
 language: objective-c
 osx_image: xcode7.3
-script: 
-  - xctool -workspace Fiery.xcworkspace -scheme Fiery -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-
+before_install:
+- gem install slather
+script:
+- set -o pipefail && xcodebuild test -workspace Fiery.xcworkspace -scheme FieryTest
+  -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  | xcpretty
+after_success: slather
 branches:
   only:
-    - master
-    - devel
+  - master
+  - devel
+notifications:
+  email: false
+  slack:
+    secure: NEvmqL/m9oSY/SQsAHHARG+NlvC73LZSAXxTFql2RCueHhMzfmUvKTG0zqjgLff14kFVUI70K15+GwgRUGFaZTa6DmDhICAf6VwICV+v9y5FYpe3NKfzJusAF6rBMk3KUQfTBG5obl9Ji04Tx8utG3Wmo1Lreu6PqyQUj/wf2QcmmbuT8vsd7NYelMQUW+/9VZlCwIPyXiu78huH2557VTrkN/TB+9caIbdKoMpHjgksQwR2Rr3503Pa7H0QXMgfdWl02PfhjgmRVEs210mnI59IX2FJhTZ5PRK6O48xqmJP9aP7kYN5INzverrX6aln6s2OSd5MasgZii8BVjDnfKfAoqgp3vQ2WsLyU1IfbgEkvCOs7A89RZBz/Gi9F7xQMc4yGOwrVBEjbU4bUkwqngyC2LAF3I+jwfINj9p7siGeQRKBDyUm1iON/BEyVzA6ZefW8oFbNwE85QO59zPdDrhnnlqgTVrqFQNtAKf741E2ys639z4o67fYfdrkQy1w7QWLxKmj4Tw68F/4MaJncc7omDmVE/IGHujaNwBr9TKAhQcNsWAkF/Y/pHvNrBGeQ/ea7k6P7caQBQbPnkZib3EVHpQsbl0WE9Jp/4RTCTbEdxgKJ4UV66C5OjO5Fi8tiuMVtULkgxn74//PRfTRQucqw/sGuKnt4xn0V+siG3k=

@@ -9,14 +9,14 @@
 import UIKit
 
 class RootDataManager {
-
+    
     static let sharedInstance = RootDataManager()
     
     private var _currentUser: User?
     
-    private var _usersManager: UsersManager?
+    private var _connectionsManager: ConnectionsManager?
     
-//    MARK: Managers
+    //    MARK: Managers
     
     func currentUser() -> User? {
         if _currentUser == nil {
@@ -25,37 +25,39 @@ class RootDataManager {
         return _currentUser
     }
     
-    func usersManager() -> UsersManager {
-        if _usersManager == nil {
-            _usersManager = UsersManager()
+    func connectionsManager() -> ConnectionsManager {
+        if _connectionsManager == nil {
+            let myConnectionsRef = FirebaseDataManager.myConnectionsRef()
+            assert(myConnectionsRef != nil, "Connection ref accessed before user authenticated")
+            _connectionsManager = ConnectionsManager(nodeRef: myConnectionsRef!)
         }
-        return _usersManager!
+        return _connectionsManager!
     }
     
-//    MARK: Auth
+    //    MARK: Auth
     
     func attemptUserLogin(response: (success: Bool) -> Void) {
         
-        FirebaseDataManager.fetchMyUserData { (userSnapshot) in
+        if let myRef = FirebaseDataManager.myUserRef() {
             
-            if userSnapshot != nil {
+            _currentUser = User(nodeRef: myRef)
+            _currentUser?.startObservingUserData({
                 
-                // I am logged in and have a reference to a database node
-                self._currentUser = User(snapshot: userSnapshot!)
-                self._currentUser?.startObservingUserData()
+                self.connectionsManager().monitorUserConnections()
                 response(success: true)
                 
-            } else {
-                response(success: false)
-            }
+            })
+        } else {
+            response(success: false)
         }
+        
     }
     
     func logout() {
         
         _currentUser = nil
         
-        _usersManager = nil
+        _connectionsManager = nil
         
         FirebaseDataManager.logout()
     }
