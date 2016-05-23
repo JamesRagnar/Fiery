@@ -1,0 +1,10 @@
+# .slather.yml
+
+ci_service: travis_ci
+coverage_service: coveralls
+xcodeproj: Fiery.xcodeproj
+workspace: Fiery.xcworkspace
+scheme: FieryTest
+
+ignore:
+  - Pods/*
