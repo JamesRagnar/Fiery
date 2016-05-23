@@ -1,5 +1,5 @@
 //
-//  ConnectionTestCase.swift
+//  ConnectionTestCases.swift
 //  Fiery
 //
 //  Created by James Harquail on 2016-05-23.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ConnectionTestCase: XCTestCase {
+class ConnectionTestCases: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -19,17 +19,4 @@ class ConnectionTestCase: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
