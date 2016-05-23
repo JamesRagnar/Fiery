@@ -23,14 +23,29 @@
 		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
-		AD7500DC1CF2C09900C2D2E4 /* ConnectionTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DB1CF2C09900C2D2E4 /* ConnectionTestCase.swift */; };
+		AD7500DC1CF2C09900C2D2E4 /* ConnectionsTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */; };
+		AD7500DE1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */; };
+		AD7500E21CF3602500C2D2E4 /* RootViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */; };
+		AD7500E41CF360B300C2D2E4 /* AuthenticationViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E31CF360B300C2D2E4 /* AuthenticationViewControllerTestCases.swift */; };
+		AD7500E61CF3610200C2D2E4 /* RegistrationViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E51CF3610200C2D2E4 /* RegistrationViewControllerTestCases.swift */; };
+		AD7500E81CF3617300C2D2E4 /* ConnectionsViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E71CF3617300C2D2E4 /* ConnectionsViewControllerTestCases.swift */; };
+		AD7500EA1CF361C400C2D2E4 /* ConnectionTableViewCellTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E91CF361C400C2D2E4 /* ConnectionTableViewCellTestCases.swift */; };
+		AD7500EC1CF3621B00C2D2E4 /* UserSearchViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500EB1CF3621B00C2D2E4 /* UserSearchViewControllerTestCases.swift */; };
+		AD7500EE1CF3627900C2D2E4 /* ChatViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500ED1CF3627900C2D2E4 /* ChatViewControllerTestCases.swift */; };
+		AD7500F01CF362D200C2D2E4 /* FirebaseDataMagagerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500EF1CF362D200C2D2E4 /* FirebaseDataMagagerTestCases.swift */; };
+		AD7500F21CF362E400C2D2E4 /* FirebaseStorageManagerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F11CF362E400C2D2E4 /* FirebaseStorageManagerTestCases.swift */; };
+		AD7500F41CF3631B00C2D2E4 /* ConversationManagerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F31CF3631B00C2D2E4 /* ConversationManagerTestCases.swift */; };
+		AD7500F61CF3632A00C2D2E4 /* UserTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F51CF3632A00C2D2E4 /* UserTestCases.swift */; };
+		AD7500F81CF3634000C2D2E4 /* ConnectionTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F71CF3634000C2D2E4 /* ConnectionTestCases.swift */; };
+		AD7500FA1CF3635000C2D2E4 /* MessageTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F91CF3635000C2D2E4 /* MessageTestCases.swift */; };
+		AD7500FC1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */; };
+		AD7500FE1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */; };
 		ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
 		ADFF570F1CEFBD9A00DE6B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570E1CEFBD9A00DE6B7E /* Assets.xcassets */; };
 		ADFF57121CEFBD9A00DE6B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57101CEFBD9A00DE6B7E /* LaunchScreen.storyboard */; };
-		ADFF571D1CEFBD9A00DE6B7E /* FieryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */; };
 		ADFF57281CEFBD9A00DE6B7E /* FieryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */; };
 		ADFF57361CEFC0F100DE6B7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADFF57351CEFC0F100DE6B7E /* GoogleService-Info.plist */; };
 		ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57371CEFC4D000DE6B7E /* FirebaseDataManager.swift */; };
@@ -78,7 +93,23 @@
 		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
-		AD7500DB1CF2C09900C2D2E4 /* ConnectionTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTestCase.swift; sourceTree = "<group>"; };
+		AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsTestCases.swift; sourceTree = "<group>"; };
+		AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500E31CF360B300C2D2E4 /* AuthenticationViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500E51CF3610200C2D2E4 /* RegistrationViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500E71CF3617300C2D2E4 /* ConnectionsViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500E91CF361C400C2D2E4 /* ConnectionTableViewCellTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCellTestCases.swift; sourceTree = "<group>"; };
+		AD7500EB1CF3621B00C2D2E4 /* UserSearchViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500ED1CF3627900C2D2E4 /* ChatViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewControllerTestCases.swift; sourceTree = "<group>"; };
+		AD7500EF1CF362D200C2D2E4 /* FirebaseDataMagagerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataMagagerTestCases.swift; sourceTree = "<group>"; };
+		AD7500F11CF362E400C2D2E4 /* FirebaseStorageManagerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManagerTestCases.swift; sourceTree = "<group>"; };
+		AD7500F31CF3631B00C2D2E4 /* ConversationManagerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManagerTestCases.swift; sourceTree = "<group>"; };
+		AD7500F51CF3632A00C2D2E4 /* UserTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTestCases.swift; sourceTree = "<group>"; };
+		AD7500F71CF3634000C2D2E4 /* ConnectionTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTestCases.swift; sourceTree = "<group>"; };
+		AD7500F91CF3635000C2D2E4 /* MessageTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTestCases.swift; sourceTree = "<group>"; };
+		AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserverTestCases.swift; sourceTree = "<group>"; };
+		AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshotTestCases.swift; sourceTree = "<group>"; };
 		ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +119,6 @@
 		ADFF57111CEFBD9A00DE6B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADFF57131CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFF57181CEFBD9A00DE6B7E /* FieryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryTests.swift; sourceTree = "<group>"; };
 		ADFF571E1CEFBD9A00DE6B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADFF57231CEFBD9A00DE6B7E /* FieryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57271CEFBD9A00DE6B7E /* FieryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieryUITests.swift; sourceTree = "<group>"; };
@@ -274,8 +304,23 @@
 		ADFF571B1CEFBD9A00DE6B7E /* FieryTests */ = {
 			isa = PBXGroup;
 			children = (
-				ADFF571C1CEFBD9A00DE6B7E /* FieryTests.swift */,
-				AD7500DB1CF2C09900C2D2E4 /* ConnectionTestCase.swift */,
+				AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */,
+				AD7500E31CF360B300C2D2E4 /* AuthenticationViewControllerTestCases.swift */,
+				AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */,
+				AD7500E51CF3610200C2D2E4 /* RegistrationViewControllerTestCases.swift */,
+				AD7500E71CF3617300C2D2E4 /* ConnectionsViewControllerTestCases.swift */,
+				AD7500E91CF361C400C2D2E4 /* ConnectionTableViewCellTestCases.swift */,
+				AD7500EB1CF3621B00C2D2E4 /* UserSearchViewControllerTestCases.swift */,
+				AD7500ED1CF3627900C2D2E4 /* ChatViewControllerTestCases.swift */,
+				AD7500EF1CF362D200C2D2E4 /* FirebaseDataMagagerTestCases.swift */,
+				AD7500F11CF362E400C2D2E4 /* FirebaseStorageManagerTestCases.swift */,
+				AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */,
+				AD7500F31CF3631B00C2D2E4 /* ConversationManagerTestCases.swift */,
+				AD7500F51CF3632A00C2D2E4 /* UserTestCases.swift */,
+				AD7500F71CF3634000C2D2E4 /* ConnectionTestCases.swift */,
+				AD7500F91CF3635000C2D2E4 /* MessageTestCases.swift */,
+				AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */,
+				AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */,
 				ADFF571E1CEFBD9A00DE6B7E /* Info.plist */,
 			);
 			path = FieryTests;
@@ -580,8 +625,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADFF571D1CEFBD9A00DE6B7E /* FieryTests.swift in Sources */,
-				AD7500DC1CF2C09900C2D2E4 /* ConnectionTestCase.swift in Sources */,
+				AD7500EA1CF361C400C2D2E4 /* ConnectionTableViewCellTestCases.swift in Sources */,
+				AD7500F61CF3632A00C2D2E4 /* UserTestCases.swift in Sources */,
+				AD7500E61CF3610200C2D2E4 /* RegistrationViewControllerTestCases.swift in Sources */,
+				AD7500F81CF3634000C2D2E4 /* ConnectionTestCases.swift in Sources */,
+				AD7500F41CF3631B00C2D2E4 /* ConversationManagerTestCases.swift in Sources */,
+				AD7500E41CF360B300C2D2E4 /* AuthenticationViewControllerTestCases.swift in Sources */,
+				AD7500F21CF362E400C2D2E4 /* FirebaseStorageManagerTestCases.swift in Sources */,
+				AD7500EE1CF3627900C2D2E4 /* ChatViewControllerTestCases.swift in Sources */,
+				AD7500DC1CF2C09900C2D2E4 /* ConnectionsTestCases.swift in Sources */,
+				AD7500E21CF3602500C2D2E4 /* RootViewControllerTestCases.swift in Sources */,
+				AD7500EC1CF3621B00C2D2E4 /* UserSearchViewControllerTestCases.swift in Sources */,
+				AD7500F01CF362D200C2D2E4 /* FirebaseDataMagagerTestCases.swift in Sources */,
+				AD7500FC1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift in Sources */,
+				AD7500FA1CF3635000C2D2E4 /* MessageTestCases.swift in Sources */,
+				AD7500E81CF3617300C2D2E4 /* ConnectionsViewControllerTestCases.swift in Sources */,
+				AD7500FE1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift in Sources */,
+				AD7500DE1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

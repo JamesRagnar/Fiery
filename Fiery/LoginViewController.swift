@@ -59,13 +59,47 @@ class LoginViewController: UIViewController {
     
     func confirmButtonTapped() {
         
-        if let email = _emailField.text, let password = _passwordField.text {
+        if let (email, password) = loginFieldsValid() {
             
-            if email.characters.count > 0 && password.characters.count > 0 {
-                
-                login(email, password: password)
+            login(email, password: password)
+        }
+    }
+    
+//    MARK: Validators
+    
+    func loginFieldsValid() -> (email: String, password: String)? {
+        
+        let emailString = _emailField.text
+        if !emailValid(emailString) {
+            return nil
+        }
+        
+        let passwordString = _passwordField.text
+        if !passwordValid(passwordString) {
+            return nil
+        }
+        
+        return (emailString!, passwordString!)
+    }
+    
+    func emailValid(email: String?) -> Bool {
+        
+        if email == nil {
+            return false
+        }
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(email)
+    }
+    
+    func passwordValid(password: String?) -> Bool {
+        
+        if let testString = password {
+            if testString.characters.count > 6 {
+                return true
             }
         }
+        return false
     }
     
 //    MARK: Login
