@@ -1,7 +1,16 @@
 language: objective-c
 osx_image: xcode7.3
+
+before_install:
+  - sudo easy_install cpp_coveralls
+  - brew uninstall xctool
+  - brew update
+  - brew install xctool --HEAD
+
 script: 
-  - xctool -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+
+after_success: ./script/coveralls.sh
 
 branches:
   only:
