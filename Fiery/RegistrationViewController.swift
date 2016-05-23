@@ -9,15 +9,15 @@
 import UIKit
 import MobileCoreServices
 
-class RegistrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let _addPhotoButton = UIButton()
 
-    private let _nameField = UITextField()
-    private let _emailField = UITextField()
-    private let _passwordField = UITextField()
+    private let _nameField = RegistrationTextField()
+    private let _emailField = RegistrationTextField()
+    private let _passwordField = RegistrationTextField()
     
-    private let _confirmButton = UIButton()
+    private let _confirmButton = RegistrationButton()
     
     private var _selectedImage: UIImage?
 
@@ -26,29 +26,29 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         
         view.backgroundColor = UIColor.whiteColor()
         
-        _addPhotoButton.backgroundColor = UIColor.grayColor()
+        _addPhotoButton.backgroundColor = UIColor.fieryGrayColor()
+        _addPhotoButton.layer.masksToBounds = true
         _addPhotoButton.setTitle("Add Photo", forState: .Normal)
         _addPhotoButton.addTarget(self, action: #selector(RegistrationViewController.addPhotoButtonTapped), forControlEvents: .TouchUpInside)
         view.addSubview(_addPhotoButton)
         
-        _nameField.backgroundColor = UIColor.grayColor()
         _nameField.autocorrectionType = .No
         _nameField.placeholder = "Name"
+        _nameField.delegate = self
         view.addSubview(_nameField)
         
-        _emailField.backgroundColor = UIColor.grayColor()
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
-        _emailField.placeholder = "emaily@mcEmailFace.com"
+        _emailField.placeholder = "email"
+        _emailField.delegate = self
         view.addSubview(_emailField)
         
-        _passwordField.backgroundColor = UIColor.grayColor()
         _passwordField.secureTextEntry = true
-        _passwordField.placeholder = "Secret Pass"
+        _passwordField.placeholder = "password"
+        _passwordField.delegate = self
         view.addSubview(_passwordField)
         
-        _confirmButton.backgroundColor = UIColor.grayColor()
         _confirmButton.setTitle("Register", forState: .Normal)
         _confirmButton.addTarget(self, action: #selector(RegistrationViewController.confirmButtonTapped), forControlEvents: .TouchUpInside)
         view.addSubview(_confirmButton)
@@ -57,12 +57,12 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
         let textFieldframe = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 60, 40)
         let viewCenter = view.center
         
-        _addPhotoButton.frame = buttonFrame
-        _addPhotoButton.center = CGPointMake(viewCenter.x, viewCenter.y - 100)
+        _addPhotoButton.frame = CGRectMake(0, 100, 150, 150)
+        _addPhotoButton.layer.cornerRadius = 75
+        _addPhotoButton.center.x = viewCenter.x
         
         _nameField.frame = textFieldframe
         _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
@@ -73,8 +73,8 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
         _passwordField.frame = textFieldframe
         _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
         
-        _confirmButton.frame = buttonFrame
-        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 100)
+        _confirmButton.frame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
+        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 120)
     }
     
     //    MARK: Action Responders
@@ -86,18 +86,14 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
     
     func confirmButtonTapped() {
         
-        if let name = _nameField.text, let email = _emailField.text, let password = _passwordField.text {
-            
-            if name.characters.count > 0 && email.characters.count > 0 && password.characters.count > 0 {
-                
-                login(name, email: email, password: password)
-            }
+        if let (name, email, password) = registrationFieldsValid() {
+            register(name, email: email, password: password)
         }
     }
     
     //    MARK: Login
     
-    func login(name: String, email: String, password: String) {
+    func register(name: String, email: String, password: String) {
         
         FirebaseDataManager.registerWithCredentials(name, image: _selectedImage, email:email, password: password) { (success) in
             
@@ -106,6 +102,64 @@ class RegistrationViewController: UIViewController, UIImagePickerControllerDeleg
                 self.dismissViewControllerAnimated(false, completion: nil)
             }
         }
+    }
+    
+//    MARK: Validators
+    
+    func registrationFieldsValid() -> (name: String, email: String, password: String)? {
+        
+        let nameString = _nameField.text
+        if !nameValid(nameString) {
+            _nameField.showErrorState()
+            return nil
+        }
+        
+        let emailString = _emailField.text
+        if !emailValid(emailString) {
+            _emailField.showErrorState()
+            return nil
+        }
+        
+        let passwordString = _passwordField.text
+        if !passwordValid(passwordString) {
+            _passwordField.showErrorState()
+            return nil
+        }
+        
+        return (nameString!, emailString!, passwordString!)
+    }
+    
+    func nameValid(name: String?) -> Bool {
+        
+        if let testString = name {
+            return testString.characters.count > 0
+        }
+        return false
+    }
+    
+    func emailValid(email: String?) -> Bool {
+        
+        if let testString = email {
+            return testString.isValidFieryEmail()
+        }
+        return false
+    }
+    
+    func passwordValid(password: String?) -> Bool {
+        
+        if let testString = password {
+            return testString.isValidFieryPassword()
+        }
+        return false
+    }
+    
+//    MARK: UITextFieldDelegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        _nameField.clearErrorState()
+        _emailField.clearErrorState()
+        _passwordField.clearErrorState()
     }
     
 //    MARK: ImagePicker
