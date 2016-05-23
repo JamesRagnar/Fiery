@@ -40,6 +40,7 @@
 		AD7500FA1CF3635000C2D2E4 /* MessageTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500F91CF3635000C2D2E4 /* MessageTestCases.swift */; };
 		AD7500FC1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */; };
 		AD7500FE1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */; };
+		AD7501001CF3910900C2D2E4 /* RegistrationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */; };
 		ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
@@ -110,6 +111,7 @@
 		AD7500F91CF3635000C2D2E4 /* MessageTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTestCases.swift; sourceTree = "<group>"; };
 		AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserverTestCases.swift; sourceTree = "<group>"; };
 		AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshotTestCases.swift; sourceTree = "<group>"; };
+		AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationButton.swift; sourceTree = "<group>"; };
 		ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */,
 				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
 				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
 			);
@@ -412,6 +415,11 @@
 					ADFF57031CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = W375UQHBF4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					ADFF57171CEFBD9A00DE6B7E = {
 						CreatedOnToolsVersion = 7.3;
@@ -609,6 +617,7 @@
 				AD247B411CF0E7D300CFAA16 /* FirebaseStorageManager.swift in Sources */,
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
 				AD247B491CF1103800CFAA16 /* Connection.swift in Sources */,
+				AD7501001CF3910900C2D2E4 /* RegistrationButton.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
