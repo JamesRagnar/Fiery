@@ -21,6 +21,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     private var _myUserImage: UIImage!
     private var _peerUserImage: UIImage!
     
+    private var _messages = [Message]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +35,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         
         _conversationManager = connection.conversationManager
         assert(_conversationManager != nil)
-        _conversationManager.delegate = self
+        _messages = _conversationManager.messagesByDate()
         
         if let myName = _currentUser.name() {
             self.senderDisplayName = myName
@@ -44,6 +46,18 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         
         _myUserImage = _currentUser.image()
         _peerUserImage = connection.user!.image()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        _conversationManager.delegate = self
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        _conversationManager.delegate = nil
     }
     
     //    MARK: Action Responders
@@ -72,6 +86,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     func newMessageAdded(message: Message) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self._messages.append(message)
             self.finishReceivingMessageAnimated(true)
         }
     }
@@ -80,8 +95,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         
-        let messages = _conversationManager.messagesByDate()
-        let message = messages[indexPath.row]
+        let message = _messages[indexPath.row]
         
         if let messageType = message.type() {
             switch messageType {
@@ -129,8 +143,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        let messages = _conversationManager.messagesByDate()
-        let message = messages[indexPath.row]
+        let message = _messages[indexPath.row]
         
         if message.senderId() == _currentUser.snapshotKey() {
             return bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.grayColor())
@@ -141,7 +154,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         
-        let message = _conversationManager.messagesByDate()[indexPath.row]
+        let message = _messages[indexPath.row]
         if message.senderId() == _currentUser.snapshotKey() {
             return JSQMessagesAvatarImageFactory.avatarImageWithImage(_myUserImage, diameter: 40)
         } else {
@@ -154,14 +167,14 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _conversationManager.messagesByDate().count
+        return _messages.count
     }
     
     //    MARK: Image Picker
     
     func showImagePicker() {
         
-        let actionSheet = UIAlertController(title: nil, message: "Change your profile image", preferredStyle: .ActionSheet)
+        let actionSheet = UIAlertController(title: nil, message: "Send an image", preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             
