@@ -5,7 +5,7 @@ before_install:
   - gem install slather
 
 script:
-  - set -o pipefail && xcodebuild test -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty
+  - ./fastlane/travis.sh
 
 after_success: slather || echo "Slather failed"
 
