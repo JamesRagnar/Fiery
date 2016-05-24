@@ -76,6 +76,14 @@
                BlueprintName = "FieryUITests"
                ReferencedContainer = "container:Fiery.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "FieryUITests">
+               </Test>
+               <Test
+                  Identifier = "FieryUITests/testExample()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
