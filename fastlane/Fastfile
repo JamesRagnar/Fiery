@@ -19,8 +19,6 @@ platform :ios do
 
     increment_build_number
 
-    scan(scheme: "FieryAdhoc")
-
     match(
 	app_identifier: "app.ragnar.Fiery.ad-hoc", 
 	type: "adhoc"
