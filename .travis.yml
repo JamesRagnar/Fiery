@@ -1,16 +1,19 @@
 language: objective-c
 osx_image: xcode7.3
+
 before_install:
-- gem install slather
+  - gem install slather
+
 script:
-- set -o pipefail && xcodebuild test -workspace Fiery.xcworkspace -scheme FieryTest
-  -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-  | xcpretty
+  - set -o pipefail && xcodebuild test -workspace Fiery.xcworkspace -scheme FieryTest -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty
+
 after_success: slather || echo "Slather failed"
+
 branches:
   only:
   - master
   - devel
+
 notifications:
   email: false
   slack:
