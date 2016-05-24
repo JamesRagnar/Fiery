@@ -38,12 +38,12 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
-        _emailField.placeholder = "email"
+        _emailField.placeholder = "Email"
         _emailField.delegate = self
         contentView.addSubview(_emailField)
         
         _passwordField.secureTextEntry = true
-        _passwordField.placeholder = "password"
+        _passwordField.placeholder = "Password"
         _passwordField.delegate = self
         contentView.addSubview(_passwordField)
         

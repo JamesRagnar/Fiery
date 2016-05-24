@@ -21,11 +21,11 @@ class LoginViewController: RegistrationParentViewController {
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
-        _emailField.placeholder = "emaily@mcEmailFace.com"
+        _emailField.placeholder = "Email"
         contentView.addSubview(_emailField)
         
         _passwordField.secureTextEntry = true
-        _passwordField.placeholder = "Secret Pass"
+        _passwordField.placeholder = "Password"
         contentView.addSubview(_passwordField)
         
         _confirmButton.setTitle("Login", forState: .Normal)

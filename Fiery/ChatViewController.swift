@@ -135,7 +135,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         if message.senderId() == _currentUser.snapshotKey() {
             return bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.grayColor())
         } else {
-            return bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.greenColor())
+            return bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.fieryGrayColor())
         }
     }
     
