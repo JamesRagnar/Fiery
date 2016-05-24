@@ -2,17 +2,15 @@ language: objective-c
 osx_image: xcode7.3
 
 before_install:
-  - gem install slather
+#  - gem install slather
+   - gem install fastlane
+
+install: true #skips the pod install since Fastlane will do that itself
 
 script:
   - ./fastlane/travis.sh
 
-after_success: slather || echo "Slather failed"
-
-branches:
-  only:
-  - master
-  - devel
+# after_success: slather || echo "Slather failed"
 
 notifications:
   email: false

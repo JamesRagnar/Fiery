@@ -1,5 +1,5 @@
 
-fastlane_version "1.85.0"
+fastlane_version "1.90.0"
 
 default_platform :ios
 
@@ -12,6 +12,23 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     scan(scheme: "FieryTest")
+  end
+
+  desc "TestFlight AdHoc Build"
+  lane :testflight do
+
+    increment_build_number
+
+    match(type: "adhoc")
+
+    gym(
+	export_method: "app-store",
+	scheme: "Fiery", 
+	workspace: "Fiery.xcworkspace"
+	)
+
+    pilot
+
   end
 
 end

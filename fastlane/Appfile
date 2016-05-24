@@ -1,4 +1,4 @@
-app_identifier "app.ragnar.Fiery" # The bundle identifier of your app
+app_identifier "app.ragnar.FieryChat" # The bundle identifier of your app
 apple_id "james.harquail@hotmail.com" # Your Apple email address
 
 team_id "W375UQHBF4"  # Developer Portal Team ID
