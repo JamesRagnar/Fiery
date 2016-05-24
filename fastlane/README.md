@@ -11,6 +11,11 @@ sudo gem install fastlane
 fastlane ios test
 ```
 Runs all the tests
+### ios testflight
+```
+fastlane ios testflight
+```
+TestFlight AdHoc Build
 
 ----
 

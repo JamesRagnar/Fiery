@@ -15,7 +15,7 @@ platform :ios do
   end
 
   desc "TestFlight AdHoc Build"
-  lane :test flight do
+  lane :testflight do
 
     match(type: "adhoc")
 
