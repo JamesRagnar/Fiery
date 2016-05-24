@@ -5,6 +5,6 @@ if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]; then
 fi
 
 if [[ "$TRAVIS_BRANCH" == "testflight" ]]; then
-  fastlane testflight
+
   exit $?
 fi

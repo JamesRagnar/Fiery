@@ -22,6 +22,7 @@ platform :ios do
     match(type: "adhoc")
 
     gym(
+	export_method: "app-store",
 	scheme: "Fiery", 
 	workspace: "Fiery.xcworkspace"
 	)
