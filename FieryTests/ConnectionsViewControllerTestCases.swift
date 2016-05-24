@@ -24,11 +24,11 @@ class ConnectionViewControllerTestCases: XCTestCase {
     
     //    MARK: View
     
-    func testView() {
-        let _ = connVC.view
-    }
-    
-    func testLayout() {
-        connVC.viewWillLayoutSubviews()
-    }
+//    func testView() {
+//        let _ = connVC.view
+//    }
+//    
+//    func testLayout() {
+//        connVC.viewWillLayoutSubviews()
+//    }
 }
