@@ -6,13 +6,12 @@ default_platform :ios
 platform :ios do
 
   before_all do
-    ensure_git_status_clean
     cocoapods
   end
 
   desc "Runs all the tests"
   lane :test do
-    scan(scheme: FieryTest)
+    scan(scheme: "FieryTest")
   end
 
 end
