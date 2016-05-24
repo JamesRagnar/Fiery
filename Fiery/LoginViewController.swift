@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: RegistrationParentViewController {
 
     private let _emailField = RegistrationTextField()
     private let _passwordField = RegistrationTextField()
@@ -18,28 +18,32 @@ class LoginViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.whiteColor()
-        
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
         _emailField.placeholder = "emaily@mcEmailFace.com"
-        view.addSubview(_emailField)
+        contentView.addSubview(_emailField)
         
         _passwordField.secureTextEntry = true
         _passwordField.placeholder = "Secret Pass"
-        view.addSubview(_passwordField)
+        contentView.addSubview(_passwordField)
         
         _confirmButton.setTitle("Login", forState: .Normal)
         _confirmButton.addTarget(self, action: #selector(LoginViewController.confirmButtonTapped), forControlEvents: .TouchUpInside)
-        view.addSubview(_confirmButton)
+        contentView.addSubview(_confirmButton)
+        
+        contentViewUpdated(view.frame)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+//    MARK: Content View Layout
+    
+    override func contentViewUpdated(frame: CGRect) {
+        super.contentViewUpdated(frame)
         
         let textFieldframe = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 60, 40)
-        let viewCenter = view.center
+        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
+        
+        let viewCenter = CGPointMake(CGRectGetMidX(contentView.bounds), CGRectGetMidY(contentView.bounds))
         
         _emailField.frame = textFieldframe
         _emailField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
@@ -47,9 +51,8 @@ class LoginViewController: UIViewController {
         _passwordField.frame = textFieldframe
         _passwordField.center = viewCenter
         
-        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
         _confirmButton.frame = buttonFrame
-        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
+        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 60)
     }
     
 //    MARK: Action Responders
@@ -61,6 +64,8 @@ class LoginViewController: UIViewController {
             login(email, password: password)
         }
     }
+    
+    
     
 //    MARK: Validators
     

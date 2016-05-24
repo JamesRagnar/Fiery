@@ -9,18 +9,16 @@
 import UIKit
 import MobileCoreServices
 
-class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegistrationViewController: RegistrationParentViewController, UITextFieldDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let _addPhotoButton = UIButton()
-
     private let _nameField = RegistrationTextField()
     private let _emailField = RegistrationTextField()
     private let _passwordField = RegistrationTextField()
-    
     private let _confirmButton = RegistrationButton()
     
     private var _selectedImage: UIImage?
-
+    
     override func loadView() {
         super.loadView()
         
@@ -30,51 +28,73 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImag
         _addPhotoButton.layer.masksToBounds = true
         _addPhotoButton.setTitle("Add Photo", forState: .Normal)
         _addPhotoButton.addTarget(self, action: #selector(RegistrationViewController.addPhotoButtonTapped), forControlEvents: .TouchUpInside)
-        view.addSubview(_addPhotoButton)
+        contentView.addSubview(_addPhotoButton)
         
         _nameField.autocorrectionType = .No
         _nameField.placeholder = "Name"
         _nameField.delegate = self
-        view.addSubview(_nameField)
+        contentView.addSubview(_nameField)
         
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
         _emailField.placeholder = "email"
         _emailField.delegate = self
-        view.addSubview(_emailField)
+        contentView.addSubview(_emailField)
         
         _passwordField.secureTextEntry = true
         _passwordField.placeholder = "password"
         _passwordField.delegate = self
-        view.addSubview(_passwordField)
+        contentView.addSubview(_passwordField)
         
         _confirmButton.setTitle("Register", forState: .Normal)
         _confirmButton.addTarget(self, action: #selector(RegistrationViewController.confirmButtonTapped), forControlEvents: .TouchUpInside)
-        view.addSubview(_confirmButton)
+        contentView.addSubview(_confirmButton)
+        
+        contentViewUpdated(view.frame)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func contentViewUpdated(frame: CGRect) {
+        super.contentViewUpdated(frame)
         
         let textFieldframe = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 60, 40)
-        let viewCenter = view.center
-        
-        _addPhotoButton.frame = CGRectMake(0, 100, 150, 150)
-        _addPhotoButton.layer.cornerRadius = 75
-        _addPhotoButton.center.x = viewCenter.x
+        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
+        let viewCenter = CGPointMake(CGRectGetMidX(contentView.bounds), CGRectGetMidY(contentView.bounds))
         
         _nameField.frame = textFieldframe
-        _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
-        
         _emailField.frame = textFieldframe
-        _emailField.center = viewCenter
-        
         _passwordField.frame = textFieldframe
-        _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
-        
-        _confirmButton.frame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
-        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 120)
+        _confirmButton.frame = buttonFrame
+
+        let contentHeight: CGFloat = 40 + 40 + 40 + 40 + 50 + 200
+
+        if CGRectGetHeight(frame) < contentHeight {
+            
+            _addPhotoButton.alpha = 0
+            
+            let oneFithHeight = CGRectGetHeight(frame) / 5.0
+            
+            _nameField.center = CGPointMake(viewCenter.x, oneFithHeight)
+            
+            _emailField.center = CGPointMake(viewCenter.x, oneFithHeight * 2)
+            
+            _passwordField.center = CGPointMake(viewCenter.x, oneFithHeight * 3)
+            
+            _confirmButton.center = CGPointMake(viewCenter.x, oneFithHeight * 4)
+            
+        } else {
+            
+            _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
+            _emailField.center = viewCenter
+            _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
+            _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 100)
+            
+            _addPhotoButton.alpha = 1
+            
+            _addPhotoButton.frame = CGRectMake(0, 0, 200, 200)
+            _addPhotoButton.layer.cornerRadius = 100
+            _addPhotoButton.center.x = viewCenter.x
+        }
     }
     
     //    MARK: Action Responders
@@ -104,7 +124,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImag
         }
     }
     
-//    MARK: Validators
+    //    MARK: Validators
     
     func registrationFieldsValid() -> (name: String, email: String, password: String)? {
         
@@ -153,7 +173,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImag
         return false
     }
     
-//    MARK: UITextFieldDelegate
+    //    MARK: UITextFieldDelegate
     
     func textFieldDidBeginEditing(textField: UITextField) {
         
@@ -162,7 +182,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate,  UIImag
         _passwordField.clearErrorState()
     }
     
-//    MARK: ImagePicker
+    //    MARK: ImagePicker
     
     func showImagePicker() {
         

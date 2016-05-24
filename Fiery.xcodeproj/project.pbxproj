@@ -45,6 +45,7 @@
 		ADDE16FA1CF39C59007E4C50 /* UIColor+Fiery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16F91CF39C59007E4C50 /* UIColor+Fiery.swift */; };
 		ADDE16FC1CF39EB4007E4C50 /* RegistrationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16FB1CF39EB4007E4C50 /* RegistrationTextField.swift */; };
 		ADDE16FE1CF3A50A007E4C50 /* NSString+Fiery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16FD1CF3A50A007E4C50 /* NSString+Fiery.swift */; };
+		ADDE17001CF3B423007E4C50 /* RegistrationParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16FF1CF3B423007E4C50 /* RegistrationParentViewController.swift */; };
 		ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */; };
 		ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */; };
 		ADFF570D1CEFBD9A00DE6B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFF570B1CEFBD9A00DE6B7E /* Main.storyboard */; };
@@ -119,6 +120,7 @@
 		ADDE16F91CF39C59007E4C50 /* UIColor+Fiery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Fiery.swift"; sourceTree = "<group>"; };
 		ADDE16FB1CF39EB4007E4C50 /* RegistrationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTextField.swift; sourceTree = "<group>"; };
 		ADDE16FD1CF3A50A007E4C50 /* NSString+Fiery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Fiery.swift"; sourceTree = "<group>"; };
+		ADDE16FF1CF3B423007E4C50 /* RegistrationParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationParentViewController.swift; sourceTree = "<group>"; };
 		ADFF57041CEFBD9A00DE6B7E /* Fiery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFF57071CEFBD9A00DE6B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFF57091CEFBD9A00DE6B7E /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				ADFF573B1CEFD03D00DE6B7E /* AuthenticationViewController.swift */,
+				ADDE16FF1CF3B423007E4C50 /* RegistrationParentViewController.swift */,
 				AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */,
 				AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */,
 				AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */,
@@ -629,6 +632,7 @@
 				AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */,
 				AD247B491CF1103800CFAA16 /* Connection.swift in Sources */,
 				AD7501001CF3910900C2D2E4 /* RegistrationButton.swift in Sources */,
+				ADDE17001CF3B423007E4C50 /* RegistrationParentViewController.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
