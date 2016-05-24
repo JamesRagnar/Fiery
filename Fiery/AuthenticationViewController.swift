@@ -47,12 +47,6 @@ class AuthenticationViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
     //    MARK: Action Responders
     
     func loginButtonTapped() {

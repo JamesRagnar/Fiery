@@ -65,8 +65,6 @@ class LoginViewController: RegistrationParentViewController {
         }
     }
     
-    
-    
 //    MARK: Validators
     
     func loginFieldsValid() -> (email: String, password: String)? {

@@ -11,6 +11,7 @@ import UIKit
 class RegistrationParentViewController: UIViewController {
     
     let contentView = UIView()
+    private let _cancelButton = UIButton()
     
     override func loadView() {
         super.loadView()
@@ -18,6 +19,18 @@ class RegistrationParentViewController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
         view.addSubview(contentView)
+        
+        _cancelButton.setTitle("Cancel", forState: .Normal)
+        _cancelButton.setTitleColor(UIColor.fieryGrayColor(), forState: .Normal)
+        _cancelButton.addTarget(self, action: #selector(RegistrationParentViewController.cancelButtonTapped), forControlEvents: .TouchUpInside)
+        view.addSubview(_cancelButton)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        _cancelButton.sizeToFit()
+        _cancelButton.center = CGPointMake(CGRectGetMidX(view.bounds), CGRectGetHeight(view.bounds) - 30)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,6 +48,13 @@ class RegistrationParentViewController: UIViewController {
     func contentViewUpdated(frame: CGRect) {
         
         contentView.frame = frame
+    }
+    
+//    MAR: Action Responders
+    
+    func cancelButtonTapped() {
+        
+        navigationController?.popViewControllerAnimated(true)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -63,7 +83,7 @@ class RegistrationParentViewController: UIViewController {
                 
                 UIView.animateWithDuration(duration, delay: NSTimeInterval(0),options: animationCurve, animations: {
                     
-                    let viewFrame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), contentViewHeight - 64)
+                    let viewFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), contentViewHeight)
                     self.contentViewUpdated(viewFrame)
                     
                     }, completion: nil)

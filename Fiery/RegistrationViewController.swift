@@ -68,32 +68,34 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
 
         let contentHeight: CGFloat = 40 + 40 + 40 + 40 + 50 + 200
 
+        
+        
         if CGRectGetHeight(frame) < contentHeight {
             
-            _addPhotoButton.alpha = 0
+            _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 75)
+            _emailField.center = CGPointMake(viewCenter.x, viewCenter.y - 25)
+            _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 25)
+            _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 75)
             
-            let oneFithHeight = CGRectGetHeight(frame) / 5.0
-            
-            _nameField.center = CGPointMake(viewCenter.x, oneFithHeight)
-            
-            _emailField.center = CGPointMake(viewCenter.x, oneFithHeight * 2)
-            
-            _passwordField.center = CGPointMake(viewCenter.x, oneFithHeight * 3)
-            
-            _confirmButton.center = CGPointMake(viewCenter.x, oneFithHeight * 4)
+            _addPhotoButton.userInteractionEnabled = false
+            _addPhotoButton.alpha = 0.25
+            _addPhotoButton.center = viewCenter
             
         } else {
             
-            _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
-            _emailField.center = viewCenter
-            _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
-            _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 100)
+            _nameField.center = CGPointMake(viewCenter.x, viewCenter.y - 25)
+            _emailField.center = CGPointMake(viewCenter.x, viewCenter.y + 25)
+            _passwordField.center = CGPointMake(viewCenter.x, viewCenter.y + 75)
+            _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 125)
             
+            // Center the image view in the remaining space
+            let remainingHeight = (CGRectGetMinY(_nameField.frame) - 20) / 2.0
+            
+            _addPhotoButton.userInteractionEnabled = true
             _addPhotoButton.alpha = 1
-            
-            _addPhotoButton.frame = CGRectMake(0, 0, 200, 200)
-            _addPhotoButton.layer.cornerRadius = 100
-            _addPhotoButton.center.x = viewCenter.x
+            _addPhotoButton.frame = CGRectMake(0, 0, 160, 160)
+            _addPhotoButton.layer.cornerRadius = 80
+            _addPhotoButton.center = CGPointMake(viewCenter.x, remainingHeight + 20)
         }
     }
     

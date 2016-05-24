@@ -19,9 +19,7 @@ class RootDataManager {
     //    MARK: Managers
     
     func currentUser() -> User? {
-        if _currentUser == nil {
-            print("Current user is nil, this is a bad thing")
-        }
+        assert(_currentUser != nil, "CurrentUser has not been set")
         return _currentUser
     }
     
@@ -48,8 +46,7 @@ class RootDataManager {
             })
         } else {
             response(success: false)
-        }
-        
+        }   
     }
     
     func logout() {
