@@ -12,7 +12,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    scan --workspace Fiery.xcworkspace --scheme FieryTest --clean
+    scan(scheme: FieryTest)
   end
 
 end
