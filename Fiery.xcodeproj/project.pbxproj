@@ -713,6 +713,85 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		AD1FED7F1CF4BBDD00A21089 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_CODE_COVERAGE = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		AD1FED801CF4BBDD00A21089 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				INFOPLIST_FILE = Fiery/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "app.ragnar.Fiery.ad-hoc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Ad Hoc";
+		};
+		AD1FED811CF4BBDD00A21089 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E1B6D54EC8CB5AA9283AF16 /* Pods-FieryTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FieryTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiery.app/Fiery";
+			};
+			name = "Ad Hoc";
+		};
+		AD1FED821CF4BBDD00A21089 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = FieryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Fiery;
+			};
+			name = "Ad Hoc";
+		};
 		ADFF572A1CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -760,7 +839,7 @@
 			};
 			name = Debug;
 		};
-		ADFF572B1CEFBD9A00DE6B7E /* Release */ = {
+		ADFF572B1CEFBD9A00DE6B7E /* App Store */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -798,7 +877,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "App Store";
 		};
 		ADFF572D1CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -808,25 +887,25 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
+				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		ADFF572E1CEFBD9A00DE6B7E /* Release */ = {
+		ADFF572E1CEFBD9A00DE6B7E /* App Store */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.Fiery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = "App Store";
 		};
 		ADFF57301CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -841,7 +920,7 @@
 			};
 			name = Debug;
 		};
-		ADFF57311CEFBD9A00DE6B7E /* Release */ = {
+		ADFF57311CEFBD9A00DE6B7E /* App Store */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E1B6D54EC8CB5AA9283AF16 /* Pods-FieryTests.release.xcconfig */;
 			buildSettings = {
@@ -852,7 +931,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiery.app/Fiery";
 			};
-			name = Release;
+			name = "App Store";
 		};
 		ADFF57331CEFBD9A00DE6B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -866,7 +945,7 @@
 			};
 			name = Debug;
 		};
-		ADFF57341CEFBD9A00DE6B7E /* Release */ = {
+		ADFF57341CEFBD9A00DE6B7E /* App Store */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB9C00E1026821BF7E808724 /* Pods-FieryUITests.release.xcconfig */;
 			buildSettings = {
@@ -876,7 +955,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = Fiery;
 			};
-			name = Release;
+			name = "App Store";
 		};
 /* End XCBuildConfiguration section */
 
@@ -885,37 +964,41 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFF572A1CEFBD9A00DE6B7E /* Debug */,
-				ADFF572B1CEFBD9A00DE6B7E /* Release */,
+				ADFF572B1CEFBD9A00DE6B7E /* App Store */,
+				AD1FED7F1CF4BBDD00A21089 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "App Store";
 		};
 		ADFF572C1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "Fiery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFF572D1CEFBD9A00DE6B7E /* Debug */,
-				ADFF572E1CEFBD9A00DE6B7E /* Release */,
+				ADFF572E1CEFBD9A00DE6B7E /* App Store */,
+				AD1FED801CF4BBDD00A21089 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "App Store";
 		};
 		ADFF572F1CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFF57301CEFBD9A00DE6B7E /* Debug */,
-				ADFF57311CEFBD9A00DE6B7E /* Release */,
+				ADFF57311CEFBD9A00DE6B7E /* App Store */,
+				AD1FED811CF4BBDD00A21089 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "App Store";
 		};
 		ADFF57321CEFBD9A00DE6B7E /* Build configuration list for PBXNativeTarget "FieryUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFF57331CEFBD9A00DE6B7E /* Debug */,
-				ADFF57341CEFBD9A00DE6B7E /* Release */,
+				ADFF57341CEFBD9A00DE6B7E /* App Store */,
+				AD1FED821CF4BBDD00A21089 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "App Store";
 		};
 /* End XCConfigurationList section */
 	};

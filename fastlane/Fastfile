@@ -14,4 +14,17 @@ platform :ios do
     scan(scheme: "FieryTest")
   end
 
+  desc "TestFlight AdHoc Build"
+  lane :test flight do
+
+    match(type: "adhoc")
+
+    gym(
+	configuration: "Ad Hoc",
+	scheme: "FieryAdhoc", 
+	workspace: "Fiery.xcworkspace"
+	)
+
+  end
+
 end
