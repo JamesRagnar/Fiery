@@ -1,13 +1,5 @@
 git_url "https://gitlab.com/JamesRagnar/FieryCertificates.git"
 
-type "development" # The default type, can be: appstore, adhoc or development
-app_identifier "app.ragnar.Fiery.debug"
+app_identifier "app.ragnar.FieryChat"
 username "james.harquail@hotmail.com"
 
-type "adhoc"
-app_identifier "app.ragnar.Fiery.ad-hoc"
-username "james.harquail@hotmail.com"
-
-type "appstore"
-app_identifier "app.ragnar.Fiery"
-username "james.harquail@hotmail.com"

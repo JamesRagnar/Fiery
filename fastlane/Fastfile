@@ -1,5 +1,5 @@
 
-fastlane_version "1.85.0"
+fastlane_version "1.90.0"
 
 default_platform :ios
 
@@ -19,14 +19,10 @@ platform :ios do
 
     increment_build_number
 
-    match(
-	app_identifier: "app.ragnar.Fiery.ad-hoc", 
-	type: "adhoc"
-	)
+    match(type: "adhoc")
 
     gym(
-	configuration: "Ad Hoc",
-	scheme: "FieryAdhoc", 
+	scheme: "Fiery", 
 	workspace: "Fiery.xcworkspace"
 	)
 
