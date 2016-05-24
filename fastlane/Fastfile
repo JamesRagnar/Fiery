@@ -12,7 +12,7 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
-    scheme FieryTest
+    scheme "FieryTest"
     scan
   end
 
