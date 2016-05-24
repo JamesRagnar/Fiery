@@ -21,14 +21,14 @@ class FSOReferenceObserver: NSObject {
 
     private var _eventHandles = [FIRDataEventType: UInt]()
     
-    convenience init(nodeRef: FIRDatabaseReference) {
+    convenience init(nodeRef: FIRDatabaseReference?) {
         self.init()
         _firebaseReference = nodeRef
     }
     
-    convenience init(snapshot: FIRDataSnapshot) {
+    convenience init(snapshot: FIRDataSnapshot?) {
         self.init()
-        _firebaseReference = snapshot.ref
+        _firebaseReference = snapshot?.ref
     }
     
     override init() {

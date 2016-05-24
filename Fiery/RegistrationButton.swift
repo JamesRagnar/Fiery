@@ -10,12 +10,16 @@ import UIKit
 
 class RegistrationButton: UIButton {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    init() {
+        super.init(frame: CGRectZero)
+        
+        backgroundColor = UIColor.fieryGrayColor()
+        
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
     }
-    */
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

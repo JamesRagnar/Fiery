@@ -19,17 +19,26 @@ class ConversationManager: FSOReferenceObserver {
         
         print("ConversationManager | Started Observeration")
         
+        var firstLoad = true
+        var loadCount = 0
+        
         startObserveringEvent(.ChildAdded) { (snapshot) in
             
             if snapshot.value is NSNull {
                 print("ConversationManager | Got null snapshot")
             } else {
-                print("ConversationManager | Got new Message")
+                if firstLoad != true {
+                    print("ConversationManager | Got new Message")
+                } else {
+                    loadCount += 1
+                }
                 self.handleNewMessage(snapshot)
             }
         }
         
         getOneTimeValue { (snapshot) in
+            print("ConversationManager | Got \(loadCount) Messages")
+            firstLoad = false
             complete()
         }
     }

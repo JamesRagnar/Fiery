@@ -20,8 +20,8 @@ class FSOSnapshot: FSOReferenceObserver {
         return dataSnapshot
     }
     
-    convenience init(snapshot: FIRDataSnapshot) {
-        self.init(nodeRef: snapshot.ref)
+    convenience init(snapshot: FIRDataSnapshot?) {
+        self.init(nodeRef: snapshot?.ref)
         dataSnapshot = snapshot
     }
 

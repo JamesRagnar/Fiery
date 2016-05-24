@@ -28,8 +28,7 @@ class RootDataManager {
     func connectionsManager() -> ConnectionsManager {
         if _connectionsManager == nil {
             let myConnectionsRef = FirebaseDataManager.myConnectionsRef()
-            assert(myConnectionsRef != nil, "Connection ref accessed before user authenticated")
-            _connectionsManager = ConnectionsManager(nodeRef: myConnectionsRef!)
+            _connectionsManager = ConnectionsManager(nodeRef: myConnectionsRef)
         }
         return _connectionsManager!
     }
