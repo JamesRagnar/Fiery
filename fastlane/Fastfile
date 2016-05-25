@@ -11,7 +11,14 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
+
     scan(scheme: "FieryTest")
+
+    slather(
+      scheme: 'FieryTest',
+      workspace: 'Fiery.xcworkspace'
+    )
+
   end
 
   desc "TestFlight AdHoc Build"

@@ -14,7 +14,7 @@
     <testcase classname='FieryTests.ConnectionTableViewCellTestCases' name='testView' time='0.001'/>
   </testsuite>
   <testsuite name='FieryTests.LoginViewControllerTestCases' tests='27' failures='0'>
-    <testcase classname='FieryTests.LoginViewControllerTestCases' name='testDashEmail' time='0.001'/>
+    <testcase classname='FieryTests.LoginViewControllerTestCases' name='testDashEmail' time='0.002'/>
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testDashInDomainEmail' time='0.001'/>
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testDotInAddressEmail' time='0.001'/>
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testDotInSubdomainEmail' time='0.001'/>
@@ -40,10 +40,10 @@
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testUnicodeEmail' time='0.001'/>
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testValidEmail' time='0.001'/>
     <testcase classname='FieryTests.LoginViewControllerTestCases' name='testValidPassword' time='0.001'/>
-    <testcase classname='FieryTests.LoginViewControllerTestCases' name='testView' time='0.002'/>
+    <testcase classname='FieryTests.LoginViewControllerTestCases' name='testView' time='0.001'/>
   </testsuite>
   <testsuite name='FieryTests.RegistrationViewControllerTestCases' tests='2' failures='0'>
-    <testcase classname='FieryTests.RegistrationViewControllerTestCases' name='testLayout' time='0.002'/>
+    <testcase classname='FieryTests.RegistrationViewControllerTestCases' name='testLayout' time='0.001'/>
     <testcase classname='FieryTests.RegistrationViewControllerTestCases' name='testView' time='0.002'/>
   </testsuite>
   <testsuite name='FieryTests.RootViewControllerTestCases' tests='2' failures='0'>
