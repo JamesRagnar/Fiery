@@ -15,6 +15,7 @@ platform :ios do
     scan(scheme: "FieryTest")
 
     slather(
+      build_directory: 'Fiery',
       scheme: 'FieryTest',
       workspace: 'Fiery.xcworkspace'
     )
