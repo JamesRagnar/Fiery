@@ -11,7 +11,17 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
+
+    ENV["FASTLANE_XCODE_LIST_TIMEOUT"] = "120"
+
     scan(scheme: "FieryTest")
+
+    slather(
+      build_directory: '/Users/travis/Library/Developer/Xcode/DerivedData',
+      scheme: 'FieryTest',
+      workspace: 'Fiery.xcworkspace'
+    )
+
   end
 
   desc "TestFlight AdHoc Build"
