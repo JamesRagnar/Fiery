@@ -15,7 +15,7 @@ platform :ios do
     scan(scheme: "FieryTest")
 
     slather(
-      build_directory: './',
+      build_directory: '/Users/travis/Library/Developer/Xcode/DerivedData',
       scheme: 'FieryTest',
       workspace: 'Fiery.xcworkspace'
     )
