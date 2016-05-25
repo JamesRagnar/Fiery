@@ -2,8 +2,8 @@ language: objective-c
 osx_image: xcode7.3
 
 before_install:
-#  - gem install slather
-   - gem install fastlane
+  - gem install slather
+  - gem install fastlane
 
 install: true #skips the pod install since Fastlane will do that itself
 
