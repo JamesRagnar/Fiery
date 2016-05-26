@@ -117,11 +117,12 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
     
     func register(name: String, email: String, password: String) {
         
-        FirebaseDataManager.registerWithCredentials(name, image: _selectedImage, email:email, password: password) { (success) in
+        FirebaseDataManager.registerWithCredentials(name, image: _selectedImage, email:email, password: password) { (success, error) in
             
             if success {
-                
                 self.dismissViewControllerAnimated(false, completion: nil)
+            } else if error != nil {
+                print(error)
             }
         }
     }

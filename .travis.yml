@@ -12,6 +12,10 @@ script:
 
 # after_success: slather || echo "Slather failed"
 
+branches:
+  only:
+    - devel
+
 notifications:
   email: false
   slack:

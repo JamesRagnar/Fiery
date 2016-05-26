@@ -102,11 +102,14 @@ class LoginViewController: RegistrationParentViewController {
     
     func login(email: String, password: String) {
         
-        FirebaseDataManager.loginWithCredentials(email, password: password) { (success) in
+        FirebaseDataManager.loginWithCredentials(email, password: password) { (success, error) in
             
             if success {
-                
                 self.dismissViewControllerAnimated(false, completion: nil)
+            } else {
+                if error != nil {
+                    print(error)
+                }
             }
         }
     }
