@@ -13,7 +13,7 @@ class RegistrationButton: UIButton {
     init() {
         super.init(frame: CGRectZero)
         
-        backgroundColor = UIColor.fieryGrayColor()
+        setBackgroundImage(UIImage.imageWithColor(UIColor.fieryGrayColor()), forState: .Normal)
         
         layer.cornerRadius = 5
         layer.masksToBounds = true

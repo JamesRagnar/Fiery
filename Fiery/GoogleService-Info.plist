@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>306905621920-90eb96ock8g48cd93qkt25nadql9o9nu.apps.googleusercontent.com</string>
+	<string>984124263356-tjknlh4otb188loc3vejl9hchsv3t3s1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.306905621920-90eb96ock8g48cd93qkt25nadql9o9nu</string>
+	<string>com.googleusercontent.apps.984124263356-tjknlh4otb188loc3vejl9hchsv3t3s1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBZIdUIxjVB1-045HzErl6a8ov_bAtd_nc</string>
+	<string>AIzaSyCIk4BlBBjmnoevySub__quylXk2q_xHCs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>306905621920</string>
+	<string>984124263356</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>app.ragnar.Fiery</string>
+	<string>app.ragnar.FieryChat</string>
 	<key>PROJECT_ID</key>
-	<string>fiery-405fb</string>
+	<string>fiery-development</string>
 	<key>STORAGE_BUCKET</key>
-	<string>fiery-405fb.appspot.com</string>
+	<string>fiery-development.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:306905621920:ios:6157a9ff2a3bcc74</string>
+	<string>1:984124263356:ios:3c95ee3f5dff9c36</string>
 	<key>DATABASE_URL</key>
-	<string>https://fiery-405fb.firebaseio.com</string>
+	<string>https://fiery-development.firebaseio.com</string>
 </dict>
 </plist>

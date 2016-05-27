@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: RegistrationParentViewController {
+class LoginViewController: RegistrationParentViewController, UITextFieldDelegate {
 
     private let _emailField = RegistrationTextField()
     private let _passwordField = RegistrationTextField()
@@ -47,9 +47,11 @@ class LoginViewController: RegistrationParentViewController {
         
         _emailField.frame = textFieldframe
         _emailField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
+        _emailField.delegate = self
         
         _passwordField.frame = textFieldframe
         _passwordField.center = viewCenter
+        _passwordField.delegate = self
         
         _confirmButton.frame = buttonFrame
         _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 60)
@@ -65,17 +67,27 @@ class LoginViewController: RegistrationParentViewController {
         }
     }
     
+//    MARK: UITextFieldDelegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        _emailField.clearErrorState()
+        _passwordField.clearErrorState()
+    }
+    
 //    MARK: Validators
     
     func loginFieldsValid() -> (email: String, password: String)? {
         
         let emailString = _emailField.text
         if !emailValid(emailString) {
+            _emailField.showErrorState()
             return nil
         }
         
         let passwordString = _passwordField.text
         if !passwordValid(passwordString) {
+            _passwordField.showErrorState()
             return nil
         }
         
@@ -108,9 +120,18 @@ class LoginViewController: RegistrationParentViewController {
                 self.dismissViewControllerAnimated(false, completion: nil)
             } else {
                 if error != nil {
-                    print(error)
+                    self.showDetailModalForError(error!)
                 }
             }
         }
+    }
+    
+//    MARK: 
+    
+    func showDetailModalForError(error: NSError) {
+        
+        let modalView = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+        modalView.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        presentViewController(modalView, animated: true, completion: nil)
     }
 }
