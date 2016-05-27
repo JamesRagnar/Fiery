@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import Haneke
 
 class User: FSOSnapshot {
@@ -21,27 +22,45 @@ class User: FSOSnapshot {
     
     //    MARK: Data Observers
     
-    func startObservingUserData(firstLoadCallback: () -> Void) {
+    func fetchDataOneTime(response: (success: Bool) -> Void) {
+        
+        getOneTimeValue { (snapshot) in
+            
+            let downloadSuccess = self.handleUserData(snapshot)
+            
+            response(success: downloadSuccess)
+        }
+    }
+    
+    func startObservingUserData() {
         
         startObserveringEvent(.Value) { (snapshot) in
             
-            if snapshot.value is NSNull {
-                
-                print("User | Snapshot Null")
-                
-            } else {
-                
-                self.dataSnapshot = snapshot
-                
-                if let userId = self.userId() {
-                    
-                    print("User | \(userId) | Updated")
+            self.handleUserData(snapshot)
+        }
+    }
+    
+    private func handleUserData(snapshot: FIRDataSnapshot) -> Bool {
+        
+        if snapshot.value is NSNull {
+            
+            print("User | Snapshot Null")
+            return false
 
-                }
-                
-                self.fetchUserImage()
-                firstLoadCallback()
+        } else {
+            
+            self.dataSnapshot = snapshot
+            
+            if let userId = self.userId() {
+                print("User | \(userId) | Updated")
+            } else {
+                print("User | Invalid Id")
+                return false
             }
+            
+            self.fetchUserImage()
+            
+            return true
         }
     }
     

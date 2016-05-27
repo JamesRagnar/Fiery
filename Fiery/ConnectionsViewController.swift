@@ -21,9 +21,7 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         
         view.backgroundColor = UIColor.whiteColor()
         
-        if let userName = RootDataManager.sharedInstance.currentUser()?.name() {
-            title = userName
-        }
+        title = "Connections"
         
         let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConnectionsViewController.logoutButtonTapped))
         navigationItem.setLeftBarButtonItem(logoutButton, animated: false)
@@ -152,6 +150,12 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let connection = _connections[indexPath.row]
-        openChatWithConnection(connection)
+        
+        let profileVC = UserProfileViewController()
+        profileVC.user = connection.user
+        navigationController?.pushViewController(profileVC, animated: true)
+        
+        
+//        openChatWithConnection(connection)
     }
 }

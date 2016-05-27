@@ -49,7 +49,7 @@ class FSOReferenceObserver: NSObject {
         })
     }
     
-    func getOneTimeValue(response: (snapshot: FIRDataSnapshot?) -> Void) {
+    func getOneTimeValue(response: (snapshot: FIRDataSnapshot) -> Void) {
         
         firebaseReference()?.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             response(snapshot: snapshot)
