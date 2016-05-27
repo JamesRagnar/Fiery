@@ -9,22 +9,31 @@
 import UIKit
 
 class ConnectionTableViewCell: UITableViewCell {
+    
+    let userImageButton = UIButton()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        imageView?.layer.cornerRadius = 30
-        imageView?.layer.masksToBounds = true
+        userImageButton.layer.cornerRadius = 45
+        userImageButton.layer.masksToBounds = true
+        contentView.addSubview(userImageButton)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageView?.frame = CGRectMake(0, 0, 60, 60)
-        imageView?.center = CGPointMake(10 + 30, CGRectGetMidY(contentView.bounds))
+        userImageButton.frame = CGRectMake(0, 0, 90, 90)
+        userImageButton.center = CGPointMake(20 + 45, CGRectGetMidY(contentView.bounds))
         
-        let leftX = CGRectGetMaxX(imageView!.frame) + 10
-        textLabel?.frame = CGRectMake(leftX, 0, CGRectGetWidth(contentView.bounds) - leftX - 10, CGRectGetHeight(contentView.bounds))
+        let leftX = CGRectGetMaxX(userImageButton.frame) + 20
+        textLabel?.frame = CGRectMake(leftX, 0, CGRectGetWidth(contentView.bounds) - leftX - 20, CGRectGetHeight(contentView.bounds))
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        userImageButton.setImage(nil, forState: .Normal)
     }
     
     required init?(coder aDecoder: NSCoder) {

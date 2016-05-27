@@ -98,6 +98,18 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         openUserSearchView()
     }
     
+    func userImageButtonTapped(sender: UIButton) {
+        
+        let index = sender.tag
+        
+        if _connections.count > index {
+            
+            let connection = _connections[index]
+            let user = connection.user
+            openProfile(user)
+        }
+    }
+    
 //    MARK: Logout
     
     func logout() {
@@ -121,6 +133,13 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
+    func openProfile(user: User?) {
+        
+        let profileVC = UserProfileViewController()
+        profileVC.user = user
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
 //    MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -132,14 +151,20 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         if let user = connection.user {
             
             cell.textLabel?.text = user.name()
-            cell.imageView?.image = user.image()
+            cell.userImageButton.setImage(user.image(), forState: .Normal)
+            
         }
+        
+        // update the button targets
+        cell.userImageButton.tag = indexPath.row
+        cell.userImageButton.removeTarget(nil, action: nil, forControlEvents: .TouchUpInside)
+        cell.userImageButton.addTarget(self, action: #selector(ConnectionsViewController.userImageButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
+        return 120
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,12 +175,6 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let connection = _connections[indexPath.row]
-        
-        let profileVC = UserProfileViewController()
-        profileVC.user = connection.user
-        navigationController?.pushViewController(profileVC, animated: true)
-        
-        
-//        openChatWithConnection(connection)
+        openChatWithConnection(connection)
     }
 }
