@@ -76,8 +76,7 @@ class FirebaseStorageManager {
             
             uploadTask.observeStatus(.Progress) { snapshot in
                 if let progress = snapshot.progress {
-                    let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
-                    print("FirebaseStorageManager | Upload Progress | \(percentComplete)")
+                    print("FirebaseStorageManager | Upload Progress | \(progress.completedUnitCount) / \(progress.totalUnitCount)")
                 }
             }
             
