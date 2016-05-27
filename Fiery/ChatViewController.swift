@@ -27,7 +27,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         super.viewDidLoad()
         
         _currentUser = RootDataManager.sharedInstance.currentUser()
-        assert(_currentUser.snapshotKey() != nil)
+        assert(_currentUser.userId() != nil)
         senderId = _currentUser.snapshotKey()
         
         assert(connection != nil)
