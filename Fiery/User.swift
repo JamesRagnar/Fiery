@@ -10,8 +10,8 @@ import UIKit
 import Haneke
 
 class User: FSOSnapshot {
-
-//    MARK: Field Keys
+    
+    //    MARK: Field Keys
     
     static let kName = "name"
     static let kEmail = "email"
@@ -19,16 +19,29 @@ class User: FSOSnapshot {
     
     private var _image = UIImage() // find a filler user image
     
-//    MARK: Data Observers
+    //    MARK: Data Observers
     
     func startObservingUserData(firstLoadCallback: () -> Void) {
         
         startObserveringEvent(.Value) { (snapshot) in
             
-            print("User Data Updated")
-            self.dataSnapshot = snapshot
-            self.fetchUserImage()
-            firstLoadCallback()
+            if snapshot.value is NSNull {
+                
+                print("User | Snapshot Null")
+                
+            } else {
+                
+                self.dataSnapshot = snapshot
+                
+                if let userId = self.userId() {
+                    
+                    print("User | \(userId) | Updated")
+
+                }
+                
+                self.fetchUserImage()
+                firstLoadCallback()
+            }
         }
     }
     
@@ -43,7 +56,11 @@ class User: FSOSnapshot {
         }
     }
     
-//    MARK: Field Accessors
+    //    MARK: Field Accessors
+    
+    func userId() -> String? {
+        return snapshotKey()
+    }
     
     func name() -> String? {
         return firebaseStringForKey(User.kName)

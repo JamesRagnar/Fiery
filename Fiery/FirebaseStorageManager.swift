@@ -10,7 +10,7 @@ import Firebase
 
 class FirebaseStorageManager {
     
-    private static let _kStorageAddress = "gs://fiery-405fb.appspot.com"
+    private static let _kStorageAddress = "gs://fiery-development.appspot.com"
     
     private static let _kUserImagesRef = "userImages"
     private static let _kMessageImagesRef = "messageImages"
@@ -34,11 +34,15 @@ class FirebaseStorageManager {
     
     static func updateUserProfileImage(image: UIImage, response: (imageUrl: String?) -> Void) {
         
+        print("FirebaseStorageManager | Starting User Profile Image Upload")
+        
         uploadImageToRef(image, ref: userImagesRef(), response: response)
     }
     
     static func uploadChatImage(image: UIImage, response: (imageUrl: String?) -> Void) {
         
+        print("FirebaseStorageManager | Starting Chat Message Image Upload")
+
         uploadImageToRef(image, ref: messageImagesRef(), response: response)
     }
     
@@ -46,7 +50,7 @@ class FirebaseStorageManager {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.5) {
             
-            let randomFileName = NSUUID().UUIDString + ".jpg"
+            let randomFileName = NSUUID().UUIDString + ".jpeg"
             
             let fileRef = ref.child(randomFileName)
             
@@ -55,14 +59,16 @@ class FirebaseStorageManager {
             
             let uploadTask = fileRef.putData(imageData, metadata: metadata, completion: { (storageMetaData, error) in
                 if error != nil {
+                    print("FirebaseStorageManager | Error | Uploading File")
                     print(error)
                     response(imageUrl: nil)
                 } else {
                     
                     if let downloadUrl = storageMetaData?.downloadURL() {
-                        print(downloadUrl)
+                        print("FirebaseStorageManager | Completed Upload | " + downloadUrl.description)
                         response(imageUrl: downloadUrl.description)
                     } else {
+                        print("FirebaseStorageManager | Error | No Download URL")
                         response(imageUrl: nil)
                     }
                 }
@@ -70,13 +76,12 @@ class FirebaseStorageManager {
             
             uploadTask.observeStatus(.Progress) { snapshot in
                 if let progress = snapshot.progress {
-                    let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
-                    print(percentComplete)
+                    print("FirebaseStorageManager | Upload Progress | \(progress.completedUnitCount) / \(progress.totalUnitCount)")
                 }
             }
             
         } else {
-            print("Could not generate image data")
+            print("FirebaseStorageManager | Error | Could Not Compress Image")
             response(imageUrl: nil)
         }
     }

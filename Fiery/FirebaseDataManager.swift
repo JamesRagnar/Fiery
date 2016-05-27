@@ -167,11 +167,4 @@ class FirebaseDataManager {
             results(users: returnUsers)
         })
     }
-    
-    //    MARK:
-    
-    static func stringErrorForCode(error: NSError) -> String? {
-        
-        return ""
-    }
 }

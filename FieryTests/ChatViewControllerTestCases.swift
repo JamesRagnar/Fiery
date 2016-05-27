@@ -28,7 +28,7 @@ class ChatViewControllerTestCases: XCTestCase {
 //        let _ = chatVC.view
 //    }
     
-    func testLayout() {
-        chatVC.viewWillLayoutSubviews()
-    }
+//    func testLayout() {
+//        chatVC.viewWillLayoutSubviews()
+//    }
 }
