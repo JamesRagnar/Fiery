@@ -29,4 +29,12 @@ class UserProfileImageTableViewCell: UserProfileTableViewCell {
         imageView?.layer.cornerRadius = imageDiameter / 2.0
         imageView?.center = contentView.center
     }
+    
+    override func loadWithUser(user: User?) {
+        super.loadWithUser(user)
+        
+        ImageCacheManager.fetchUserImage(user) { (image) in
+            self.imageView?.image = image
+        }
+    }
 }

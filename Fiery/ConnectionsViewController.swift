@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Haneke
 
 class ConnectionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate {
     
@@ -102,6 +101,11 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         
         let index = sender.tag
         
+        if index == -1 {
+            print("ConnectionsTable | Unspecified Button Index")
+            return
+        }
+        
         if _connections.count > index {
             
             let connection = _connections[index]
@@ -150,15 +154,17 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         
         if let user = connection.user {
             
-            cell.textLabel?.text = user.name()
-            cell.userImageButton.setImage(user.image(), forState: .Normal)
+            cell.loadUserData(user)
             
+            // update the button targets
+            cell.userImageButton.tag = indexPath.row
+            cell.userImageButton.addTarget(self, action: #selector(ConnectionsViewController.userImageButtonTapped(_:)), forControlEvents: .TouchUpInside)
         }
         
-        // update the button targets
-        cell.userImageButton.tag = indexPath.row
-        cell.userImageButton.removeTarget(nil, action: nil, forControlEvents: .TouchUpInside)
-        cell.userImageButton.addTarget(self, action: #selector(ConnectionsViewController.userImageButtonTapped(_:)), forControlEvents: .TouchUpInside)
+        if let conversationManager = connection.conversationManager {
+         
+            cell.loadConversationData(conversationManager)
+        }
         
         return cell
     }

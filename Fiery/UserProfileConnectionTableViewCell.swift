@@ -21,4 +21,7 @@ class UserProfileConnectionTableViewCell: UserProfileTableViewCell {
         // Configure the view for the selected state
     }
 
+    override func loadWithUser(user: User?) {
+        super.loadWithUser(user)
+    }
 }

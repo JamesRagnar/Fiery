@@ -20,4 +20,7 @@ class UserProfileTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func loadWithUser(user: User?) {
+        
+    }
 }

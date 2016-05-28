@@ -59,7 +59,7 @@ class RootDataManager {
     func logout() {
         
         clearFirebaseNodeMonitors()
-        
+        ImageCacheManager.clearImageCache()
         FirebaseDataManager.logout()
     }
     

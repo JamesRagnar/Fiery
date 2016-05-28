@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import Haneke
 
 class User: FSOSnapshot {
     
@@ -17,8 +16,6 @@ class User: FSOSnapshot {
     static let kName = "name"
     static let kEmail = "email"
     static let kImageUrl = "imageUrl"
-    
-    private var _image = UIImage() // find a filler user image
     
     //    MARK: Data Observers
     
@@ -58,20 +55,7 @@ class User: FSOSnapshot {
                 return false
             }
             
-            self.fetchUserImage()
-            
             return true
-        }
-    }
-    
-    func fetchUserImage() {
-        if let imageUrl = imageUrl() {
-            let imageCache = Shared.imageCache
-            imageCache.fetch(URL: imageUrl).onSuccess({ (image) in
-                self._image = image
-            }).onFailure({ (error) in
-                print(error)
-            })
         }
     }
     
@@ -83,10 +67,6 @@ class User: FSOSnapshot {
     
     func name() -> String? {
         return firebaseStringForKey(User.kName)
-    }
-    
-    func image() -> UIImage {
-        return _image
     }
     
     func email() -> String? {

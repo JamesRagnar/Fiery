@@ -54,6 +54,8 @@ class ConversationManager: FSOReferenceObserver {
         }
     }
     
+//    MARK: Accessors
+    
     func messagesByDate() -> [Message] {
         
         let messagesArray = Array(_messages.values)
@@ -65,6 +67,44 @@ class ConversationManager: FSOReferenceObserver {
             return false
         })
     }
+    
+    func conversationDetailContext() -> String? {
+        
+        if let lastMessage = messagesByDate().last {
+            
+            if let contentType = lastMessage.type() {
+                
+                var messageString: String?
+                
+                switch contentType {
+                case Message.kTextType:
+                    messageString = lastMessage.body()
+                case Message.kImageType:
+                    messageString = "Sent an Image"
+                default:
+                    break
+                }
+                
+                if messageString != nil {
+                    
+                    if let messageSenderId = lastMessage.senderId(),
+                        let myId = RootDataManager.sharedInstance.currentUser()?.userId() {
+                        
+                        if messageSenderId == myId {
+                            
+                            messageString = "You: " + messageString!
+                        }
+                    }
+                }
+                
+                return messageString
+            }
+        }
+        
+        return nil
+    }
+    
+//    MARK: Messaging
     
     func sendTextMessage(text: String) {
         

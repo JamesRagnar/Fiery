@@ -55,25 +55,25 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             switch tableRow {
             case .Image:
                 
-                let cell = _tableView.dequeueReusableCellWithIdentifier(_imageCell)!
-                cell.imageView?.image = user?.image()
+                let cell = _tableView.dequeueReusableCellWithIdentifier(_imageCell) as! UserProfileImageTableViewCell
+                cell.loadWithUser(user)
                 return cell
                 
             case .Name:
                 
-                let cell = _tableView.dequeueReusableCellWithIdentifier(_nameCell)!
-                cell.textLabel?.text = user?.name()
+                let cell = _tableView.dequeueReusableCellWithIdentifier(_nameCell) as! UserProfileNameTableViewCell
+                cell.loadWithUser(user)
                 return cell
                 
             case .Email:
                 
-                let cell = _tableView.dequeueReusableCellWithIdentifier(_emailCell)!
-                cell.textLabel?.text = user?.email()
+                let cell = _tableView.dequeueReusableCellWithIdentifier(_emailCell) as! UserProfileEmailTableViewCell
+                cell.loadWithUser(user)
                 return cell
                 
             case .Connection:
                 
-                let cell = _tableView.dequeueReusableCellWithIdentifier(_connectionCell)!
+                let cell = _tableView.dequeueReusableCellWithIdentifier(_connectionCell) as! UserProfileConnectionTableViewCell
                 return cell
             }
         }

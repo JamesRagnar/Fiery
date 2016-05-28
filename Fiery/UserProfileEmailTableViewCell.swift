@@ -26,4 +26,10 @@ class UserProfileEmailTableViewCell: UserProfileTableViewCell {
         
         textLabel?.frame = CGRectMake(20, 0, CGRectGetWidth(contentView.bounds) - 40, CGRectGetHeight(contentView.bounds))
     }
+    
+    override func loadWithUser(user: User?) {
+        super.loadWithUser(user)
+        
+        textLabel?.text = user?.email()
+    }
 }

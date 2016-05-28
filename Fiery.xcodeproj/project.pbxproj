@@ -41,6 +41,8 @@
 		AD7500FC1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */; };
 		AD7500FE1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */; };
 		AD7501001CF3910900C2D2E4 /* RegistrationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */; };
+		AD9DEF7F1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DEF7E1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift */; };
+		AD9DEF821CF9E9D400E8AF39 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DEF811CF9E9D400E8AF39 /* ImageCacheManager.swift */; };
 		ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */; };
 		ADDE16FA1CF39C59007E4C50 /* UIColor+Fiery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16F91CF39C59007E4C50 /* UIColor+Fiery.swift */; };
 		ADDE16FC1CF39EB4007E4C50 /* RegistrationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE16FB1CF39EB4007E4C50 /* RegistrationTextField.swift */; };
@@ -123,6 +125,8 @@
 		AD7500FB1CF3635F00C2D2E4 /* FSOReferenceObserverTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOReferenceObserverTestCases.swift; sourceTree = "<group>"; };
 		AD7500FD1CF3636D00C2D2E4 /* FSOSnapshotTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSOSnapshotTestCases.swift; sourceTree = "<group>"; };
 		AD7500FF1CF3910900C2D2E4 /* RegistrationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationButton.swift; sourceTree = "<group>"; };
+		AD9DEF7E1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewCell.swift; sourceTree = "<group>"; };
+		AD9DEF811CF9E9D400E8AF39 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		ADDE16F91CF39C59007E4C50 /* UIColor+Fiery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Fiery.swift"; sourceTree = "<group>"; };
 		ADDE16FB1CF39EB4007E4C50 /* RegistrationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationTextField.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				AD247B401CF0E7D300CFAA16 /* FirebaseStorageManager.swift */,
 				AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */,
 				AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */,
+				AD9DEF811CF9E9D400E8AF39 /* ImageCacheManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -266,7 +271,6 @@
 			children = (
 				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
 				ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */,
-				AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -290,6 +294,15 @@
 				AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */,
 			);
 			name = Chat;
+			sourceTree = "<group>";
+		};
+		AD9DEF801CF9DE6A00E8AF39 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */,
+				AD9DEF7E1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift */,
+			);
+			name = Search;
 			sourceTree = "<group>";
 		};
 		ADEFC1A61CF7A9B20043DABD /* Extensions */ = {
@@ -343,6 +356,7 @@
 				AD247B381CF0C81100CFAA16 /* Core */,
 				AD247B391CF0C81700CFAA16 /* Auth */,
 				AD247B3A1CF0C81D00CFAA16 /* Connections */,
+				AD9DEF801CF9DE6A00E8AF39 /* Search */,
 				ADEFC1AB1CF8A9520043DABD /* Profile */,
 				AD5E4FE91CF21DE90084ADF0 /* Chat */,
 				AD247B371CF0C80800CFAA16 /* Managers */,
@@ -676,6 +690,7 @@
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
 				ADEFC1B51CF8AAC60043DABD /* UserProfileEmailTableViewCell.swift in Sources */,
+				AD9DEF821CF9E9D400E8AF39 /* ImageCacheManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
 				AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
@@ -685,6 +700,7 @@
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 				ADEFC1B71CF8AAD30043DABD /* UserProfileConnectionTableViewCell.swift in Sources */,
 				ADDE16FA1CF39C59007E4C50 /* UIColor+Fiery.swift in Sources */,
+				AD9DEF7F1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift in Sources */,
 				AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */,
 				ADEFC1B31CF8AABA0043DABD /* UserProfileNameTableViewCell.swift in Sources */,
 			);

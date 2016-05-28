@@ -21,7 +21,7 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
     override func loadView() {
         super.loadView()
         
-        _tableView.registerClass(ConnectionTableViewCell.self, forCellReuseIdentifier: _userSearchCell)
+        _tableView.registerClass(UserSearchResultTableViewCell.self, forCellReuseIdentifier: _userSearchCell)
         _tableView.dataSource = self
         _tableView.delegate = self
         view.addSubview(_tableView)
@@ -78,15 +78,13 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(_userSearchCell) as! ConnectionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(_userSearchCell) as! UserSearchResultTableViewCell
         
         if _searchQuery != nil {
             if let users = _searchResults[_searchQuery!] {
                 
                 let user = users[indexPath.row]
-                cell.textLabel?.text = user.name()
-                
-                cell.userImageButton.setImage(user.image(), forState: .Normal)
+                cell.loadWithUser(user)
             }
         }
         
