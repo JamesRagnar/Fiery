@@ -28,19 +28,18 @@ class Connection: FSOSnapshot {
     
     func startObservingConnectionData(complete: () -> Void) {
         
-        fetchUserWithId { 
-            self.setupConversationmanager(complete)
-        }
+        fetchUserWithId()
+        setupConversationmanager(complete)
     }
     
-    func fetchUserWithId(complete: () -> Void) {
+    func fetchUserWithId() {
         
         if let userId = peerId() {
             
             let userRef = FirebaseDataManager.usersRef().child(userId)
             
             user = User(nodeRef: userRef)
-            user?.startObservingUserData(complete)
+            user?.startObservingUserData()
         }
     }
     

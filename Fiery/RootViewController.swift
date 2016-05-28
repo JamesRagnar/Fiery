@@ -22,10 +22,8 @@ class RootViewController: UIViewController {
         
         RootDataManager.sharedInstance.attemptUserLogin { (success) in
             if success {
-                
                 self.openConversationView()
             } else {
-                
                 self.openRegistrationView()
             }
         }

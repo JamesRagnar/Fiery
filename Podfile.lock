@@ -49,12 +49,12 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
 
 DEPENDENCIES:
-  - Firebase/Auth (~> 3.2)
-  - Firebase/Database (~> 3.2)
-  - Firebase/Messaging (~> 3.2)
-  - Firebase/Storage (~> 3.2)
-  - HanekeSwift (~> 0.10)
-  - JSQMessagesViewController (~> 7.2)
+  - Firebase/Auth
+  - Firebase/Database
+  - Firebase/Messaging
+  - Firebase/Storage
+  - HanekeSwift
+  - JSQMessagesViewController
 
 SPEC CHECKSUMS:
   Firebase: 6d4012da1598732a2b43f16d8355eca90f94ed59

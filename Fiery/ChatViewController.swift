@@ -9,7 +9,6 @@
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
-import Haneke
 
 class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -18,8 +17,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     private var _currentUser: User!
     private var _conversationManager: ConversationManager!
     
-    private var _myUserImage: UIImage!
-    private var _peerUserImage: UIImage!
+    private var _myUserImage = UIImage()
+    private var _peerUserImage = UIImage()
     
     private var _messages = [Message]()
     
@@ -44,8 +43,21 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
             self.senderDisplayName = ""
         }
         
-        _myUserImage = _currentUser.image()
-        _peerUserImage = connection.user!.image()
+        if let peerName = connection.user?.name() {
+            title = peerName
+        }
+        
+        ImageCacheManager.fetchUserImage(_currentUser) { (image) in
+            if image != nil {
+                self._myUserImage = image!
+            }
+        }
+        
+        ImageCacheManager.fetchUserImage(connection.user) { (image) in
+            if image != nil {
+                self._peerUserImage = image!
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -118,11 +130,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
                         
                         if let url = NSURL(string: imageUrl) {
                             
-                            let imageCache = Shared.imageCache
-                            imageCache.fetch(URL: url).onSuccess({ (image) in
-                                
+                            ImageCacheManager.fetchImageWithUrl(url, response: { (image) in
                                 message.image = image
-                                
                                 dispatch_async(dispatch_get_main_queue(), {
                                     self.collectionView.reloadItemsAtIndexPaths([indexPath])
                                 })

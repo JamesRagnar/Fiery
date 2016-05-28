@@ -21,7 +21,7 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
     override func loadView() {
         super.loadView()
         
-        _tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: _userSearchCell)
+        _tableView.registerClass(UserSearchResultTableViewCell.self, forCellReuseIdentifier: _userSearchCell)
         _tableView.dataSource = self
         _tableView.delegate = self
         view.addSubview(_tableView)
@@ -78,13 +78,13 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(_userSearchCell)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(_userSearchCell) as! UserSearchResultTableViewCell
         
         if _searchQuery != nil {
             if let users = _searchResults[_searchQuery!] {
                 
                 let user = users[indexPath.row]
-                cell.textLabel?.text = user.name()
+                cell.loadWithUser(user)
             }
         }
         
@@ -101,15 +101,28 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
         return 0
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120
+    }
+    
 //    MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if _searchQuery != nil {
-            if let users = _searchResults[_searchQuery!] {
-                let user = users[indexPath.row]
-                connectWithUser(user)
-            }
+
+        if let users = _searchResults[_searchQuery!] {
+            
+            let user = users[indexPath.row]
+            
+            let profileVC = UserProfileViewController()
+            profileVC.user = user
+            navigationController?.pushViewController(profileVC, animated: true)
         }
+
+//        if _searchQuery != nil {
+//            if let users = _searchResults[_searchQuery!] {
+//                let user = users[indexPath.row]
+//                connectWithUser(user)
+//            }
+//        }
     }
 }

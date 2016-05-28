@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Haneke
+import Firebase
 
 class User: FSOSnapshot {
     
@@ -17,42 +17,45 @@ class User: FSOSnapshot {
     static let kEmail = "email"
     static let kImageUrl = "imageUrl"
     
-    private var _image = UIImage() // find a filler user image
-    
     //    MARK: Data Observers
     
-    func startObservingUserData(firstLoadCallback: () -> Void) {
+    func fetchDataOneTime(response: (success: Bool) -> Void) {
         
-        startObserveringEvent(.Value) { (snapshot) in
+        getOneTimeValue { (snapshot) in
             
-            if snapshot.value is NSNull {
-                
-                print("User | Snapshot Null")
-                
-            } else {
-                
-                self.dataSnapshot = snapshot
-                
-                if let userId = self.userId() {
-                    
-                    print("User | \(userId) | Updated")
-
-                }
-                
-                self.fetchUserImage()
-                firstLoadCallback()
-            }
+            let downloadSuccess = self.handleUserData(snapshot)
+            
+            response(success: downloadSuccess)
         }
     }
     
-    func fetchUserImage() {
-        if let imageUrl = imageUrl() {
-            let imageCache = Shared.imageCache
-            imageCache.fetch(URL: imageUrl).onSuccess({ (image) in
-                self._image = image
-            }).onFailure({ (error) in
-                print(error)
-            })
+    func startObservingUserData() {
+        
+        startObserveringEvent(.Value) { (snapshot) in
+            
+            self.handleUserData(snapshot)
+        }
+    }
+    
+    private func handleUserData(snapshot: FIRDataSnapshot) -> Bool {
+        
+        if snapshot.value is NSNull {
+            
+            print("User | Snapshot Null")
+            return false
+
+        } else {
+            
+            self.dataSnapshot = snapshot
+            
+            if let userId = self.userId() {
+                print("User | \(userId) | Updated")
+            } else {
+                print("User | Invalid Id")
+                return false
+            }
+            
+            return true
         }
     }
     
@@ -64,10 +67,6 @@ class User: FSOSnapshot {
     
     func name() -> String? {
         return firebaseStringForKey(User.kName)
-    }
-    
-    func image() -> UIImage {
-        return _image
     }
     
     func email() -> String? {

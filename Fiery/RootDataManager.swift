@@ -37,22 +37,35 @@ class RootDataManager {
         
         if let myRef = FirebaseDataManager.myUserRef() {
             
+            // Double check that the node monitors are clean
+            clearFirebaseNodeMonitors()
+            
             _currentUser = User(nodeRef: myRef)
-            _currentUser?.startObservingUserData({
-                
-                self.connectionsManager().monitorUserConnections()
-                response(success: true)
-                
+            _currentUser?.fetchDataOneTime({ (success) in
+                if success {
+                    self._currentUser?.startObservingUserData()
+                    self.connectionsManager().monitorUserConnections()
+                    response(success: true)
+                } else {
+                    self.logout()
+                    response(success: false)
+                }
             })
         } else {
             response(success: false)
-        }   
+        }
     }
     
     func logout() {
         
+        clearFirebaseNodeMonitors()
+        ImageCacheManager.clearImageCache()
+        FirebaseDataManager.logout()
+    }
+    
+    private func clearFirebaseNodeMonitors() {
+        
         _currentUser = nil
         _connectionsManager = nil
-        FirebaseDataManager.logout()
     }
 }
