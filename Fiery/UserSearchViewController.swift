@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class UserSearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, ConnectionManagerDelegate {
     
     private let _userSearchCell = "UserSearchCell"
     
@@ -43,6 +43,29 @@ class UserSearchViewController: UIViewController, UITableViewDataSource, UITable
         super.viewWillLayoutSubviews()
         
         _tableView.frame = view.frame
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let connectionManager = RootDataManager.sharedInstance.connectionsManager()
+        connectionManager.delegate = self
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let connectionManager = RootDataManager.sharedInstance.connectionsManager()
+        connectionManager.delegate = nil
+    }
+    
+//    MARK: ConnectionManagerDelegate
+    
+    func newConnectionAdded(connection: Connection) {
+        
+        dispatch_async(dispatch_get_main_queue()) { 
+            self._tableView.reloadData()
+        }
     }
     
     //    MARK: UISearchControllerDelegate
