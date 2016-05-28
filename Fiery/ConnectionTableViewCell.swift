@@ -10,7 +10,7 @@ import UIKit
 
 class ConnectionTableViewCell: UITableViewCell {
     
-    let userImageButton = UIButton()
+    let userImageButton = UserImageConnectionButton()
     
     let titleLabel = UILabel()
     let detailLabel = UILabel()
@@ -18,8 +18,7 @@ class ConnectionTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        userImageButton.layer.cornerRadius = 45
-        userImageButton.layer.masksToBounds = true
+        userImageButton.setUserConnected(true)
         contentView.addSubview(userImageButton)
         
         titleLabel.font = UIFont.systemFontOfSize(20)
@@ -57,7 +56,18 @@ class ConnectionTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadUserData(user: User) {
+    func loadData(connection: Connection) {
+        
+        if let user = connection.user {
+            loadUserData(user)
+        }
+        
+        if let conversationManager = connection.conversationManager {
+            loadConversationData(conversationManager)
+        }
+    }
+    
+    private func loadUserData(user: User) {
         
         titleLabel.text = user.name()
         
@@ -66,7 +76,7 @@ class ConnectionTableViewCell: UITableViewCell {
         }
     }
     
-    func loadConversationData(conversationManager: ConversationManager) {
+    private func loadConversationData(conversationManager: ConversationManager) {
         
         detailLabel.text = conversationManager.conversationDetailContext()
     }

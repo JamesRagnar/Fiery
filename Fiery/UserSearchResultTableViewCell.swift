@@ -10,13 +10,11 @@ import UIKit
 
 class UserSearchResultTableViewCell: UITableViewCell {
 
-    let userImageButton = UIButton()
+    let userImageButton = UserImageConnectionButton()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        userImageButton.layer.cornerRadius = 45
-        userImageButton.layer.masksToBounds = true
         contentView.addSubview(userImageButton)
         
         textLabel?.font = UIFont.systemFontOfSize(20)
@@ -36,6 +34,11 @@ class UserSearchResultTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         userImageButton.setImage(nil, forState: .Normal)
+        userImageButton.setUserConnected(false)
+        
+        // Reset the image button links
+        userImageButton.removeTarget(nil, action: nil, forControlEvents: .TouchUpInside)
+        userImageButton.tag = -1
     }
     
     required init?(coder aDecoder: NSCoder) {

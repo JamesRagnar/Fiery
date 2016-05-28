@@ -139,7 +139,7 @@ class FirebaseDataManager {
         
         let lowercaseString = queryString.lowercaseString
         
-        print(lowercaseString)
+        print("FirebaseDataManager | Searching Users | " + queryString)
         
         let usersRef = FirebaseDataManager.usersRef()
         
@@ -147,23 +147,27 @@ class FirebaseDataManager {
         
         query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             
-            print("Found Results \(snapshot.childrenCount)")
+            print("FirebaseDataManager | Search Results | \(snapshot.childrenCount)")
             
             var returnUsers = [User]()
             
-            for child in snapshot.children {
+            if let myId = RootDataManager.sharedInstance.currentUser()?.userId() {
                 
-                if let childSnapshot = child as? FIRDataSnapshot {
+                for child in snapshot.children {
                     
-                    let user = User(snapshot: childSnapshot)
-                    
-                    if let _ = user.name() {
+                    if let childSnapshot = child as? FIRDataSnapshot {
                         
-                        returnUsers.append(user)
+                        let user = User(snapshot: childSnapshot)
+                        
+                        if let userId = user.userId() {
+                            
+                            if userId != myId {
+                                returnUsers.append(user)
+                            }
+                        }
                     }
                 }
             }
-            
             results(users: returnUsers)
         })
     }

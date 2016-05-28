@@ -54,6 +54,19 @@ class ConnectionsManager: FSOReferenceObserver {
         return connections
     }
     
+    func connectedWithUser(user: User) -> Bool {
+        
+        if let userId = user.userId() {
+            
+            if let _ = _connections[userId] {
+                
+                return true
+            }
+        }
+        
+        return false
+    }
+    
 //    MARK: Connection Management
     
     func sendConnectionRequestToUser(user: User) {

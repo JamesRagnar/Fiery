@@ -18,12 +18,14 @@ class LoginViewController: RegistrationParentViewController, UITextFieldDelegate
     override func loadView() {
         super.loadView()
         
+        _emailField.returnKeyType = .Next
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
         _emailField.placeholder = "Email"
         contentView.addSubview(_emailField)
         
+        _passwordField.returnKeyType = .Go
         _passwordField.secureTextEntry = true
         _passwordField.placeholder = "Password"
         contentView.addSubview(_passwordField)
@@ -75,6 +77,20 @@ class LoginViewController: RegistrationParentViewController, UITextFieldDelegate
         _passwordField.clearErrorState()
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        switch textField {
+        case _emailField:
+            _passwordField.becomeFirstResponder()
+        case _passwordField:
+            confirmButtonTapped()
+        default:
+            break
+        }
+        
+        return false
+    }
+    
 //    MARK: Validators
     
     func loginFieldsValid() -> (email: String, password: String)? {
@@ -114,24 +130,17 @@ class LoginViewController: RegistrationParentViewController, UITextFieldDelegate
     
     func login(email: String, password: String) {
         
+        startAuthAttempt()
+        
         FirebaseDataManager.loginWithCredentials(email, password: password) { (success, error) in
+            
+            self.stopAuthAttempt()
             
             if success {
                 self.dismissViewControllerAnimated(false, completion: nil)
-            } else {
-                if error != nil {
-                    self.showDetailModalForError(error!)
-                }
+            } else if error != nil {
+                self.showDetailModalForError(error!)
             }
         }
-    }
-    
-//    MARK: 
-    
-    func showDetailModalForError(error: NSError) {
-        
-        let modalView = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
-        modalView.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-        presentViewController(modalView, animated: true, completion: nil)
     }
 }
