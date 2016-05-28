@@ -152,19 +152,11 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         
         let connection = _connections[indexPath.row]
         
-        if let user = connection.user {
-            
-            cell.loadUserData(user)
-            
-            // update the button targets
-            cell.userImageButton.tag = indexPath.row
-            cell.userImageButton.addTarget(self, action: #selector(ConnectionsViewController.userImageButtonTapped(_:)), forControlEvents: .TouchUpInside)
-        }
+        cell.loadData(connection)
         
-        if let conversationManager = connection.conversationManager {
-         
-            cell.loadConversationData(conversationManager)
-        }
+        // update the button targets
+        cell.userImageButton.tag = indexPath.row
+        cell.userImageButton.addTarget(self, action: #selector(ConnectionsViewController.userImageButtonTapped(_:)), forControlEvents: .TouchUpInside)
         
         return cell
     }

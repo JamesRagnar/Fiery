@@ -30,11 +30,13 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
         _addPhotoButton.addTarget(self, action: #selector(RegistrationViewController.addPhotoButtonTapped), forControlEvents: .TouchUpInside)
         contentView.addSubview(_addPhotoButton)
         
+        _nameField.returnKeyType = .Next
         _nameField.autocorrectionType = .No
         _nameField.placeholder = "Name"
         _nameField.delegate = self
         contentView.addSubview(_nameField)
         
+        _emailField.returnKeyType = .Next
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
@@ -42,6 +44,7 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
         _emailField.delegate = self
         contentView.addSubview(_emailField)
         
+        _passwordField.returnKeyType = .Go
         _passwordField.secureTextEntry = true
         _passwordField.placeholder = "Password"
         _passwordField.delegate = self
@@ -65,9 +68,9 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
         _emailField.frame = textFieldframe
         _passwordField.frame = textFieldframe
         _confirmButton.frame = buttonFrame
-
+        
         let contentHeight: CGFloat = 40 + 40 + 40 + 40 + 50 + 200
-
+        
         
         
         if CGRectGetHeight(frame) < contentHeight {
@@ -121,7 +124,7 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
             if success {
                 self.dismissViewControllerAnimated(false, completion: nil)
             } else if error != nil {
-                print(error)
+                self.showDetailModalForError(error!)
             }
         }
     }
@@ -182,6 +185,22 @@ class RegistrationViewController: RegistrationParentViewController, UITextFieldD
         _nameField.clearErrorState()
         _emailField.clearErrorState()
         _passwordField.clearErrorState()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        switch textField {
+        case _nameField:
+            _emailField.becomeFirstResponder()
+        case _emailField:
+            _passwordField.becomeFirstResponder()
+        case _passwordField:
+            confirmButtonTapped()
+        default:
+            break
+        }
+        
+        return false
     }
     
     //    MARK: ImagePicker

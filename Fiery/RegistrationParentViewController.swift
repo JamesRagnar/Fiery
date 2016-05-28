@@ -66,6 +66,16 @@ class RegistrationParentViewController: UIViewController {
         }
     }
     
+    func startAuthAttempt() {
+        
+        contentView.userInteractionEnabled = false
+    }
+    
+    func stopAuthAttempt() {
+        
+        contentView.userInteractionEnabled = true
+    }
+    
     //    MARK : Keyboard
     
     func keyboardNotification(notification: NSNotification) {
@@ -89,5 +99,14 @@ class RegistrationParentViewController: UIViewController {
                     }, completion: nil)
             }
         }
+    }
+    
+    //    MARK:
+    
+    func showDetailModalForError(error: NSError) {
+        
+        let modalView = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+        modalView.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        presentViewController(modalView, animated: true, completion: nil)
     }
 }
