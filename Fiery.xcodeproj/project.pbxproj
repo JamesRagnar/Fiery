@@ -24,6 +24,9 @@
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
 		AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */; };
+		AD6418F01CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */; };
+		AD6418F21CFBA351009A4B2F /* SettingsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */; };
+		AD6418F41CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */; };
 		AD7500DC1CF2C09900C2D2E4 /* ConnectionsTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */; };
 		AD7500DE1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */; };
 		AD7500E21CF3602500C2D2E4 /* RootViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */; };
@@ -110,6 +113,9 @@
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextEntryTableViewCell.swift; sourceTree = "<group>"; };
+		AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsImageTableViewCell.swift; sourceTree = "<group>"; };
+		AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLogoutTableViewCell.swift; sourceTree = "<group>"; };
 		AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsTestCases.swift; sourceTree = "<group>"; };
 		AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTestCases.swift; sourceTree = "<group>"; };
 		AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTestCases.swift; sourceTree = "<group>"; };
@@ -276,6 +282,9 @@
 				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
 				ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */,
 				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
+				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
+				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
+				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -696,10 +705,13 @@
 				ADEFC1A81CF7A9CA0043DABD /* UIImage+Fiery.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
+				AD6418F21CFBA351009A4B2F /* SettingsImageTableViewCell.swift in Sources */,
 				ADEFC1B51CF8AAC60043DABD /* UserProfileEmailTableViewCell.swift in Sources */,
 				AD9DEF821CF9E9D400E8AF39 /* ImageCacheManager.swift in Sources */,
+				AD6418F01CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
 				AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */,
+				AD6418F41CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift in Sources */,
 				AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
 				AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */,

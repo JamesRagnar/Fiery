@@ -77,7 +77,7 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     
     func settingsButtonTapped() {
         
-        
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
     
     func addUserTapped() {
