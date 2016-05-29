@@ -23,6 +23,7 @@
 		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
+		AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */; };
 		AD7500DC1CF2C09900C2D2E4 /* ConnectionsTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */; };
 		AD7500DE1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */; };
 		AD7500E21CF3602500C2D2E4 /* RootViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */; };
@@ -108,6 +109,7 @@
 		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsTestCases.swift; sourceTree = "<group>"; };
 		AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTestCases.swift; sourceTree = "<group>"; };
 		AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTestCases.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
 				ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */,
+				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				ADEFC1B51CF8AAC60043DABD /* UserProfileEmailTableViewCell.swift in Sources */,
 				AD9DEF821CF9E9D400E8AF39 /* ImageCacheManager.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
+				AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */,
 				AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
 				AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */,

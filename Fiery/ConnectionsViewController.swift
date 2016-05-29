@@ -22,8 +22,8 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
         
         title = "Connections"
         
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(ConnectionsViewController.logoutButtonTapped))
-        navigationItem.setLeftBarButtonItem(logoutButton, animated: false)
+        let settingsButton = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: #selector(ConnectionsViewController.settingsButtonTapped))
+        navigationItem.setLeftBarButtonItem(settingsButton, animated: false)
         
         let searchButton = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(ConnectionsViewController.addUserTapped))
         navigationItem.setRightBarButtonItem(searchButton, animated: false)
@@ -75,21 +75,9 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
     
 //    MARK: Action Responders
     
-    func logoutButtonTapped() {
+    func settingsButtonTapped() {
         
-        let logoutActionSheet = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .ActionSheet)
         
-        logoutActionSheet.addAction(UIAlertAction(title: "Logout", style: .Destructive, handler: { (action) in
-            
-            self.logout()
-        }))
-        
-        logoutActionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
-            
-            
-        }))
-        
-        presentViewController(logoutActionSheet, animated: true, completion: nil)
     }
     
     func addUserTapped() {
@@ -112,15 +100,6 @@ class ConnectionsViewController: UIViewController, UITableViewDataSource, UITabl
             let user = connection.user
             openProfile(user)
         }
-    }
-    
-//    MARK: Logout
-    
-    func logout() {
-        
-        RootDataManager.sharedInstance.logout()
-        
-        dismissViewControllerAnimated(false, completion: nil)
     }
     
 //    MARK: Navigation

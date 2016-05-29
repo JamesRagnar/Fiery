@@ -19,7 +19,7 @@ class RootViewController: UIViewController {
     func checkUserStatus() {
         
         print("| Checking Auth Status")
-                
+        
         RootDataManager.sharedInstance.attemptUserLogin { (success) in
             if success {
                 self.openConversationView()
