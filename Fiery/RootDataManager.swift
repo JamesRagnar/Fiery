@@ -52,6 +52,7 @@ class RootDataManager {
                 }
             })
         } else {
+            logout()
             response(success: false)
         }
     }

@@ -37,9 +37,14 @@ class User: FSOSnapshot {
         }
     }
     
-    private func handleUserData(snapshot: FIRDataSnapshot) -> Bool {
+    private func handleUserData(snapshot: FIRDataSnapshot?) -> Bool {
         
-        if snapshot.value is NSNull {
+        if snapshot == nil {
+        
+            print("User | Snapshot Null")
+            return false
+            
+        } else if snapshot!.value is NSNull {
             
             print("User | Snapshot Null")
             return false
