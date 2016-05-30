@@ -16,7 +16,7 @@ class RegistrationParentViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.fieryBackgroundColor()
         
         view.addSubview(contentView)
         

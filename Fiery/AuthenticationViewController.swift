@@ -16,7 +16,7 @@ class AuthenticationViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.fieryBackgroundColor()
         
         _loginButton.setTitle("Login", forState: .Normal)
         _loginButton.addTarget(self, action: #selector(AuthenticationViewController.loginButtonTapped), forControlEvents: .TouchUpInside)

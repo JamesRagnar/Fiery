@@ -281,10 +281,6 @@
 			children = (
 				ADFF573D1CEFD04600DE6B7E /* ConnectionsViewController.swift */,
 				ADBAF8DF1CF25EF3002C4A1D /* ConnectionTableViewCell.swift */,
-				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
-				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
-				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
-				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -309,6 +305,17 @@
 				AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */,
 			);
 			name = Chat;
+			sourceTree = "<group>";
+		};
+		AD6B72A81CFCD2EA00A9C4DB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
+				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
+				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
+				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		AD9DEF801CF9DE6A00E8AF39 /* Search */ = {
@@ -371,6 +378,7 @@
 				AD247B381CF0C81100CFAA16 /* Core */,
 				AD247B391CF0C81700CFAA16 /* Auth */,
 				AD247B3A1CF0C81D00CFAA16 /* Connections */,
+				AD6B72A81CFCD2EA00A9C4DB /* Settings */,
 				AD9DEF801CF9DE6A00E8AF39 /* Search */,
 				ADEFC1AB1CF8A9520043DABD /* Profile */,
 				AD5E4FE91CF21DE90084ADF0 /* Chat */,

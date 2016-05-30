@@ -10,6 +10,14 @@ import UIKit
 
 extension UIColor {
     
+    class func fieryBackgroundColor() -> UIColor {
+        return fieryWhiteColor()
+    }
+    
+    class func fieryWhiteColor() -> UIColor {
+        return UIColor(white: 0.98, alpha: 1)
+    }
+    
     class func fieryGrayColor() -> UIColor {
         return fieryGrayColor(1)
     }
