@@ -49,8 +49,8 @@ class FSOSnapshot: FSOReferenceObserver {
         return firebaseNumberForKey(key)?.boolValue
     }
     
-    func firebaseDictionaryForKey(key: String) -> NSDictionary? {
-        return firebaseValueForKey(key) as? NSDictionary
+    func firebaseDictionaryForKey(key: String) -> [String: AnyObject]? {
+        return firebaseValueForKey(key) as? [String: AnyObject]
     }
     
     private func firebaseValueForKey(key: String) -> AnyObject? {
