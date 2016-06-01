@@ -10,8 +10,6 @@ import Firebase
 
 class FirebaseStorageManager {
     
-    
-    
     typealias ImageDataResponseBlock = (data: ImageData?) -> Void
     
     private static let _kStorageAddress = "gs://fiery-development.appspot.com"
@@ -93,7 +91,21 @@ class FirebaseStorageManager {
         }
     }
     
-//    MARK: Image Data Structure
+//    MARK: Delete
     
-    
+    static func deleteImage(data: ImageData?) {
+        
+        if let ref = data?.ref {
+            
+            let imageRef = rootStorageRef().child(ref)
+            
+            imageRef.deleteWithCompletion({ (error) in
+                if error != nil {
+                    print("FirebaseStorageManager | Error | Could Not Delete Image")
+                } else {
+                    print("FirebaseStorageManager | Deleted Image")
+                }
+            })
+        }
+    }
 }

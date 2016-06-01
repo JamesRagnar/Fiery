@@ -42,15 +42,21 @@ class Message: FSOSnapshot {
         return [Message.kTextType, Message.kImageType]
     }
     
-    func body() -> String? {
-        if let messageType = type() {
-            switch messageType {
-            case Message.kTextType:
-                return firebaseStringForKey(Message.kBody)
-            case Message.kImageType:
-                return firebaseStringForKey(Message.kBody)
-            default:
-                break
+    func messageText() -> String? {
+        return firebaseStringForKey(Message.kBody)
+    }
+    
+    func messageImageData() -> ImageData? {
+        if let imageDict = firebaseDictionaryForKey(Message.kBody) {
+            return ImageData(data: imageDict)
+        }
+        return nil
+    }
+    
+    func imageUrl() -> NSURL? {
+        if let imageData = messageImageData() {
+            if let urlString = imageData.url {
+                return NSURL(string: urlString)
             }
         }
         return nil

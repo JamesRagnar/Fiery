@@ -18,6 +18,8 @@ class User: FSOSnapshot {
     
     static let kProfileImageData = "profileImage"
     
+    var updateDelegate: UserUpdateDeletate?
+    
     //    MARK: Data Observers
     
     func fetchDataOneTime(response: (success: Bool) -> Void) {
@@ -40,6 +42,8 @@ class User: FSOSnapshot {
     
     private func handleUserData(snapshot: FIRDataSnapshot?) -> Bool {
         
+        updateDelegate?.userDataUpdated()
+
         if snapshot == nil {
         
             print("User | Snapshot Null")
@@ -99,4 +103,28 @@ class User: FSOSnapshot {
         }
         return nil
     }
+    
+//    MARK: 
+    
+    func deleteProfileImage() {
+        
+        let imageData = profileImageData()
+        
+        if let imageRef = firebaseReference()?.child(User.kProfileImageData) {
+            imageRef.removeValueWithCompletionBlock({ (error, ref) in
+                if error == nil {
+                    print("User | Deleted Image")
+                    FirebaseStorageManager.deleteImage(imageData)
+                } else {
+                    print("User | Error Deleting Image")
+                }
+            })
+        } else {
+            print("User | Error Fetching Image Ref")
+        }
+    }
+}
+
+protocol UserUpdateDeletate {
+    func userDataUpdated()
 }

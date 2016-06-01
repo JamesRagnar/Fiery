@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserUpdateDeletate {
 
     private var _placeholderImage: UIImage?
     private var _placeholderName: String?
@@ -49,11 +50,29 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         _tableView.frame = view.bounds
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        _currentUser?.updateDelegate = self
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        _currentUser?.updateDelegate = nil
+    }
+    
+//    MARK: UserUpdateDeletate
+    
+    func userDataUpdated() {
+        _tableView.reloadData()
+    }
+    
 //    MARK: Action Responders
     
     func showLogoutConfirm() {
         
-        let logoutActionSheet = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .ActionSheet)
+        let logoutActionSheet = UIAlertController(title: "Logout", message: "Are you sure?", preferredStyle: .ActionSheet)
         
         logoutActionSheet.addAction(UIAlertAction(title: "Logout", style: .Destructive, handler: { (action) in
             self.logout()
@@ -64,6 +83,88 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }))
         
         presentViewController(logoutActionSheet, animated: true, completion: nil)
+    }
+    
+    func showImagePicker() {
+        
+        let actionSheet = UIAlertController(title: nil, message: "Change your profile image", preferredStyle: .ActionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Take a Photo", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .Camera
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.cameraCaptureMode = .Photo
+                mediaUI.cameraDevice = .Front
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            
+            actionSheet.addAction(UIAlertAction(title: "Select from Library", style: .Default, handler: { (alertAction) -> Void in
+                
+                let mediaUI = UIImagePickerController()
+                mediaUI.sourceType = .PhotoLibrary
+                mediaUI.allowsEditing = true
+                mediaUI.delegate = self
+                mediaUI.mediaTypes = [kUTTypeImage as String]
+                self.presentViewController(mediaUI, animated: true, completion: nil)
+            }))
+        }
+        
+        actionSheet.addAction(UIAlertAction(title: "Delete Profile Image", style: .Destructive, handler: { (alertAction) -> Void in
+            
+            self.showDeleteConfirmation()
+        }))
+
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (alertAction) -> Void in
+            
+        }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+
+    }
+    
+    func showDeleteConfirmation() {
+        
+        let actionSheet = UIAlertController(title: "Delete Profile Image", message: "Are you sure?", preferredStyle: .ActionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { (alertAction) -> Void in
+            
+            self.deleteProfileImage()
+        }))
+        
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (alertAction) -> Void in
+            
+        }))
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+//    MARK: Image
+    
+    func updateProfileImage(image: UIImage) {
+        
+        FirebaseStorageManager.updateUserProfileImage(image) { (data) in
+            
+            if let imageData = data?.dataFormat() {
+                
+                var updateData = [String: AnyObject]()
+                updateData[User.kProfileImageData] = imageData
+                self._currentUser?.updateChildValues(updateData)
+            }
+        }
+    }
+    
+    func deleteProfileImage() {
+        
+        _currentUser?.deleteProfileImage()
     }
     
     //    MARK: Logout
@@ -155,6 +256,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 if let tableRow = UserSectionRows(rawValue: indexPath.row) {
                     switch tableRow {
                     case .Image:
+                        showImagePicker()
                         break
                     case .Name:
                         break
@@ -162,6 +264,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             case .Logout:
                 showLogoutConfirm()
+                break
             }
         }
     }
@@ -201,5 +304,23 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         return 0
+    }
+    
+//    MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        if let mediaType = info[UIImagePickerControllerMediaType] as? String {
+            
+            if mediaType == kUTTypeImage as String {
+                
+                if let croppedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+                    
+                    updateProfileImage(croppedImage)
+                }
+            }
+        }
     }
 }

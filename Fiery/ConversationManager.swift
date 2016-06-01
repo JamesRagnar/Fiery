@@ -78,7 +78,7 @@ class ConversationManager: FSOReferenceObserver {
                 
                 switch contentType {
                 case Message.kTextType:
-                    messageString = lastMessage.body()
+                    messageString = lastMessage.messageText()
                 case Message.kImageType:
                     messageString = "Sent an Image"
                 default:
