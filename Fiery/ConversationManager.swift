@@ -50,7 +50,7 @@ class ConversationManager: FSOReferenceObserver {
         if let messageId = newMessage.snapshotKey() {
             _messages[messageId] = newMessage
             
-            delegate?.newMessageAdded(newMessage)
+            delegate?.newMessageAdded(self, message: newMessage)
         }
     }
     
@@ -143,5 +143,5 @@ class ConversationManager: FSOReferenceObserver {
 
 protocol ConversationManagerDelegate {
     
-    func newMessageAdded(message: Message)
+    func newMessageAdded(manager: ConversationManager, message: Message)
 }

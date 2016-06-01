@@ -96,7 +96,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     //    MARK: ConversationManagerDelegate
     
-    func newMessageAdded(message: Message) {
+    func newMessageAdded(manager: ConversationManager, message: Message) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self._messages.append(message)
             self.finishReceivingMessageAnimated(true)
