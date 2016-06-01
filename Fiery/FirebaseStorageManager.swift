@@ -10,6 +10,8 @@ import Firebase
 
 class FirebaseStorageManager {
     
+    typealias ImageDataResponseBlock = (data: ImageData?) -> Void
+    
     private static let _kStorageAddress = "gs://fiery-development.appspot.com"
     
     private static let _kUserImagesRef = "userImages"
@@ -32,21 +34,21 @@ class FirebaseStorageManager {
     
     //    MARK: Upload
     
-    static func updateUserProfileImage(image: UIImage, response: (imageUrl: String?) -> Void) {
+    static func updateUserProfileImage(image: UIImage, response: ImageDataResponseBlock) {
         
         print("FirebaseStorageManager | Starting User Profile Image Upload")
         
         uploadImageToRef(image, ref: userImagesRef(), response: response)
     }
     
-    static func uploadChatImage(image: UIImage, response: (imageUrl: String?) -> Void) {
+    static func uploadChatImage(image: UIImage, response: ImageDataResponseBlock) {
         
         print("FirebaseStorageManager | Starting Chat Message Image Upload")
 
         uploadImageToRef(image, ref: messageImagesRef(), response: response)
     }
     
-    private static func uploadImageToRef(image: UIImage, ref: FIRStorageReference, response: (imageUrl: String?) -> Void) {
+    private static func uploadImageToRef(image: UIImage, ref: FIRStorageReference, response: ImageDataResponseBlock) {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.5) {
             
@@ -61,15 +63,18 @@ class FirebaseStorageManager {
                 if error != nil {
                     print("FirebaseStorageManager | Error | Uploading File")
                     print(error)
-                    response(imageUrl: nil)
+                    response(data: nil)
                 } else {
                     
                     if let downloadUrl = storageMetaData?.downloadURL() {
                         print("FirebaseStorageManager | Completed Upload | " + downloadUrl.description)
-                        response(imageUrl: downloadUrl.description)
+                        
+                        let imageData = ImageData(url: downloadUrl.description, ref: fileRef.fullPath)
+                        response(data: imageData)
+                        
                     } else {
                         print("FirebaseStorageManager | Error | No Download URL")
-                        response(imageUrl: nil)
+                        response(data: nil)
                     }
                 }
             })
@@ -82,7 +87,25 @@ class FirebaseStorageManager {
             
         } else {
             print("FirebaseStorageManager | Error | Could Not Compress Image")
-            response(imageUrl: nil)
+            response(data: nil)
+        }
+    }
+    
+//    MARK: Delete
+    
+    static func deleteImage(data: ImageData?) {
+        
+        if let ref = data?.ref {
+            
+            let imageRef = rootStorageRef().child(ref)
+            
+            imageRef.deleteWithCompletion({ (error) in
+                if error != nil {
+                    print("FirebaseStorageManager | Error | Could Not Delete Image")
+                } else {
+                    print("FirebaseStorageManager | Deleted Image")
+                }
+            })
         }
     }
 }

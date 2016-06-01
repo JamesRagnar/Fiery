@@ -96,7 +96,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     //    MARK: ConversationManagerDelegate
     
-    func newMessageAdded(message: Message) {
+    func newMessageAdded(manager: ConversationManager, message: Message) {
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self._messages.append(message)
             self.finishReceivingMessageAnimated(true)
@@ -112,7 +112,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
         if let messageType = message.type() {
             switch messageType {
             case Message.kTextType:
-                return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), text: message.body())
+                let messageText = message.messageText() != nil ? message.messageText() : ""
+                return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), text: messageText)
             case Message.kImageType:
                 
                 let mediaData = JSQPhotoMediaItem()
@@ -126,18 +127,15 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
                 if let image = message.image {
                     mediaData.image = image
                 } else {
-                    if let imageUrl = message.body() {
-                        
-                        if let url = NSURL(string: imageUrl) {
-                            
-                            ImageCacheManager.fetchImageWithUrl(url, response: { (image) in
-                                message.image = image
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    self.collectionView.reloadItemsAtIndexPaths([indexPath])
-                                })
+                    if let url = message.imageUrl() {
+                        ImageCacheManager.fetchImageWithUrl(url, response: { (image) in
+                            message.image = image
+                            dispatch_async(dispatch_get_main_queue(), {
+                                self.collectionView.reloadItemsAtIndexPaths([indexPath])
                             })
-                        }
+                        })
                     }
+                    
                 }
                 
                 return JSQMessage(senderId: message.senderId(), senderDisplayName: "", date: message.sendDate(), media: mediaData)
@@ -183,7 +181,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     func showImagePicker() {
         
-        let actionSheet = UIAlertController(title: nil, message: "Send an image", preferredStyle: .ActionSheet)
+        let actionSheet = UIAlertController(title: "Send an Image", message: nil, preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ConnectionTableViewCell: UITableViewCell {
+class ConnectionTableViewCell: UITableViewCell, ConversationManagerDelegate {
     
     let userImageButton = UserImageConnectionButton()
     
     let titleLabel = UILabel()
     let detailLabel = UILabel()
+    
+    private var _conversationManager: ConversationManager?
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,11 +47,16 @@ class ConnectionTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        titleLabel.text = nil
         userImageButton.setImage(nil, forState: .Normal)
         
         // Reset the image button links
         userImageButton.removeTarget(nil, action: nil, forControlEvents: .TouchUpInside)
         userImageButton.tag = -1
+        
+        detailLabel.text = nil
+        
+        _conversationManager?.delegate = nil
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -78,6 +85,16 @@ class ConnectionTableViewCell: UITableViewCell {
     
     private func loadConversationData(conversationManager: ConversationManager) {
         
+        _conversationManager = conversationManager
+        _conversationManager?.delegate = self
+        
         detailLabel.text = conversationManager.conversationDetailContext()
+    }
+    
+//    MARK: ConversationManagerDelegate 
+    
+    func newMessageAdded(manager: ConversationManager, message: Message) {
+        
+        loadConversationData(manager)
     }
 }

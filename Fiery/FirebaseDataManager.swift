@@ -124,11 +124,14 @@ class FirebaseDataManager {
         
         if let uploadImage = image, let myRef = myUserRef() {
             
-            FirebaseStorageManager.updateUserProfileImage(uploadImage, response: { (imageUrl) in
+            FirebaseStorageManager.updateUserProfileImage(uploadImage, response: { (data) in
                 
-                // Update my user object with image ref
-                let imageRef = myRef.child(User.kImageUrl)
-                imageRef.setValue(imageUrl)
+                if let imageData = data?.dataFormat() {
+                
+                    // Update my user object with image ref
+                    let imageRef = myRef.child(User.kProfileImageData)
+                    imageRef.setValue(imageData)
+                }
             })
         }
     }

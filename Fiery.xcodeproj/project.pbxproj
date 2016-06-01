@@ -23,6 +23,11 @@
 		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
+		AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */; };
+		AD6418F01CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */; };
+		AD6418F21CFBA351009A4B2F /* SettingsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */; };
+		AD6418F41CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */; };
+		AD6B72AA1CFF2D5800A9C4DB /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6B72A91CFF2D5800A9C4DB /* ImageData.swift */; };
 		AD7500DC1CF2C09900C2D2E4 /* ConnectionsTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */; };
 		AD7500DE1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */; };
 		AD7500E21CF3602500C2D2E4 /* RootViewControllerTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */; };
@@ -108,6 +113,11 @@
 		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextEntryTableViewCell.swift; sourceTree = "<group>"; };
+		AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsImageTableViewCell.swift; sourceTree = "<group>"; };
+		AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLogoutTableViewCell.swift; sourceTree = "<group>"; };
+		AD6B72A91CFF2D5800A9C4DB /* ImageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		AD7500DB1CF2C09900C2D2E4 /* ConnectionsTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsTestCases.swift; sourceTree = "<group>"; };
 		AD7500DD1CF2C6C100C2D2E4 /* LoginViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTestCases.swift; sourceTree = "<group>"; };
 		AD7500E11CF3602500C2D2E4 /* RootViewControllerTestCases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewControllerTestCases.swift; sourceTree = "<group>"; };
@@ -229,6 +239,7 @@
 				AD247B2F1CF0C4AC00CFAA16 /* User.swift */,
 				AD247B481CF1103800CFAA16 /* Connection.swift */,
 				AD5E4FE31CF219A80084ADF0 /* Message.swift */,
+				AD6B72A91CFF2D5800A9C4DB /* ImageData.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -299,6 +310,17 @@
 			name = Chat;
 			sourceTree = "<group>";
 		};
+		AD6B72A81CFCD2EA00A9C4DB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
+				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
+				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
+				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		AD9DEF801CF9DE6A00E8AF39 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +381,7 @@
 				AD247B381CF0C81100CFAA16 /* Core */,
 				AD247B391CF0C81700CFAA16 /* Auth */,
 				AD247B3A1CF0C81D00CFAA16 /* Connections */,
+				AD6B72A81CFCD2EA00A9C4DB /* Settings */,
 				AD9DEF801CF9DE6A00E8AF39 /* Search */,
 				ADEFC1AB1CF8A9520043DABD /* Profile */,
 				AD5E4FE91CF21DE90084ADF0 /* Chat */,
@@ -675,6 +698,7 @@
 			files = (
 				AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */,
 				ADEFC1AF1CF8AAA10043DABD /* UserProfileTableViewCell.swift in Sources */,
+				AD6B72AA1CFF2D5800A9C4DB /* ImageData.swift in Sources */,
 				AD9DEF841CFA4C1D00E8AF39 /* UserImageConnectionButton.swift in Sources */,
 				ADFF570A1CEFBD9A00DE6B7E /* RootViewController.swift in Sources */,
 				ADDE16FC1CF39EB4007E4C50 /* RegistrationTextField.swift in Sources */,
@@ -693,9 +717,13 @@
 				ADEFC1A81CF7A9CA0043DABD /* UIImage+Fiery.swift in Sources */,
 				AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */,
 				ADFF57381CEFC4D000DE6B7E /* FirebaseDataManager.swift in Sources */,
+				AD6418F21CFBA351009A4B2F /* SettingsImageTableViewCell.swift in Sources */,
 				ADEFC1B51CF8AAC60043DABD /* UserProfileEmailTableViewCell.swift in Sources */,
 				AD9DEF821CF9E9D400E8AF39 /* ImageCacheManager.swift in Sources */,
+				AD6418F01CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift in Sources */,
 				AD247B3F1CF0D68800CFAA16 /* RootDataManager.swift in Sources */,
+				AD6418EE1CFB91FA009A4B2F /* SettingsViewController.swift in Sources */,
+				AD6418F41CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift in Sources */,
 				AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */,
 				AD247B341CF0C57A00CFAA16 /* FSOSnapshot.swift in Sources */,
 				AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */,
@@ -870,7 +898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryChat;
@@ -886,7 +914,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				INFOPLIST_FILE = Fiery/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryChat;

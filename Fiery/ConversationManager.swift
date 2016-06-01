@@ -50,11 +50,11 @@ class ConversationManager: FSOReferenceObserver {
         if let messageId = newMessage.snapshotKey() {
             _messages[messageId] = newMessage
             
-            delegate?.newMessageAdded(newMessage)
+            delegate?.newMessageAdded(self, message: newMessage)
         }
     }
     
-//    MARK: Accessors
+    //    MARK: Accessors
     
     func messagesByDate() -> [Message] {
         
@@ -78,7 +78,7 @@ class ConversationManager: FSOReferenceObserver {
                 
                 switch contentType {
                 case Message.kTextType:
-                    messageString = lastMessage.body()
+                    messageString = lastMessage.messageText()
                 case Message.kImageType:
                     messageString = "Sent an Image"
                 default:
@@ -104,7 +104,7 @@ class ConversationManager: FSOReferenceObserver {
         return nil
     }
     
-//    MARK: Messaging
+    //    MARK: Messaging
     
     func sendTextMessage(text: String) {
         
@@ -124,14 +124,14 @@ class ConversationManager: FSOReferenceObserver {
         
         if let myUserId = RootDataManager.sharedInstance.currentUser()?.snapshotKey() {
             
-            FirebaseStorageManager.uploadChatImage(image) { (imageUrl) in
+            FirebaseStorageManager.uploadChatImage(image) { (data) in
                 
-                if imageUrl != nil {
+                if let imageData = data?.dataFormat() {
                     
                     var messageData = [String: AnyObject]()
                     messageData[Message.kSenderId] = myUserId
                     messageData[Message.kType] = Message.kImageType
-                    messageData[Message.kBody] = imageUrl
+                    messageData[Message.kBody] = imageData
                     messageData[Message.kSendDate] = FIRServerValue.timestamp()
                     
                     self.addChildByAutoID(messageData)
@@ -143,5 +143,5 @@ class ConversationManager: FSOReferenceObserver {
 
 protocol ConversationManagerDelegate {
     
-    func newMessageAdded(message: Message)
+    func newMessageAdded(manager: ConversationManager, message: Message)
 }

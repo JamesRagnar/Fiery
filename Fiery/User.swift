@@ -15,7 +15,10 @@ class User: FSOSnapshot {
     
     static let kName = "name"
     static let kEmail = "email"
-    static let kImageUrl = "imageUrl"
+    
+    static let kProfileImageData = "profileImage"
+    
+    var updateDelegate: UserUpdateDeletate?
     
     //    MARK: Data Observers
     
@@ -39,6 +42,8 @@ class User: FSOSnapshot {
     
     private func handleUserData(snapshot: FIRDataSnapshot?) -> Bool {
         
+        updateDelegate?.userDataUpdated()
+
         if snapshot == nil {
         
             print("User | Snapshot Null")
@@ -78,8 +83,18 @@ class User: FSOSnapshot {
         return firebaseStringForKey(User.kEmail)
     }
     
+    func profileImageData() -> ImageData? {
+        if let imageDict = firebaseDictionaryForKey(User.kProfileImageData) {
+            return ImageData(data: imageDict)
+        }
+        return nil
+    }
+    
     func imageUrlString() -> String? {
-        return firebaseStringForKey(User.kImageUrl)
+        if let imageData = profileImageData() {
+            return imageData.url
+        }
+        return nil
     }
     
     func imageUrl() -> NSURL? {
@@ -88,4 +103,28 @@ class User: FSOSnapshot {
         }
         return nil
     }
+    
+//    MARK: 
+    
+    func deleteProfileImage() {
+        
+        let imageData = profileImageData()
+        
+        if let imageRef = firebaseReference()?.child(User.kProfileImageData) {
+            imageRef.removeValueWithCompletionBlock({ (error, ref) in
+                if error == nil {
+                    print("User | Deleted Image")
+                    FirebaseStorageManager.deleteImage(imageData)
+                } else {
+                    print("User | Error Deleting Image")
+                }
+            })
+        } else {
+            print("User | Error Fetching Image Ref")
+        }
+    }
+}
+
+protocol UserUpdateDeletate {
+    func userDataUpdated()
 }
