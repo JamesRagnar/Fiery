@@ -181,7 +181,7 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     func showImagePicker() {
         
-        let actionSheet = UIAlertController(title: nil, message: "Send an image", preferredStyle: .ActionSheet)
+        let actionSheet = UIAlertController(title: "Send an Image", message: nil, preferredStyle: .ActionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             
