@@ -93,7 +93,7 @@ class FirebaseStorageManager {
     
 //    MARK: Delete
     
-    static func deleteImage(data: ImageData?) {
+    static func deleteImage(data: ImageData?, response: ((success: Bool) -> Void)?) {
         
         if let ref = data?.ref {
             
@@ -102,10 +102,15 @@ class FirebaseStorageManager {
             imageRef.deleteWithCompletion({ (error) in
                 if error != nil {
                     print("FirebaseStorageManager | Error | Could Not Delete Image")
+                    response?(success: false)
                 } else {
                     print("FirebaseStorageManager | Deleted Image")
+                    response?(success: true)
                 }
             })
+        } else {
+            print("FirebaseStorageManager | Could not fetch image ref")
+            response?(success: false)
         }
     }
 }

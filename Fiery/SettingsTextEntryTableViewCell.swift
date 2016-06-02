@@ -15,6 +15,8 @@ class SettingsTextEntryTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        textField.font = UIFont.systemFontOfSize(25)
+        textField.textAlignment = .Center
         contentView.addSubview(textField)
     }
     

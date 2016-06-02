@@ -64,7 +64,7 @@ class Message: FSOSnapshot {
     
     func sendDate() -> NSDate? {
         if let millisecondsSinceEpoch = sendDateMilliseconds() {
-            let secondsSinceEpoch = millisecondsSinceEpoch.doubleValue / 100
+            let secondsSinceEpoch = millisecondsSinceEpoch.doubleValue / 1000
             return NSDate(timeIntervalSince1970: secondsSinceEpoch)
         }
         return nil

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2651BB1A5835C6E210DC2891 /* Pods_FieryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */; };
 		676A9F136457BFEBD202CB25 /* Pods_Fiery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */; };
+		AD0AACD51D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0AACD41D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift */; };
 		AD247B2C1CF0BBAB00CFAA16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */; };
 		AD247B2E1CF0BBB200CFAA16 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */; };
 		AD247B301CF0C4AC00CFAA16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B2F1CF0C4AC00CFAA16 /* User.swift */; };
@@ -99,6 +100,7 @@
 		863F155C48B99961C822C380 /* Pods-FieryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FieryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FieryUITests/Pods-FieryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DA6C8B97DF8AD1A38A92FCA /* Pods_Fiery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fiery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9149ED782698CFA584F6730 /* Pods_FieryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FieryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0AACD41D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVersionTableViewCell.swift; sourceTree = "<group>"; };
 		AD247B2B1CF0BBAB00CFAA16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AD247B2D1CF0BBB200CFAA16 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		AD247B2F1CF0C4AC00CFAA16 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
 				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
 				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
+				AD0AACD41D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -505,8 +508,11 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = W375UQHBF4;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -731,6 +737,7 @@
 				AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */,
 				ADFF573C1CEFD03D00DE6B7E /* AuthenticationViewController.swift in Sources */,
 				ADEFC1B71CF8AAD30043DABD /* UserProfileConnectionTableViewCell.swift in Sources */,
+				AD0AACD51D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift in Sources */,
 				ADDE16FA1CF39C59007E4C50 /* UIColor+Fiery.swift in Sources */,
 				AD9DEF7F1CF9DDF800E8AF39 /* UserSearchResultTableViewCell.swift in Sources */,
 				AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */,
@@ -898,11 +905,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 23;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 24;
 				INFOPLIST_FILE = Fiery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -913,12 +923,15 @@
 			baseConfigurationReference = 66DCB763D644EF97C340FC4D /* Pods-Fiery.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 23;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 24;
 				INFOPLIST_FILE = Fiery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.ragnar.FieryChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

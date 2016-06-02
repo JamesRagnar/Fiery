@@ -22,6 +22,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     private var _messages = [Message]()
     
+    let dateFormatter = NSDateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +60,10 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
                 self._peerUserImage = image!
             }
         }
+        
+        dateFormatter.doesRelativeDateFormatting = true
+        dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateStyle = .MediumStyle
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -96,7 +102,26 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     //    MARK: ConversationManagerDelegate
     
-    func newMessageAdded(manager: ConversationManager, message: Message) {
+    func messageUpdated(manager: ConversationManager, message: Message) {
+        if _messages.contains(message) {
+            messageUpdated(message)
+        } else {
+            newMessageAdded(message)
+        }
+    }
+    
+    func messageUpdated(message: Message) {
+        print("Chat | Message | " + message.snapshotKey()! + " | Updated")
+        if let index = _messages.indexOf(message) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.collectionView.reloadItemsAtIndexPaths([indexPath])
+            })
+        }
+    }
+    
+    func newMessageAdded(message: Message) {
+        print("Chat | Message | " + message.snapshotKey()! + " | Added")
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self._messages.append(message)
             self.finishReceivingMessageAnimated(true)
@@ -175,6 +200,38 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _messages.count
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        
+        let message = _messages[indexPath.row]
+        
+        var bodyText = ""
+        
+        if let sendDate = message.sendDate() {
+            let timeString = dateFormatter.stringFromDate(sendDate)
+            bodyText = "Sent " + timeString
+        }
+        
+        if message.senderId() == _currentUser.userId() {
+            
+            // I sent the message, I want to know when the user has seen it
+//            if let viewDate = message.viewDate() {
+//                let timeString = dateFormatter.stringFromDate(viewDate)
+//                bodyText = "Seen " + timeString
+//            }
+        }
+        
+        return NSAttributedString(string: bodyText)
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        
+        if indexPath.row == _messages.count - 1 {
+            return 20
+        } else {
+            return 0
+        }
     }
     
     //    MARK: Image Picker
