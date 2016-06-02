@@ -19,27 +19,35 @@ class ConversationManager: FSOReferenceObserver {
         
         print("ConversationManager | Started Observeration")
         
-        var firstLoad = true
-        var loadCount = 0
+        getOneTimeValue { (snapshot) in
+            if !(snapshot?.value is NSNull) {
+                self.handleBulkMessages(snapshot!)
+            }
+            self.startObserveringChanges()
+            complete()
+        }
+    }
+    
+    private func startObserveringChanges() {
         
-        startObserveringEvent(.ChildAdded) { (snapshot) in
+        startObserveringEvent(.ChildChanged) { (snapshot) in
             
             if snapshot.value is NSNull {
                 print("ConversationManager | Got null snapshot")
             } else {
-                if firstLoad != true {
-                    print("ConversationManager | Got new Message")
-                } else {
-                    loadCount += 1
-                }
                 self.handleNewMessage(snapshot)
             }
         }
+    }
+    
+    private func handleBulkMessages(snapshot:FIRDataSnapshot) {
         
-        getOneTimeValue { (snapshot) in
-            print("ConversationManager | Got \(loadCount) Messages")
-            firstLoad = false
-            complete()
+        print("ConversationManager | Got \(snapshot.childrenCount) Messages")
+
+        for child in snapshot.children {
+            if let snap = child as? FIRDataSnapshot {
+                handleNewMessage(snap)
+            }
         }
     }
     
@@ -49,8 +57,7 @@ class ConversationManager: FSOReferenceObserver {
         
         if let messageId = newMessage.snapshotKey() {
             _messages[messageId] = newMessage
-            
-            delegate?.newMessageAdded(self, message: newMessage)
+            delegate?.messageUpdated(self, message: newMessage)
         }
     }
     
@@ -143,5 +150,5 @@ class ConversationManager: FSOReferenceObserver {
 
 protocol ConversationManagerDelegate {
     
-    func newMessageAdded(manager: ConversationManager, message: Message)
+    func messageUpdated(manager: ConversationManager, message: Message)
 }
