@@ -106,7 +106,7 @@ class User: FSOSnapshot {
     
 //    MARK: 
     
-    func deleteProfileImage() {
+    func deleteProfileImage(response: ((success: Bool) -> Void)?) {
         
         let imageData = profileImageData()
         
@@ -114,13 +114,15 @@ class User: FSOSnapshot {
             imageRef.removeValueWithCompletionBlock({ (error, ref) in
                 if error == nil {
                     print("User | Deleted Image")
-                    FirebaseStorageManager.deleteImage(imageData)
+                    FirebaseStorageManager.deleteImage(imageData, response: response)
                 } else {
                     print("User | Error Deleting Image")
+                    response?(success: false)
                 }
             })
         } else {
             print("User | Error Fetching Image Ref")
+            response?(success: false)
         }
     }
 }

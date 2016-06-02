@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private enum TableSections: Int {
         case UserDetails
         case Logout
+        case Version
     }
     
     private enum UserSectionRows: Int {
@@ -31,16 +32,20 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private let _imageCell = "SettingsImageCell"
     private let _nameCell = "SettingsNameCell"
     private let _logoutCell = "SettingsLogoutCell"
+    private let _versionCell = "SettingsVersionCell"
     
     override func loadView() {
         super.loadView()
         
+        title = "Settings"
+        
         _tableView.dataSource = self
         _tableView.delegate = self
-        
+        _tableView.separatorStyle = .None
         _tableView.registerClass(SettingsImageTableViewCell.self, forCellReuseIdentifier: _imageCell)
         _tableView.registerClass(SettingsTextEntryTableViewCell.self, forCellReuseIdentifier: _nameCell)
         _tableView.registerClass(SettingsLogoutTableViewCell.self, forCellReuseIdentifier: _logoutCell)
+        _tableView.registerClass(SettingsVersionTableViewCell.self, forCellReuseIdentifier: _versionCell)
         view.addSubview(_tableView)
     }
     
@@ -151,20 +156,23 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func updateProfileImage(image: UIImage) {
         
-        FirebaseStorageManager.updateUserProfileImage(image) { (data) in
+        _currentUser?.deleteProfileImage({ (success) in
             
-            if let imageData = data?.dataFormat() {
+            FirebaseStorageManager.updateUserProfileImage(image) { (data) in
                 
-                var updateData = [String: AnyObject]()
-                updateData[User.kProfileImageData] = imageData
-                self._currentUser?.updateChildValues(updateData)
+                if let imageData = data?.dataFormat() {
+                    
+                    var updateData = [String: AnyObject]()
+                    updateData[User.kProfileImageData] = imageData
+                    self._currentUser?.updateChildValues(updateData)
+                }
             }
-        }
+        })
     }
     
     func deleteProfileImage() {
         
-        _currentUser?.deleteProfileImage()
+        _currentUser?.deleteProfileImage(nil)
     }
     
     //    MARK: Logout
@@ -199,6 +207,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                             
                             ImageCacheManager.fetchUserImage(_currentUser, response: { (image) in
                                 cell.imageView?.image = image
+                                cell.setNeedsLayout()
                             })
                         }
                                                 
@@ -224,6 +233,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 let cell = _tableView.dequeueReusableCellWithIdentifier(_logoutCell) as! SettingsLogoutTableViewCell
                 
                 return cell
+                
+            case .Version:
+                
+                let cell = _tableView.dequeueReusableCellWithIdentifier(_versionCell) as! SettingsVersionTableViewCell
+                
+                return cell
             }
         }
 
@@ -231,7 +246,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -241,6 +256,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             case .UserDetails:
                 return 2
             case .Logout:
+                return 1
+            case .Version:
                 return 1
             }
         }
@@ -265,6 +282,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             case .Logout:
                 showLogoutConfirm()
                 break
+            case .Version:
+                break
             }
         }
     }
@@ -286,6 +305,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             case .Logout:
                 return 40
+            case .Version:
+                return 40
             }
         }
         
@@ -300,10 +321,16 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 break
             case .Logout:
                 return 40
+            case .Version:
+                return 40
             }
         }
         
         return 0
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
     }
     
 //    MARK: UIImagePickerControllerDelegate
