@@ -21,6 +21,7 @@
 		AD247B471CF1011900CFAA16 /* ConnectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */; };
 		AD247B491CF1103800CFAA16 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B481CF1103800CFAA16 /* Connection.swift */; };
 		AD247B4D1CF14D9E00CFAA16 /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */; };
+		AD30678D1D02108D00524502 /* SettingsEmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD30678C1D02108D00524502 /* SettingsEmailTableViewCell.swift */; };
 		AD5E4FE41CF219A80084ADF0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE31CF219A80084ADF0 /* Message.swift */; };
 		AD5E4FE61CF21CB20084ADF0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */; };
 		AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */; };
@@ -112,6 +113,7 @@
 		AD247B461CF1011900CFAA16 /* ConnectionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsManager.swift; sourceTree = "<group>"; };
 		AD247B481CF1103800CFAA16 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		AD247B4C1CF14D9E00CFAA16 /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
+		AD30678C1D02108D00524502 /* SettingsEmailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsEmailTableViewCell.swift; sourceTree = "<group>"; };
 		AD5E4FE31CF219A80084ADF0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AD5E4FE51CF21CB20084ADF0 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD5E4FE71CF21DB20084ADF0 /* ConversationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				AD6418ED1CFB91FA009A4B2F /* SettingsViewController.swift */,
 				AD6418F11CFBA351009A4B2F /* SettingsImageTableViewCell.swift */,
 				AD6418EF1CFBA277009A4B2F /* SettingsTextEntryTableViewCell.swift */,
+				AD30678C1D02108D00524502 /* SettingsEmailTableViewCell.swift */,
 				AD6418F31CFBA35C009A4B2F /* SettingsLogoutTableViewCell.swift */,
 				AD0AACD41D00AEF40004BDF6 /* SettingsVersionTableViewCell.swift */,
 			);
@@ -710,6 +713,7 @@
 				ADDE16FC1CF39EB4007E4C50 /* RegistrationTextField.swift in Sources */,
 				ADDE16FE1CF3A50A007E4C50 /* NSString+Fiery.swift in Sources */,
 				ADBAF8E01CF25EF3002C4A1D /* ConnectionTableViewCell.swift in Sources */,
+				AD30678D1D02108D00524502 /* SettingsEmailTableViewCell.swift in Sources */,
 				ADFF57081CEFBD9A00DE6B7E /* AppDelegate.swift in Sources */,
 				ADFF573E1CEFD04600DE6B7E /* ConnectionsViewController.swift in Sources */,
 				AD5E4FE81CF21DB20084ADF0 /* ConversationManager.swift in Sources */,
@@ -906,7 +910,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				INFOPLIST_FILE = Fiery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -925,7 +929,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				INFOPLIST_FILE = Fiery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

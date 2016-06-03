@@ -13,8 +13,8 @@ class UserProfileEmailTableViewCell: UserProfileTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        textLabel?.textColor = UIColor.fieryGrayColor()
         textLabel?.textAlignment = .Center
-        textLabel?.font = UIFont.systemFontOfSize(20)
     }
     
     required init?(coder aDecoder: NSCoder) {

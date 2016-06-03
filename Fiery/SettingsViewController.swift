@@ -26,10 +26,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private enum UserSectionRows: Int {
         case Image
         case Name
+        case Email
     }
     
     private let _imageCell = "SettingsImageCell"
     private let _nameCell = "SettingsNameCell"
+    private let _emailCell = "SettingsEmailCell"
     private let _logoutCell = "SettingsLogoutCell"
     private let _versionCell = "SettingsVersionCell"
     
@@ -44,6 +46,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         _tableView.keyboardDismissMode = .Interactive
         _tableView.registerClass(SettingsImageTableViewCell.self, forCellReuseIdentifier: _imageCell)
         _tableView.registerClass(SettingsTextEntryTableViewCell.self, forCellReuseIdentifier: _nameCell)
+        _tableView.registerClass(SettingsEmailTableViewCell.self, forCellReuseIdentifier: _emailCell)
         _tableView.registerClass(SettingsLogoutTableViewCell.self, forCellReuseIdentifier: _logoutCell)
         _tableView.registerClass(SettingsVersionTableViewCell.self, forCellReuseIdentifier: _versionCell)
         view.addSubview(_tableView)
@@ -228,7 +231,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                         }
                         
                         return cell
+                    case .Email:
                         
+                        let cell = _tableView.dequeueReusableCellWithIdentifier(_emailCell) as! SettingsEmailTableViewCell
+                        
+                        cell.textLabel?.text = _currentUser?.email()
+                        
+                        return cell
                     }
                 }
                 
@@ -258,7 +267,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         if let tableSection = TableSections(rawValue: section) {
             switch tableSection {
             case .UserDetails:
-                return 2
+                return 3
             case .Logout:
                 return 1
             case .Version:
@@ -280,6 +289,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                         showImagePicker()
                         break
                     case .Name:
+                        break
+                    case .Email:
                         break
                     }
                 }
@@ -304,6 +315,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     case .Image:
                         return 200
                     case .Name:
+                        return 40
+                    case .Email:
                         return 40
                     }
                 }

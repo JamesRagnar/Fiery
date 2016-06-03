@@ -1,21 +1,23 @@
 //
-//  SettingsImageTableViewCell.swift
+//  SettingsEmailTableViewCell.swift
 //  Fiery
 //
-//  Created by James Harquail on 2016-05-29.
+//  Created by James Harquail on 2016-06-03.
 //  Copyright © 2016 Ragnar Development. All rights reserved.
 //
 
 import UIKit
 
-class SettingsImageTableViewCell: UITableViewCell {
+class SettingsEmailTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = UIColor.clearColor()
         selectionStyle = .None
         
-        imageView?.layer.masksToBounds = true
+        textLabel?.textColor = UIColor.fieryGrayColor()
+        textLabel?.textAlignment = .Center
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,10 +27,6 @@ class SettingsImageTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let imageDiameter = CGRectGetHeight(contentView.bounds) - 20
-        
-        imageView?.frame = CGRectMake(0, 0, imageDiameter, imageDiameter)
-        imageView?.layer.cornerRadius = imageDiameter / 2.0
-        imageView?.center = contentView.center
+        textLabel?.frame = contentView.bounds
     }
 }
