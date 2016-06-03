@@ -19,45 +19,43 @@ class ConversationManager: FSOReferenceObserver {
         
         print("ConversationManager | Started Observeration")
         
-        getOneTimeValue { (snapshot) in
-            if !(snapshot?.value is NSNull) {
-                self.handleBulkMessages(snapshot!)
-            }
-            self.startObserveringChanges()
-            complete()
+        startObserveringEvent(.ChildAdded) { (snapshot) in
+            self.handleNewMessage(snapshot)
         }
-    }
-    
-    private func startObserveringChanges() {
         
         startObserveringEvent(.ChildChanged) { (snapshot) in
-            
-            if snapshot.value is NSNull {
-                print("ConversationManager | Got null snapshot")
-            } else {
-                self.handleNewMessage(snapshot)
-            }
+            self.handleUpdatedMessage(snapshot)
         }
-    }
-    
-    private func handleBulkMessages(snapshot:FIRDataSnapshot) {
         
-        print("ConversationManager | Got \(snapshot.childrenCount) Messages")
-
-        for child in snapshot.children {
-            if let snap = child as? FIRDataSnapshot {
-                handleNewMessage(snap)
-            }
+        getOneTimeValue { (snapshot) in
+            complete()
         }
     }
     
     private func handleNewMessage(snapshot: FIRDataSnapshot) {
         
-        let newMessage = Message(snapshot: snapshot)
+        let messageId = snapshot.ref.key
         
-        if let messageId = newMessage.snapshotKey() {
-            _messages[messageId] = newMessage
-            delegate?.messageUpdated(self, message: newMessage)
+        print("ConversationManager | New Message | " + messageId)
+        
+        let newMessage = Message(snapshot: snapshot)
+        _messages[messageId] = newMessage
+        delegate?.messageAdded(self, message: newMessage)
+    }
+    
+    private func handleUpdatedMessage(snapshot: FIRDataSnapshot) {
+        
+        let messageId = snapshot.ref.key
+        
+        if let existingMessage = _messages[messageId] {
+            
+            print("ConversationManager | Updated Message | " + messageId)
+            
+            existingMessage.dataSnapshot = snapshot
+            delegate?.messageUpdated(self, message: existingMessage)
+            
+        } else {
+            print("ConversationManager | Error | Could Not Find Existing Message | " + messageId)
         }
     }
     
@@ -93,14 +91,8 @@ class ConversationManager: FSOReferenceObserver {
                 }
                 
                 if messageString != nil {
-                    
-                    if let messageSenderId = lastMessage.senderId(),
-                        let myId = RootDataManager.sharedInstance.currentUser()?.userId() {
-                        
-                        if messageSenderId == myId {
-                            
-                            messageString = "You: " + messageString!
-                        }
+                    if lastMessage.iAmSender() {
+                        messageString = "You: " + messageString!
                     }
                 }
                 
@@ -150,5 +142,6 @@ class ConversationManager: FSOReferenceObserver {
 
 protocol ConversationManagerDelegate {
     
+    func messageAdded(manager: ConversationManager, message: Message)
     func messageUpdated(manager: ConversationManager, message: Message)
 }

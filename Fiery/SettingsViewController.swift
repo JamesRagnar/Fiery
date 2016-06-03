@@ -9,9 +9,8 @@
 import UIKit
 import MobileCoreServices
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserUpdateDeletate {
-
-    private var _placeholderImage: UIImage?
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UserUpdateDeletate, UITextFieldDelegate {
+    
     private var _placeholderName: String?
     
     private let _tableView = UITableView()
@@ -42,6 +41,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         _tableView.dataSource = self
         _tableView.delegate = self
         _tableView.separatorStyle = .None
+        _tableView.keyboardDismissMode = .Interactive
         _tableView.registerClass(SettingsImageTableViewCell.self, forCellReuseIdentifier: _imageCell)
         _tableView.registerClass(SettingsTextEntryTableViewCell.self, forCellReuseIdentifier: _nameCell)
         _tableView.registerClass(SettingsLogoutTableViewCell.self, forCellReuseIdentifier: _logoutCell)
@@ -65,15 +65,25 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewWillDisappear(animated)
         
         _currentUser?.updateDelegate = nil
+        
+        // Update user name
+        
+        if let name = _placeholderName {
+            if name.characters.count > 0 {
+                var updateData = [String: AnyObject]()
+                updateData[User.kName] = name
+                _currentUser?.updateChildValues(updateData)
+            }
+        }
     }
     
-//    MARK: UserUpdateDeletate
+    //    MARK: UserUpdateDeletate
     
     func userDataUpdated() {
         _tableView.reloadData()
     }
     
-//    MARK: Action Responders
+    //    MARK: Action Responders
     
     func showLogoutConfirm() {
         
@@ -125,14 +135,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             self.showDeleteConfirmation()
         }))
-
+        
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (alertAction) -> Void in
             
         }))
         
         self.presentViewController(actionSheet, animated: true, completion: nil)
-
+        
     }
     
     func showDeleteConfirmation() {
@@ -152,7 +162,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-//    MARK: Image
+    //    MARK: Image
     
     func updateProfileImage(image: UIImage) {
         
@@ -184,7 +194,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         dismissViewControllerAnimated(false, completion: nil)
     }
     
-//    MARK: UITableViewDataSource
+    //    MARK: UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -198,24 +208,18 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                         
                         let cell = _tableView.dequeueReusableCellWithIdentifier(_imageCell) as! SettingsImageTableViewCell
                         
-                        if let image = _placeholderImage {
-                            // User has selected a new local image
-                            
+                        ImageCacheManager.fetchUserImage(_currentUser, response: { (image) in
                             cell.imageView?.image = image
-                            
-                        } else {
-                            
-                            ImageCacheManager.fetchUserImage(_currentUser, response: { (image) in
-                                cell.imageView?.image = image
-                                cell.setNeedsLayout()
-                            })
-                        }
-                                                
+                            cell.setNeedsLayout()
+                        })
+                        
                         return cell
                         
                     case .Name:
                         
                         let cell = _tableView.dequeueReusableCellWithIdentifier(_nameCell) as! SettingsTextEntryTableViewCell
+                        
+                        cell.textField.delegate = self
                         
                         if let name = _placeholderName {
                             cell.textField.text = name
@@ -241,7 +245,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 return cell
             }
         }
-
+        
         fatalError()
     }
     
@@ -288,7 +292,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-//    MARK: UITableViewDelegate
+    //    MARK: UITableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -318,7 +322,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         if let tableSection = TableSections(rawValue: section) {
             switch tableSection {
             case .UserDetails:
-                break
+                return 20
             case .Logout:
                 return 40
             case .Version:
@@ -333,7 +337,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return UIView()
     }
     
-//    MARK: UIImagePickerControllerDelegate
+    //    MARK: UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -349,5 +353,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
         }
+    }
+    
+    //    MARK: UITextFieldDelegate
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let textFieldText: NSString = textField.text ?? ""
+        _placeholderName = textFieldText.stringByReplacingCharactersInRange(range, withString: string)
+        
+        return true
     }
 }

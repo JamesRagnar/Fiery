@@ -93,7 +93,11 @@ class ConnectionTableViewCell: UITableViewCell, ConversationManagerDelegate {
     
 //    MARK: ConversationManagerDelegate 
     
-    func messageUpdated(manager: ConversationManager, message: Message) {
+    func messageAdded(manager: ConversationManager, message: Message) {
         loadConversationData(manager)
+    }
+    
+    func messageUpdated(manager: ConversationManager, message: Message) {
+        // Don't care about an update message
     }
 }

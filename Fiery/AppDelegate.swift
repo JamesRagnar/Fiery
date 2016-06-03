@@ -18,14 +18,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         return true
     }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
-                     fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-
-        if let messageId = userInfo["gcm.message_id"] as? String{
-            print("Push | " + messageId)
-            print(userInfo)
-        }
-    }
 }
 

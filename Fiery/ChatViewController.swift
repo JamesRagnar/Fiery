@@ -102,29 +102,21 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     
     //    MARK: ConversationManagerDelegate
     
-    func messageUpdated(manager: ConversationManager, message: Message) {
-        if _messages.contains(message) {
-            messageUpdated(message)
-        } else {
-            newMessageAdded(message)
-        }
-    }
-    
-    func messageUpdated(message: Message) {
-        print("Chat | Message | " + message.snapshotKey()! + " | Updated")
-        if let index = _messages.indexOf(message) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.collectionView.reloadItemsAtIndexPaths([indexPath])
-            })
-        }
-    }
-    
-    func newMessageAdded(message: Message) {
+    func messageAdded(manager: ConversationManager, message: Message) {
         print("Chat | Message | " + message.snapshotKey()! + " | Added")
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self._messages.append(message)
             self.finishReceivingMessageAnimated(true)
+        }
+    }
+    
+    func messageUpdated(manager: ConversationManager, message: Message) {
+        print("Chat | Message | " + message.snapshotKey()! + " | Updated")
+        if let index = _messages.indexOf(message) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.collectionView.reloadItemsAtIndexPaths([indexPath])
+            })
         }
     }
     
@@ -133,6 +125,8 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
         
         let message = _messages[indexPath.row]
+        
+        message.markViewed()
         
         if let messageType = message.type() {
             switch messageType {
@@ -213,13 +207,11 @@ class ChatViewController: JSQMessagesViewController, ConversationManagerDelegate
             bodyText = "Sent " + timeString
         }
         
-        if message.senderId() == _currentUser.userId() {
-            
-            // I sent the message, I want to know when the user has seen it
-//            if let viewDate = message.viewDate() {
-//                let timeString = dateFormatter.stringFromDate(viewDate)
-//                bodyText = "Seen " + timeString
-//            }
+        if message.iAmSender() {
+            if let viewDate = message.viewDate() {
+                let timeString = dateFormatter.stringFromDate(viewDate)
+                bodyText = "Seen " + timeString
+            }
         }
         
         return NSAttributedString(string: bodyText)

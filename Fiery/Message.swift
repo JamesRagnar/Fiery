@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Message: FSOSnapshot {
     
@@ -22,6 +23,8 @@ class Message: FSOSnapshot {
     static let kImageType = "image"
     
     var image: UIImage?
+    
+    private var _viewed = false
     
     //    MARK: Field Accessors
     
@@ -70,7 +73,52 @@ class Message: FSOSnapshot {
         return nil
     }
     
+    func viewDate() -> NSDate? {
+        if let millisecondsSinceEpoch = viewDateMilliseconds() {
+            let secondsSinceEpoch = millisecondsSinceEpoch.doubleValue / 1000
+            return NSDate(timeIntervalSince1970: secondsSinceEpoch)
+        }
+        return nil
+    }
+    
     func sendDateMilliseconds() -> NSNumber? {
         return firebaseNumberForKey(Message.kSendDate)
+    }
+    
+    func viewDateMilliseconds() -> NSNumber? {
+        return firebaseNumberForKey(Message.kViewDate)
+    }
+    
+//    MARK:
+    
+    func iAmSender() -> Bool {
+        if let senderId = senderId(), let myId = RootDataManager.sharedInstance.currentUser()?.userId() {
+            return senderId == myId
+        }
+        return false
+    }
+    
+    func markViewed() {
+        
+        if _viewed {
+            return
+        }
+        
+        if iAmSender() {
+            return
+        }
+        
+        if viewDate() != nil {
+            return
+        }
+        
+        print("Message | " + snapshotKey()! + " | Marking Viewed")
+        
+        _viewed = true
+        
+        var updateData = [String: AnyObject]()
+        updateData[Message.kViewDate] = FIRServerValue.timestamp()
+        
+        updateChildValues(updateData)
     }
 }
