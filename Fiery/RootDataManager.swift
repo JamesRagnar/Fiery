@@ -9,54 +9,64 @@
 import UIKit
 
 class RootDataManager {
-
+    
     static let sharedInstance = RootDataManager()
     
     private var _currentUser: User?
     
-    private var _usersManager: UsersManager?
+    private var _connectionsManager: ConnectionsManager?
     
-//    MARK: Managers
+    //    MARK: Managers
     
     func currentUser() -> User? {
-        if _currentUser == nil {
-            print("Current user is nil, this is a bad thing")
-        }
+        assert(_currentUser != nil, "CurrentUser has not been set")
         return _currentUser
     }
     
-    func usersManager() -> UsersManager {
-        if _usersManager == nil {
-            _usersManager = UsersManager()
+    func connectionsManager() -> ConnectionsManager {
+        if _connectionsManager == nil {
+            let myConnectionsRef = FirebaseDataManager.myConnectionsRef()
+            _connectionsManager = ConnectionsManager(nodeRef: myConnectionsRef)
         }
-        return _usersManager!
+        return _connectionsManager!
     }
     
-//    MARK: Auth
+    //    MARK: Auth
     
     func attemptUserLogin(response: (success: Bool) -> Void) {
         
-        FirebaseDataManager.fetchMyUserData { (userSnapshot) in
+        if let myRef = FirebaseDataManager.myUserRef() {
             
-            if userSnapshot != nil {
-                
-                // I am logged in and have a reference to a database node
-                self._currentUser = User(snapshot: userSnapshot!)
-                self._currentUser?.startObservingUserData()
-                response(success: true)
-                
-            } else {
-                response(success: false)
-            }
+            // Double check that the node monitors are clean
+            clearFirebaseNodeMonitors()
+            
+            _currentUser = User(nodeRef: myRef)
+            _currentUser?.fetchDataOneTime({ (success) in
+                if success {
+                    self._currentUser?.startObservingUserData()
+                    self.connectionsManager().monitorUserConnections()
+                    response(success: true)
+                } else {
+                    self.logout()
+                    response(success: false)
+                }
+            })
+        } else {
+            logout()
+            response(success: false)
         }
     }
     
     func logout() {
         
-        _currentUser = nil
-        
-        _usersManager = nil
-        
+        clearFirebaseNodeMonitors()
+        ImageCacheManager.clearImageCache()
         FirebaseDataManager.logout()
+    }
+    
+    private func clearFirebaseNodeMonitors() {
+        
+        _currentUser = nil
+        _connectionsManager = nil
     }
 }

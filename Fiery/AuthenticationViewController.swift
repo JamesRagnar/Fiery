@@ -10,21 +10,19 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
     
-    private let _loginButton = UIButton()
-    private let _registerButton = UIButton()
+    private let _loginButton = RegistrationButton()
+    private let _registerButton = RegistrationButton()
     
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.fieryBackgroundColor()
         
         _loginButton.setTitle("Login", forState: .Normal)
-        _loginButton.backgroundColor = UIColor.grayColor()
         _loginButton.addTarget(self, action: #selector(AuthenticationViewController.loginButtonTapped), forControlEvents: .TouchUpInside)
         view.addSubview(_loginButton)
         
         _registerButton.setTitle("Register", forState: .Normal)
-        _registerButton.backgroundColor = UIColor.grayColor()
         _registerButton.addTarget(self, action: #selector(AuthenticationViewController.registrationButtonTapped), forControlEvents: .TouchUpInside)
         view.addSubview(_registerButton)
     }
@@ -41,6 +39,12 @@ class AuthenticationViewController: UIViewController {
         
         _registerButton.frame = buttonFrame
         _registerButton.center = CGPointMake(viewCenter.x, twoThirdsHeight + 25)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     //    MARK: Action Responders

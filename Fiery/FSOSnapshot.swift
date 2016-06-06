@@ -20,8 +20,8 @@ class FSOSnapshot: FSOReferenceObserver {
         return dataSnapshot
     }
     
-    override init(snapshot: FIRDataSnapshot) {
-        super.init(snapshot: snapshot)
+    convenience init(snapshot: FIRDataSnapshot?) {
+        self.init(nodeRef: snapshot?.ref)
         dataSnapshot = snapshot
     }
 
@@ -49,8 +49,8 @@ class FSOSnapshot: FSOReferenceObserver {
         return firebaseNumberForKey(key)?.boolValue
     }
     
-    func firebaseDictionaryForKey(key: String) -> NSDictionary? {
-        return firebaseValueForKey(key) as? NSDictionary
+    func firebaseDictionaryForKey(key: String) -> [String: AnyObject]? {
+        return firebaseValueForKey(key) as? [String: AnyObject]
     }
     
     private func firebaseValueForKey(key: String) -> AnyObject? {

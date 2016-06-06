@@ -8,75 +8,138 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: RegistrationParentViewController, UITextFieldDelegate {
 
-    private let _emailField = UITextField()
-    private let _passwordField = UITextField()
+    private let _emailField = RegistrationTextField()
+    private let _passwordField = RegistrationTextField()
     
-    private let _confirmButton = UIButton()
+    private let _confirmButton = RegistrationButton()
     
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = UIColor.whiteColor()
-        
-        _emailField.backgroundColor = UIColor.grayColor()
+        _emailField.returnKeyType = .Next
         _emailField.keyboardType = .EmailAddress
         _emailField.autocapitalizationType = .None
         _emailField.autocorrectionType = .No
-        _emailField.placeholder = "emaily@mcEmailFace.com"
-        view.addSubview(_emailField)
+        _emailField.placeholder = "Email"
+        contentView.addSubview(_emailField)
         
-        _passwordField.backgroundColor = UIColor.grayColor()
+        _passwordField.returnKeyType = .Go
         _passwordField.secureTextEntry = true
-        _passwordField.placeholder = "Secret Pass"
-        view.addSubview(_passwordField)
+        _passwordField.placeholder = "Password"
+        contentView.addSubview(_passwordField)
         
-        _confirmButton.backgroundColor = UIColor.grayColor()
         _confirmButton.setTitle("Login", forState: .Normal)
         _confirmButton.addTarget(self, action: #selector(LoginViewController.confirmButtonTapped), forControlEvents: .TouchUpInside)
-        view.addSubview(_confirmButton)
+        contentView.addSubview(_confirmButton)
+        
+        contentViewUpdated(view.frame)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+//    MARK: Content View Layout
+    
+    override func contentViewUpdated(frame: CGRect) {
+        super.contentViewUpdated(frame)
         
         let textFieldframe = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 60, 40)
-        let viewCenter = view.center
+        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
+        
+        let viewCenter = CGPointMake(CGRectGetMidX(contentView.bounds), CGRectGetMidY(contentView.bounds))
         
         _emailField.frame = textFieldframe
         _emailField.center = CGPointMake(viewCenter.x, viewCenter.y - 50)
+        _emailField.delegate = self
         
         _passwordField.frame = textFieldframe
         _passwordField.center = viewCenter
+        _passwordField.delegate = self
         
-        let buttonFrame = CGRectMake(0, 0, CGRectGetWidth(view.frame) - 100, 40)
         _confirmButton.frame = buttonFrame
-        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 50)
+        _confirmButton.center = CGPointMake(viewCenter.x, viewCenter.y + 60)
     }
     
 //    MARK: Action Responders
     
     func confirmButtonTapped() {
         
-        if let email = _emailField.text, let password = _passwordField.text {
+        if let (email, password) = loginFieldsValid() {
             
-            if email.characters.count > 0 && password.characters.count > 0 {
-                
-                login(email, password: password)
-            }
+            login(email, password: password)
         }
+    }
+    
+//    MARK: UITextFieldDelegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        _emailField.clearErrorState()
+        _passwordField.clearErrorState()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        switch textField {
+        case _emailField:
+            _passwordField.becomeFirstResponder()
+        case _passwordField:
+            confirmButtonTapped()
+        default:
+            break
+        }
+        
+        return false
+    }
+    
+//    MARK: Validators
+    
+    func loginFieldsValid() -> (email: String, password: String)? {
+        
+        let emailString = _emailField.text
+        if !emailValid(emailString) {
+            _emailField.showErrorState()
+            return nil
+        }
+        
+        let passwordString = _passwordField.text
+        if !passwordValid(passwordString) {
+            _passwordField.showErrorState()
+            return nil
+        }
+        
+        return (emailString!, passwordString!)
+    }
+    
+    func emailValid(email: String?) -> Bool {
+        
+        if let testString = email {
+            return testString.isValidFieryEmail()
+        }
+        return false
+    }
+    
+    func passwordValid(password: String?) -> Bool {
+        
+        if let testString = password {
+            return testString.isValidFieryPassword()
+        }
+        return false
     }
     
 //    MARK: Login
     
     func login(email: String, password: String) {
         
-        FirebaseDataManager.loginWithCredentials(email, password: password) { (success) in
+        startAuthAttempt()
+        
+        FirebaseDataManager.loginWithCredentials(email, password: password) { (success, error) in
+            
+            self.stopAuthAttempt()
             
             if success {
-                
                 self.dismissViewControllerAnimated(false, completion: nil)
+            } else if error != nil {
+                self.showDetailModalForError(error!)
             }
         }
     }

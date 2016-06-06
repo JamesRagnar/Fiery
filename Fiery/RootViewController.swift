@@ -18,6 +18,8 @@ class RootViewController: UIViewController {
     
     func checkUserStatus() {
         
+        print("| Checking Auth Status")
+        
         RootDataManager.sharedInstance.attemptUserLogin { (success) in
             if success {
                 self.openConversationView()
@@ -27,16 +29,20 @@ class RootViewController: UIViewController {
         }
     }
     
+    func openConversationView() {
+        
+        print("| Opening Application Main")
+        
+        let conVC = ConnectionsViewController()
+        openNavigationController(conVC)
+    }
+    
     func openRegistrationView() {
+        
+        print("| Opening Application Registration")
         
         let regVC = AuthenticationViewController()
         openNavigationController(regVC)
-    }
-    
-    func openConversationView() {
-        
-        let conVC = ConversationsViewController()
-        openNavigationController(conVC)
     }
     
     func openNavigationController(rootVC: UIViewController) {

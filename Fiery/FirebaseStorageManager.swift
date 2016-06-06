@@ -10,9 +10,12 @@ import Firebase
 
 class FirebaseStorageManager {
     
-    private static let _kStorageAddress = "gs://fiery-405fb.appspot.com"
+    typealias ImageDataResponseBlock = (data: ImageData?) -> Void
+    
+    private static let _kStorageAddress = "gs://fiery-development.appspot.com"
     
     private static let _kUserImagesRef = "userImages"
+    private static let _kMessageImagesRef = "messageImages"
     
     //    MARK: Storage References
     
@@ -25,42 +28,89 @@ class FirebaseStorageManager {
         return rootStorageRef().child(_kUserImagesRef)
     }
     
+    static func messageImagesRef() -> FIRStorageReference {
+        return rootStorageRef().child(_kMessageImagesRef)
+    }
+    
     //    MARK: Upload
     
-    static func updateUserProfileImage(image: UIImage, response: (imageUrl: String) -> Void) {
+    static func updateUserProfileImage(image: UIImage, response: ImageDataResponseBlock) {
+        
+        print("FirebaseStorageManager | Starting User Profile Image Upload")
+        
+        uploadImageToRef(image, ref: userImagesRef(), response: response)
+    }
+    
+    static func uploadChatImage(image: UIImage, response: ImageDataResponseBlock) {
+        
+        print("FirebaseStorageManager | Starting Chat Message Image Upload")
+
+        uploadImageToRef(image, ref: messageImagesRef(), response: response)
+    }
+    
+    private static func uploadImageToRef(image: UIImage, ref: FIRStorageReference, response: ImageDataResponseBlock) {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.5) {
             
-            let userImageRef = userImagesRef()
+            let randomFileName = NSUUID().UUIDString + ".jpeg"
             
-            let randomFileName = NSUUID().UUIDString + ".jpg"
-            
-            let fileRef = userImageRef.child(randomFileName)
+            let fileRef = ref.child(randomFileName)
             
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
             
             let uploadTask = fileRef.putData(imageData, metadata: metadata, completion: { (storageMetaData, error) in
                 if error != nil {
+                    print("FirebaseStorageManager | Error | Uploading File")
                     print(error)
+                    response(data: nil)
                 } else {
                     
                     if let downloadUrl = storageMetaData?.downloadURL() {
-                        print(downloadUrl)
-                        response(imageUrl: downloadUrl.description)
+                        print("FirebaseStorageManager | Completed Upload | " + downloadUrl.description)
+                        
+                        let imageData = ImageData(url: downloadUrl.description, ref: fileRef.fullPath)
+                        response(data: imageData)
+                        
+                    } else {
+                        print("FirebaseStorageManager | Error | No Download URL")
+                        response(data: nil)
                     }
                 }
             })
             
             uploadTask.observeStatus(.Progress) { snapshot in
                 if let progress = snapshot.progress {
-                    let percentComplete = 100.0 * Double(progress.completedUnitCount) / Double(progress.totalUnitCount)
-                    print(percentComplete)
+                    print("FirebaseStorageManager | Upload Progress | \(progress.completedUnitCount) / \(progress.totalUnitCount)")
                 }
             }
             
         } else {
-            print("Could not generate image data")
+            print("FirebaseStorageManager | Error | Could Not Compress Image")
+            response(data: nil)
+        }
+    }
+    
+//    MARK: Delete
+    
+    static func deleteImage(data: ImageData?, response: ((success: Bool) -> Void)?) {
+        
+        if let ref = data?.ref {
+            
+            let imageRef = rootStorageRef().child(ref)
+            
+            imageRef.deleteWithCompletion({ (error) in
+                if error != nil {
+                    print("FirebaseStorageManager | Error | Could Not Delete Image")
+                    response?(success: false)
+                } else {
+                    print("FirebaseStorageManager | Deleted Image")
+                    response?(success: true)
+                }
+            })
+        } else {
+            print("FirebaseStorageManager | Could not fetch image ref")
+            response?(success: false)
         }
     }
 }

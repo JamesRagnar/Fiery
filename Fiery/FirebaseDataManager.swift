@@ -12,7 +12,9 @@ class FirebaseDataManager {
     
     //    MARK: Firebase Nodes
     
-    private static let _kUsersNode = "users"
+    private static let _kUsersRef = "users"
+    private static let _kConnectionsRef = "connections"
+    private static let _kMessagesRef = "messages"
     
     //    MARK: Firebase Node References
     
@@ -20,16 +22,31 @@ class FirebaseDataManager {
         return FIRDatabase.database().reference()
     }
     
-    static func usersNode() -> FIRDatabaseReference {
-        return rootRef().child(_kUsersNode)
+    static func usersRef() -> FIRDatabaseReference {
+        return rootRef().child(_kUsersRef)
+    }
+    
+    static func connectionsRef() -> FIRDatabaseReference {
+        return rootRef().child(_kConnectionsRef)
+    }
+    
+    static func messagesRef() -> FIRDatabaseReference {
+        return rootRef().child(_kMessagesRef)
     }
     
     static func myUserRef() -> FIRDatabaseReference? {
         
         if let userId = currentUser()?.uid {
-            return usersNode().child(userId)
+            return usersRef().child(userId)
         }
+        return nil
+    }
+    
+    static func myConnectionsRef() -> FIRDatabaseReference? {
         
+        if let userId = currentUser()?.uid {
+            return connectionsRef().child(userId)
+        }
         return nil
     }
     
@@ -51,55 +68,38 @@ class FirebaseDataManager {
         }
     }
     
-    //    MARK: User
+    //    MARK: Registration
     
-    static func fetchMyUserData(response: (userData: FIRDataSnapshot?) -> Void) {
+    static func loginWithCredentials(email: String, password: String, response: (success: Bool, error: NSError?) -> Void) {
         
-        if let myRef = myUserRef() {
-            
-            myRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                
-                // Check if the snapshot has no data
-                if snapshot.value is NSNull {
-                    response(userData: nil)
-                    return
-                }
-                
-                response(userData: snapshot)
-                return
+        if let auth = FIRAuth.auth() {
+            auth.signInWithEmail(email, password: password, completion: { (user, error) in
+                response(success: error == nil, error: error)
             })
         } else {
-            response(userData: nil)
+            print("FirebaseDataManager | Auth is nil")
+            response(success: false, error: nil)
         }
     }
     
-    //    MARK: Registration
-    
-    static func loginWithCredentials(email: String, password: String, response: (success: Bool) -> Void) {
+    static func registerWithCredentials(name: String, image: UIImage?, email: String, password: String, response: (success: Bool, error: NSError?) -> Void) {
         
-        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
-            if error != nil {
-                print(error)
-                response(success: false)
-            } else {
-                response(success: true)
-            }
-        })
+        if let auth = FIRAuth.auth() {
+            
+            auth.createUserWithEmail(email, password: password, completion: { (user, error) in
+                if error != nil {
+                    response(success: false, error: error)
+                } else {
+                    setNewUserData(name, image: image, email: email, response: response)
+                }
+            })
+        } else {
+            print("FirebaseDataManager | Auth is nil")
+            response(success: false, error: nil)
+        }
     }
     
-    static func registerWithCredentials(name: String, image: UIImage?, email: String, password: String, response: (success: Bool) -> Void) {
-        
-        FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
-            if error != nil {
-                print(error)
-                response(success: false)
-            } else {
-                setNewUserData(name, image: image, email: email, response: response)
-            }
-        })
-    }
-    
-    private static func setNewUserData(name: String, image: UIImage?, email: String, response: (success: Bool) -> Void) {
+    private static func setNewUserData(name: String, image: UIImage?, email: String, response: (success: Bool, error: NSError?) -> Void) {
         
         if let myRef = myUserRef() {
             
@@ -108,28 +108,70 @@ class FirebaseDataManager {
             updateData[User.kEmail] = email
             
             myRef.updateChildValues(updateData, withCompletionBlock: { (error, database) in
-                
-                if error != nil {
-                    print(error)
-                    response(success: false)
-                } else {
-                    response(success: true)
-                }
+                response(success: error == nil, error: error)
             })
             
-            if image != nil {
-                
-                FirebaseStorageManager.updateUserProfileImage(image!, response: { (imageUrl) in
-                    
-                    // Update my user object with image ref
-                    let imageRef = myRef.child(User.kImageUrl)
-                    imageRef.setValue(imageUrl)
-                })
-            }
+            // Optional. Upload and save the user image
+            updateUserImage(image)
             
         } else {
             print("Registration | Could not get myUserRef")
-            response(success: false)
+            response(success: false, error: nil)
         }
+    }
+    
+    private static func updateUserImage(image: UIImage?) {
+        
+        if let uploadImage = image, let myRef = myUserRef() {
+            
+            FirebaseStorageManager.updateUserProfileImage(uploadImage, response: { (data) in
+                
+                if let imageData = data?.dataFormat() {
+                
+                    // Update my user object with image ref
+                    let imageRef = myRef.child(User.kProfileImageData)
+                    imageRef.setValue(imageData)
+                }
+            })
+        }
+    }
+    
+    //    MARK: Query
+    
+    static func queryUsersByEmailWithString(queryString: String, results: (users: [User]) -> Void) {
+        
+        let lowercaseString = queryString.lowercaseString
+        
+        print("FirebaseDataManager | Searching Users | " + queryString)
+        
+        let usersRef = FirebaseDataManager.usersRef()
+        
+        let query: FIRDatabaseQuery = usersRef.queryOrderedByChild("email").queryEqualToValue(lowercaseString)
+        
+        query.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            
+            print("FirebaseDataManager | Search Results | \(snapshot.childrenCount)")
+            
+            var returnUsers = [User]()
+            
+            if let myId = RootDataManager.sharedInstance.currentUser()?.userId() {
+                
+                for child in snapshot.children {
+                    
+                    if let childSnapshot = child as? FIRDataSnapshot {
+                        
+                        let user = User(snapshot: childSnapshot)
+                        
+                        if let userId = user.userId() {
+                            
+                            if userId != myId {
+                                returnUsers.append(user)
+                            }
+                        }
+                    }
+                }
+            }
+            results(users: returnUsers)
+        })
     }
 }

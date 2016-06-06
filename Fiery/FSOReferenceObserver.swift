@@ -21,12 +21,18 @@ class FSOReferenceObserver: NSObject {
 
     private var _eventHandles = [FIRDataEventType: UInt]()
     
-    init(nodeRef: FIRDatabaseReference) {
+    convenience init(nodeRef: FIRDatabaseReference?) {
+        self.init()
         _firebaseReference = nodeRef
     }
     
-    init(snapshot: FIRDataSnapshot) {
-        _firebaseReference = snapshot.ref
+    convenience init(snapshot: FIRDataSnapshot?) {
+        self.init()
+        _firebaseReference = snapshot?.ref
+    }
+    
+    override init() {
+        super.init()
     }
     
     //    MARK: READ
@@ -47,6 +53,9 @@ class FSOReferenceObserver: NSObject {
         
         firebaseReference()?.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             response(snapshot: snapshot)
+        }, withCancelBlock: { (error) in
+            print(error)
+            response(snapshot: nil)
         })
     }
     
